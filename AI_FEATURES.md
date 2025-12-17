@@ -44,6 +44,33 @@ Bu dokuman, ilk surumde yer alacak AI ozelliklerini, test senaryolarini ve promp
 
 ---
 
+## Arac Kategorileri
+
+Araclar guc kaynagina gore 4 kategoriye ayrilir. Her kategorinin farkli bakim gereksinimleri ve fotograf istek listesi vardir.
+
+### Kategori Tanimi
+
+| Kod | Kategori | Kapsam | Ozellik |
+|-----|----------|--------|---------|
+| **ICE** | Icten Yanmali Motor | Benzinli, Dizel, LPG, CNG | Geleneksel motor, yag degisimi var |
+| **HEV** | Hibrit | Self-charging Hybrid | Motor + elektrik, sarj portu YOK |
+| **PHEV** | Plug-in Hibrit | Plug-in Hybrid | Motor + elektrik, sarj portu VAR |
+| **BEV** | Tam Elektrikli | Battery Electric Vehicle | Sadece elektrik, yag degisimi YOK |
+
+### Kategori Secim Mantigi
+
+```
+Kullanici arac eklerken yakit/guc tipi secer:
+├── Benzin ──────────→ ICE
+├── Dizel ───────────→ ICE
+├── LPG ─────────────→ ICE
+├── Hibrit ──────────→ HEV
+├── Plug-in Hibrit ──→ PHEV
+└── Elektrik ────────→ BEV
+```
+
+---
+
 ## Genel Bakis
 
 MVP'de 6 temel AI modulu bulunacaktir:
@@ -59,21 +86,281 @@ MVP'de 6 temel AI modulu bulunacaktir:
 
 ---
 
-## Fotograf Cekim Akisi
+## Kategorilere Gore Fotograf Gereksinimleri
 
-Kullanicidan istenecek fotograflar sirasi ile:
+### Karsilastirma Tablosu
 
-| Sira | Bolge | Aciklama |
-|------|-------|----------|
-| 1 | Sol On Lastik | Dis yuzey gorunecek sekilde |
-| 2 | Sag On Lastik | Dis yuzey gorunecek sekilde |
-| 3 | Sol Arka Lastik | Dis yuzey gorunecek sekilde |
-| 4 | Sag Arka Lastik | Dis yuzey gorunecek sekilde |
-| 5 | Motor Bolgesi | Kaput acik, genel gorunum |
-| 6 | On Farlar | Her iki far gorunecek |
-| 7 | Arka Stoplar | Her iki stop gorunecek |
-| 8 | Gostergeler/Kilometre | Dijital veya analog gosterge |
-| 9 | EV Sarj Portu (opsiyonel) | Sadece elektrikli araclar |
+```
+Kontrol Noktasi              ICE    HEV    PHEV   BEV
+────────────────────────────────────────────────────
+LASTIKLER
+  Sol On Lastik               ✓      ✓      ✓      ✓
+  Sag On Lastik               ✓      ✓      ✓      ✓
+  Sol Arka Lastik             ✓      ✓      ✓      ✓
+  Sag Arka Lastik             ✓      ✓      ✓      ✓
+
+MOTOR / GUC UNITESI
+  Motor Bolgesi (kaput acik)  ✓      ✓      ✓      ✗
+  Guc Elektronigi Bolgesi     ✗      ✗      ✗      ✓
+
+AYDINLATMA
+  On Farlar                   ✓      ✓      ✓      ✓
+  Arka Stop Lambalari         ✓      ✓      ✓      ✓
+
+SARJ SISTEMI
+  Sarj Portu                  ✗      ✗      ✓      ✓
+
+GOSTERGE
+  Kilometre/Gosterge Paneli   ✓      ✓      ✓      ✓
+
+EGZOZ
+  Egzoz Cikisi                ✓      ✓      ✓      ✗
+────────────────────────────────────────────────────
+TOPLAM FOTOGRAF              10     10     11      9
+```
+
+---
+
+## ICE Kategorisi - Detayli Fotograf Listesi
+**Benzinli / Dizel / LPG / CNG Araclar**
+
+### Fotograf Sirasi ve Talimatlari
+
+| Sira | Bolge | Cekim Talimati | Kontrol Amaci |
+|------|-------|----------------|---------------|
+| 1 | **Sol On Lastik** | Lastigi tam karsiniza alin, dis yuzey net gorunsun. Yaklasik 50cm mesafeden cekin. | Dis derinligi, asinma paterni, yan duvar durumu |
+| 2 | **Sag On Lastik** | Ayni sekilde sag on lastigi cekin. | Dis derinligi, asinma paterni, yan duvar durumu |
+| 3 | **Sol Arka Lastik** | Sol arka lastigi ayni acidan cekin. | Dis derinligi, asinma paterni, yan duvar durumu |
+| 4 | **Sag Arka Lastik** | Sag arka lastigi ayni acidan cekin. | Dis derinligi, asinma paterni, yan duvar durumu |
+| 5 | **Motor Bolgesi** | Kaputu acin, motor bolgesinin tamamini cekecek sekilde yukselten bir acidan fotograflayin. Iyi aydinlatma saglayin. | Genel temizlik, sizinti, aku, kayis, hortum durumu |
+| 6 | **On Farlar** | Aracin onunden her iki fari gorecek sekilde cekin. | Lens durumu (sari, buzlu), temizlik |
+| 7 | **Arka Stop Lambalari** | Aracin arkasindan her iki stopu gorecek sekilde cekin. | Lens durumu, kirlilik, catlak |
+| 8 | **Gosterge Paneli** | Kontagi acin (calistirmaya gerek yok), gosterge panelini net gorunecek sekilde cekin. | Kilometre, uyari isiklari |
+| 9 | **Egzoz Cikisi** | Egzoz ucunu yakindan cekin. Birden fazla egzoz varsa hepsini cekin. | Pas, korozyon, is birikimi |
+| 10 | **Motor Yagi Cubugu** (opsiyonel) | Yag cubugunu cekip temizleyin, tekrar daldirip cikarin ve fotograflayin. | Yag seviyesi ve rengi |
+
+### ICE Ozel Kontrol Noktalari
+
+#### Motor Bolgesi Detaylari
+```
+Kontrol Edilecekler:
+├── Yag Kapagi Cevresi ─────→ Sizinti izi var mi?
+├── Aku Terminalleri ───────→ Beyaz/yesil oksidasyon var mi?
+├── V-Kayis / Triger Kayisi ─→ Catlak, asinma var mi?
+├── Radyator Hortumu ───────→ Sismis, sert, catlak mi?
+├── Antifriz Haznesi ───────→ Seviye min-max arasi mi?
+├── Fren Hidrolik Haznesi ──→ Seviye yeterli mi?
+├── Cam Suyu Haznesi ───────→ Dolu mu?
+└── Hava Filtresi Kutusu ───→ Genel durum
+```
+
+#### Egzoz Kontrol Noktalari
+```
+Kontrol Edilecekler:
+├── Pas / Korozyon ─────────→ Delinme riski
+├── Is Birikimi ────────────→ Yakit yakim problemi gostergesi
+├── Fiziksel Hasar ─────────→ Ezik, kirik
+└── Baglanti Noktalari ─────→ Sizinti izleri
+```
+
+---
+
+## HEV Kategorisi - Detayli Fotograf Listesi
+**Hibrit Araclar (Self-Charging)**
+
+### Fotograf Sirasi ve Talimatlari
+
+| Sira | Bolge | Cekim Talimati | Kontrol Amaci |
+|------|-------|----------------|---------------|
+| 1 | **Sol On Lastik** | Lastigi tam karsiniza alin, dis yuzey net gorunsun. | Dis derinligi, asinma paterni |
+| 2 | **Sag On Lastik** | Ayni sekilde sag on lastigi cekin. | Dis derinligi, asinma paterni |
+| 3 | **Sol Arka Lastik** | Sol arka lastigi ayni acidan cekin. | Dis derinligi, asinma paterni |
+| 4 | **Sag Arka Lastik** | Sag arka lastigi ayni acidan cekin. | Dis derinligi, asinma paterni |
+| 5 | **Motor Bolgesi** | Kaputu acin, motor bolgesinin tamamini cekin. Hibrit sistemde turuncu kablolara DOKUNMAYIN. | Motor durumu, elektrik bilesenleri |
+| 6 | **On Farlar** | Her iki fari gorecek sekilde cekin. | Lens durumu, temizlik |
+| 7 | **Arka Stop Lambalari** | Her iki stopu gorecek sekilde cekin. | Lens durumu, kirlilik |
+| 8 | **Gosterge Paneli** | Kontagi acin, gosterge panelini cekin. Hibrit batarya gostergesini de icersin. | Kilometre, batarya durumu, uyarilar |
+| 9 | **Egzoz Cikisi** | Egzoz ucunu yakindan cekin. | Pas, korozyon |
+| 10 | **Hibrit Batarya Sogutucu** (opsiyonel) | Genellikle arka koltuk altinda veya bagajda. Havalandirma izgararini cekin. | Toz birikimi, tikanilik |
+
+### HEV Ozel Kontrol Noktalari
+
+#### Motor Bolgesi (Hibrit)
+```
+Kontrol Edilecekler:
+├── Benzinli Motor Alani ───→ Standart ICE kontrolleri
+├── Elektrik Motor Alani ──→ Gorunen hasar, kablo durumu
+├── Inverter Unitesi ──────→ Temizlik, hasar
+├── 12V Akseuar Akusu ─────→ Terminal durumu
+└── Turuncu Yuksek Voltaj Kablolari → SADECE GORSEL (dokunmayin!)
+```
+
+#### Hibrit Batarya Sogutma
+```
+Kontrol Edilecekler:
+├── Havalandirma Izgarasi ──→ Toz, kir birikimi
+├── Fan Giris/Cikisi ───────→ Tikanilik
+└── Genel Temizlik ─────────→ 6 ayda bir temizlik onerilir
+```
+
+> **UYARI:** Hibrit araclarda TURUNCU renkli kablolar yuksek voltaj tasir. Kesinlikle dokunmayin, sadece gorsel kontrol yapin.
+
+---
+
+## PHEV Kategorisi - Detayli Fotograf Listesi
+**Plug-in Hibrit Araclar**
+
+### Fotograf Sirasi ve Talimatlari
+
+| Sira | Bolge | Cekim Talimati | Kontrol Amaci |
+|------|-------|----------------|---------------|
+| 1 | **Sol On Lastik** | Lastigi tam karsiniza alin, dis yuzey net gorunsun. | Dis derinligi, asinma paterni |
+| 2 | **Sag On Lastik** | Ayni sekilde sag on lastigi cekin. | Dis derinligi, asinma paterni |
+| 3 | **Sol Arka Lastik** | Sol arka lastigi ayni acidan cekin. | Dis derinligi, asinma paterni |
+| 4 | **Sag Arka Lastik** | Sag arka lastigi ayni acidan cekin. | Dis derinligi, asinma paterni |
+| 5 | **Motor Bolgesi** | Kaputu acin, motor bolgesinin tamamini cekin. | Motor ve elektrik sistem durumu |
+| 6 | **On Farlar** | Her iki fari gorecek sekilde cekin. | Lens durumu, temizlik |
+| 7 | **Arka Stop Lambalari** | Her iki stopu gorecek sekilde cekin. | Lens durumu, kirlilik |
+| 8 | **Gosterge Paneli** | Kontagi acin, gosterge panelini cekin. | Kilometre, batarya, uyarilar |
+| 9 | **Egzoz Cikisi** | Egzoz ucunu yakindan cekin. | Pas, korozyon |
+| 10 | **Sarj Portu (Kapali)** | Sarj kapagini kapali halde cekin. | Kapak durumu, hasar |
+| 11 | **Sarj Portu (Acik)** | Sarj kapagini acin, port icini cekin. | Pin durumu, temizlik, oksidasyon |
+
+### PHEV Ozel Kontrol Noktalari
+
+#### Motor Bolgesi (Plug-in Hibrit)
+```
+Kontrol Edilecekler:
+├── Benzinli Motor ─────────→ Standart ICE kontrolleri
+├── Elektrik Motor ─────────→ Gorunen hasar
+├── Sarj Sistemi Elektronigi → Temizlik
+├── 12V Akseuar Akusu ──────→ Terminal durumu
+├── Sogutma Sistemi ────────→ Sivi seviyesi (ayri devre olabilir)
+└── Yuksek Voltaj Kablolari → SADECE GORSEL
+```
+
+#### Sarj Portu Detaylari
+```
+Kontrol Edilecekler:
+├── Kapak Mekanizmasi ──────→ Duzgun acilip kapaniyor mu?
+├── Kapak Contasi ──────────→ Yirtik, sert, catlak var mi?
+├── Port Temizligi ─────────→ Toz, kir, yaprak vs.
+├── Pin/Konnektor Durumu ───→ Egrilis, oksidasyon, hasar
+├── Plastik Govde ──────────→ Catlak, kirik
+└── Aydinlatma (varsa) ─────→ Calisiyor mu?
+```
+
+#### Sarj Portu Tipleri (Turkiye)
+```
+├── Type 2 (AC) ────────────→ Standart Avrupa prizi, 7 pinli
+├── CCS (DC) ───────────────→ Type 2 + 2 ekstra DC pin, hizli sarj
+└── CHAdeMO ────────────────→ Japon standarti, bazi modellerde
+```
+
+---
+
+## BEV Kategorisi - Detayli Fotograf Listesi
+**Tam Elektrikli Araclar**
+
+### Fotograf Sirasi ve Talimatlari
+
+| Sira | Bolge | Cekim Talimati | Kontrol Amaci |
+|------|-------|----------------|---------------|
+| 1 | **Sol On Lastik** | Lastigi tam karsiniza alin, dis yuzey net gorunsun. | Dis derinligi, asinma paterni |
+| 2 | **Sag On Lastik** | Ayni sekilde sag on lastigi cekin. | Dis derinligi, asinma paterni |
+| 3 | **Sol Arka Lastik** | Sol arka lastigi ayni acidan cekin. | Dis derinligi, asinma paterni |
+| 4 | **Sag Arka Lastik** | Sag arka lastigi ayni acidan cekin. | Dis derinligi, asinma paterni |
+| 5 | **On Bolum (Frunk/Guc Elektronigi)** | Kaputu acin. Bazi modellerde bagaj (frunk), bazilerinde guc elektronigi vardir. | Temizlik, genel durum |
+| 6 | **On Farlar** | Her iki fari gorecek sekilde cekin. | Lens durumu, temizlik |
+| 7 | **Arka Stop Lambalari** | Her iki stopu gorecek sekilde cekin. | Lens durumu, kirlilik |
+| 8 | **Gosterge Paneli / Ekran** | Araci calistirin, ana ekrani/gostergeyi cekin. | Kilometre, batarya %, uyarilar |
+| 9 | **Sarj Portu (Kapali)** | Sarj kapagini kapali halde cekin. | Kapak durumu |
+| 10 | **Sarj Portu (Acik)** | Sarj kapagini acin, port icini cekin. | Pin durumu, temizlik, oksidasyon |
+
+### BEV Ozel Kontrol Noktalari
+
+#### On Bolum (Motor Bolgesi Yerine)
+```
+Arac Modeline Gore:
+├── Frunk (On Bagaj) ───────→ Sadece temizlik kontrolu
+│   └── Tesla, Rivian, Lucid, vb.
+│
+└── Guc Elektronigi Bolgesi → Inverter, sarj unitesi, sogutma
+    └── VW ID, BMW i, Mercedes EQ, vb.
+
+Kontrol Edilecekler:
+├── Genel Temizlik ─────────→ Toz, yaprak birikimi
+├── 12V Akseuar Akusu ──────→ Bazi modellerde burada (terminal kontrolu)
+├── Sogutma Sivisi Haznesi ─→ Varsa seviye kontrolu
+├── Cam Suyu Haznesi ───────→ Seviye kontrolu
+└── Fren Hidrolik Haznesi ──→ Seviye kontrolu
+```
+
+#### Sarj Portu Detaylari (BEV)
+```
+Kontrol Edilecekler:
+├── Kapak Mekanizmasi ──────→ Elektrikli/manuel duzgun calisiyor mu?
+├── Kapak Contasi ──────────→ Su sizintisi onlemi icin kritik
+├── Port Temizligi ─────────→ Toz, nem, yabanci cisim
+├── AC Pinleri ─────────────→ 7 pin, oksidasyon kontrolu
+├── DC Pinleri (CCS) ───────→ 2 buyuk pin, temizlik
+└── Aydinlatma ─────────────→ Gece sarj icin onemli
+```
+
+#### BEV Ozel Notlar
+```
+OLMAYAN SEYLER (ICE'den farkli):
+├── Motor yagi ─────────────→ YOK (yag degisimi yok)
+├── V-kayis / Triger ───────→ YOK
+├── Egzoz sistemi ──────────→ YOK
+├── Radyator (geleneksel) ──→ YOK (farkli sogutma sistemi var)
+└── Yakit filtresi ─────────→ YOK
+
+OZEL DIKKAT GEREKTIREN:
+├── Fren Balatalari ────────→ Rejeneratif fren nedeniyle daha az asinir
+├── Lastikler ──────────────→ EV'ler daha agir, ozel lastik onerilir
+└── 12V Aku ────────────────→ Hala var ve onemli!
+```
+
+---
+
+## Fotograf Cekim Kilavuzu
+
+### Genel Kurallar
+
+1. **Aydinlatma:** Dogal isik veya iyi aydinlatilmis ortam
+2. **Mesafe:** Detay gorunecek kadar yakin, tum alan gorunecek kadar uzak
+3. **Odak:** Bulanik fotograf kabul edilmez, net cekim sarti
+4. **Aci:** Kontrol noktasini en iyi gosteren aci
+
+### Ornek Cekim Acilar
+
+```
+LASTIK:
+    ┌─────────┐
+    │  O   O  │  ← Bu acidan degil (ustten)
+    └─────────┘
+
+    ┌─────────┐
+    │ (     ) │  ← Bu acidan (yandan, dis gorunur)
+    └─────────┘
+
+MOTOR BOLGESI:
+    ┌─────────────┐
+    │   Kaput     │
+    │   ______    │
+    │  /      \   │
+    │ | MOTOR  |  │  ← Yukselten aci
+    │  \______/   │
+    └─────────────┘
+
+SARJ PORTU:
+    ┌───┐
+    │ O │  ← Dik aci, pinler net gorunmeli
+    │O O│
+    │ O │
+    └───┘
+```
 
 ---
 
