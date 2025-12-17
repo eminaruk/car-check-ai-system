@@ -2,133 +2,105 @@
 
 Bu dokuman, ilk surumde yer alacak AI ozelliklerini, test senaryolarini ve prompt yapilarini detayli sekilde aciklamaktadir.
 
+---
+
+## Uygulama Kullanim Senaryosu
+
+```
+1. Kullanici uygulamaya giris yapar
+2. Arac bilgilerini girer (marka, model, yil, yakit tipi, kilometre)
+3. "Araclarim" bolumunden aracini secer
+4. "Bakim Analizi Yaptir" butonuna tiklar
+5. AI sistemi kullanicidan belirli bolgelerin fotografini ister
+6. Kullanici tek tek fotograflari ceker ve yukler
+7. AI analiz yapar ve bakim raporu olusturur:
+   - Iyi durumda olan parcalar
+   - Dikkat gerektiren parcalar
+   - Acil bakim gerektiren parcalar
+   - Onerilen islemler (yag degisimi, lastik rotasyonu vb.)
+8. Bakim kaydi sisteme kaydedilir
+9. Sistem duzenliaraliklerla hatirlatma gonderir:
+   - "Son bakimdan bu yana X gun gecti"
+   - "Kilometre Y'ye ulasti, Z bakimi onerilir"
+```
+
+---
+
+## Kapsam Tanimi
+
+### BU UYGULAMA NEDIR
+- **Bakim takip ve analiz sistemi**
+- Duzenli bakim kontrolu icin gorsel analiz
+- Preventif (onleyici) bakim onerileri
+- Kilometre ve zaman bazli hatirlatmalar
+
+### BU UYGULAMA NE DEGILDIR
+- ❌ Hasar tespit sistemi (cizik, gocuk, kaporta hasari)
+- ❌ Kaza sonrasi degerlendirme
+- ❌ Sigorta hasar raporu
+- ❌ Ikinci el arac ekspertizi
+
+> **ONEMLI:** Buyuk hasarlar (cizik, gocuk, carpisma izleri) bu uygulamanin kapsaminda DEGILDIR. Odak noktasi BAKIM'dir.
+
+---
+
 ## Genel Bakis
 
-MVP'de 5 temel AI modulu bulunacaktir:
+MVP'de 6 temel AI modulu bulunacaktir:
 
 | # | Modul | Oncelik | Durum |
 |---|-------|---------|-------|
-| 1 | Arac Hasar Tespiti | Yuksek | Test Edilecek |
-| 2 | Lastik Durumu Analizi | Yuksek | Test Edilecek |
-| 3 | Hasar Seviyesi Degerlendirme | Yuksek | Test Edilecek |
-| 4 | Plaka Tanima | Orta | Test Edilecek |
-| 5 | Gorsel Rapor Olusturma | Orta | Test Edilecek |
+| 1 | Lastik Durumu Analizi | Yuksek | Test Edilecek |
+| 2 | Motor Bolgesi Kontrolu | Yuksek | Test Edilecek |
+| 3 | Aydinlatma Sistemi Kontrolu | Orta | Test Edilecek |
+| 4 | Sivi Seviyeleri Kontrolu | Orta | Test Edilecek |
+| 5 | EV Sarj Sistemi Kontrolu | Orta | Test Edilecek |
+| 6 | Bakim Raporu Olusturma | Yuksek | Test Edilecek |
 
 ---
 
-## 1. Arac Hasar Tespiti
+## Fotograf Cekim Akisi
 
-### Amac
-Kullanicinin yuklediği arac fotograflarindan hasar turlerini tespit etmek.
+Kullanicidan istenecek fotograflar sirasi ile:
 
-### Tespit Edilecek Hasar Turleri
-- **Cizik (Scratch):** Yuzeysel boya hasarlari
-- **Gocuk (Dent):** Metal ezilmeleri, carpisma izleri
-- **Pas (Rust):** Korozyon ve pas olusumlari
-- **Cam Hasari (Glass Damage):** Kirik, catlak, tas carpmasi
-- **Boya Dokulmesi (Paint Chip):** Boya kalkmasi, solmasi
-- **Tampon Hasari (Bumper Damage):** Tampon kirilmasi, cakilmasi
-
-### Girdi
-```json
-{
-  "image": "base64_encoded_image veya image_url",
-  "image_type": "front | rear | left_side | right_side | detail",
-  "vehicle_info": {
-    "brand": "Toyota",
-    "model": "Corolla",
-    "year": 2020,
-    "color": "Beyaz"
-  }
-}
-```
-
-### Beklenen Cikti
-```json
-{
-  "damages": [
-    {
-      "type": "scratch",
-      "severity": "minor | moderate | severe",
-      "location": "sol on camurluk",
-      "confidence": 0.92,
-      "bounding_box": { "x": 120, "y": 340, "width": 80, "height": 15 },
-      "description": "Yaklasik 15cm uzunlugunda yuzeysel cizik"
-    }
-  ],
-  "overall_condition": "good | attention | critical",
-  "analysis_timestamp": "2025-12-17T10:30:00Z"
-}
-```
-
-### Test Prompt Sablonu
-
-```
-Sen bir arac hasar tespit uzmanlisin. Sana verilen arac fotografini analiz et.
-
-GOREV:
-1. Fotograftaki tum hasarlari tespit et
-2. Her hasar icin tur, siddet ve konum belirt
-3. Genel arac durumunu degerlendir
-
-HASAR TURLERI:
-- scratch: Cizik
-- dent: Gocuk
-- rust: Pas
-- glass_damage: Cam hasari
-- paint_chip: Boya dokulmesi
-- bumper_damage: Tampon hasari
-
-SIDDET SEVIYELERI:
-- minor: Kozmetik, acil mudahale gerektirmez
-- moderate: Dikkat gerektirir, yakin zamanda onarilmali
-- severe: Kritik, hemen mudahale edilmeli
-
-CIKTI FORMATI:
-JSON formatinda yanit ver. Hasar yoksa bos "damages" dizisi dondur.
-
-ARAC BILGISI:
-Marka: {brand}
-Model: {model}
-Yil: {year}
-Renk: {color}
-Fotograf Acisi: {image_type}
-```
-
-### Test Senaryolari
-
-| Senaryo | Aciklama | Beklenen Sonuc |
-|---------|----------|----------------|
-| TS-1.1 | Temiz, hasarsiz arac | Bos damages dizisi |
-| TS-1.2 | Tek cizikli arac | 1 scratch tespit |
-| TS-1.3 | Coklu hasar (cizik + gocuk) | Birden fazla hasar |
-| TS-1.4 | Pasli arac | rust tespit |
-| TS-1.5 | Kirik cam | glass_damage tespit |
-| TS-1.6 | Dusuk kalite fotograf | Dusuk confidence veya hata |
+| Sira | Bolge | Aciklama |
+|------|-------|----------|
+| 1 | Sol On Lastik | Dis yuzey gorunecek sekilde |
+| 2 | Sag On Lastik | Dis yuzey gorunecek sekilde |
+| 3 | Sol Arka Lastik | Dis yuzey gorunecek sekilde |
+| 4 | Sag Arka Lastik | Dis yuzey gorunecek sekilde |
+| 5 | Motor Bolgesi | Kaput acik, genel gorunum |
+| 6 | On Farlar | Her iki far gorunecek |
+| 7 | Arka Stoplar | Her iki stop gorunecek |
+| 8 | Gostergeler/Kilometre | Dijital veya analog gosterge |
+| 9 | EV Sarj Portu (opsiyonel) | Sadece elektrikli araclar |
 
 ---
 
-## 2. Lastik Durumu Analizi
+## 1. Lastik Durumu Analizi
 
 ### Amac
-Lastik fotograflarindan dis derinligi, asinma durumu ve guvenlik seviyesini tahmin etmek.
+Lastik fotograflarindan dis derinligi, asinma durumu ve bakim ihtiyacini belirlemek.
 
 ### Analiz Edilecek Parametreler
-- **Dis Derinligi Tahmini:** mm cinsinden (yeni lastik ~8mm)
-- **Asinma Durumu:** Esit/esitsiz asinma
-- **Yan Duvar Durumu:** Catlak, sisme, hasar
-- **Genel Guvenlik:** Guvenli/dikkat/tehlikeli
+- **Dis Derinligi Tahmini:** mm cinsinden
+- **Asinma Paterni:** Esit mi, esitsiz mi
+- **Yan Duvar Durumu:** Catlak, yaslasma belirtileri
+- **Hava Basinci Gostergesi:** Asinma paterninden tahmin
+- **Sonraki Bakim Onerisi:** Km veya ay cinsinden
 
 ### Girdi
 ```json
 {
   "image": "base64_encoded_image",
   "tire_position": "front_left | front_right | rear_left | rear_right",
-  "tire_info": {
-    "brand": "Michelin",
-    "size": "205/55R16",
-    "age_months": 24
-  }
+  "vehicle_info": {
+    "brand": "Toyota",
+    "model": "Corolla",
+    "year": 2020,
+    "current_km": 45000
+  },
+  "last_tire_change_km": 30000
 }
 ```
 
@@ -136,11 +108,18 @@ Lastik fotograflarindan dis derinligi, asinma durumu ve guvenlik seviyesini tahm
 ```json
 {
   "tread_depth_mm": 4.5,
-  "tread_status": "adequate | low | critical",
-  "wear_pattern": "even | center | edge | cupping",
-  "sidewall_condition": "good | cracked | bulge | damaged",
-  "safety_rating": "safe | caution | danger",
-  "recommendation": "Lastikler yaklasik 10.000 km daha kullanilabilir",
+  "tread_status": "good | attention | critical",
+  "wear_pattern": {
+    "type": "even | center | edge | cupping",
+    "description": "Esit asinma, normal kullanim"
+  },
+  "sidewall_condition": "good | aged | cracked",
+  "estimated_remaining_km": 15000,
+  "maintenance_recommendation": {
+    "action": "none | rotation | replacement | pressure_check",
+    "urgency": "none | soon | immediate",
+    "description": "Lastikler iyi durumda, 15.000 km sonra kontrol onerilir"
+  },
   "confidence": 0.85
 }
 ```
@@ -148,68 +127,168 @@ Lastik fotograflarindan dis derinligi, asinma durumu ve guvenlik seviyesini tahm
 ### Test Prompt Sablonu
 
 ```
-Sen bir lastik analiz uzmanlisin. Lastik fotografini inceleyerek detayli analiz yap.
+Sen bir arac bakim uzmanlisin. Lastik fotografini inceleyerek BAKIM odakli analiz yap.
 
 GOREV:
 1. Dis derinligini tahmin et (mm)
 2. Asinma paternini belirle
 3. Yan duvar durumunu kontrol et
-4. Guvenlik degerlendirmesi yap
+4. Kalan kullanim omrunu tahmin et
+5. Bakim onerisi sun
 
 DIS DERINLIGI REFERANS:
 - 8mm: Yeni lastik
-- 4-6mm: Iyi durumda
+- 5-7mm: Cok iyi durumda
+- 4-5mm: Iyi durumda, takipte tut
 - 3-4mm: Dikkat, degisim planlenmali
-- 1.6mm alti: Yasal limit, tehlikeli
+- 1.6mm alti: Kritik, hemen degistirilmeli
 
-ASINMA PATERNLERI:
-- even: Esit asinma (normal)
-- center: Ortadan asinma (fazla hava basinci)
-- edge: Kenarlardan asinma (dusuk hava basinci)
-- cupping: Dalgali asinma (suspansiyon sorunu)
+ASINMA PATERNLERI VE ANLAMI:
+- even: Esit asinma → Normal, lastik rotasyonu yeterli
+- center: Ortadan asinma → Fazla hava basinci, ayarla
+- edge: Kenarlardan asinma → Dusuk hava basinci, ayarla
+- cupping: Dalgali asinma → Balans/rot kontrolu gerekli
 
-CIKTI FORMATI:
-JSON formatinda detayli analiz dondur.
+ONEMLI:
+- Bu bir BAKIM sistemi, hasar degerlendirmesi DEGIL
+- Kullaniciya anlasilir Turkce aciklamalar yap
+- Pratik ve uygulanabilir oneriler sun
 
-LASTIK BILGISI:
-Konum: {tire_position}
-Marka: {brand}
-Ebat: {size}
-Yas: {age_months} ay
+CIKTI: JSON formatinda
 ```
 
 ### Test Senaryolari
 
 | Senaryo | Aciklama | Beklenen Sonuc |
 |---------|----------|----------------|
-| TS-2.1 | Yeni lastik | 7-8mm, safe |
-| TS-2.2 | Orta asinmis lastik | 4-5mm, safe/caution |
-| TS-2.3 | Cok asinmis lastik | <3mm, danger |
-| TS-2.4 | Esitsiz asinma | wear_pattern != even |
-| TS-2.5 | Yan duvarda catlak | sidewall: cracked |
-| TS-2.6 | Sismis lastik | sidewall: bulge, danger |
+| TS-1.1 | Yeni lastik | 7-8mm, status: good |
+| TS-1.2 | Orta kullanilmis | 4-5mm, status: good/attention |
+| TS-1.3 | Asinmis lastik | <3mm, status: critical |
+| TS-1.4 | Ortadan asinmis | center pattern, basinc uyarisi |
+| TS-1.5 | Kenardan asinmis | edge pattern, basinc uyarisi |
+| TS-1.6 | Yaslanmis lastik | sidewall: aged, dikkat onerisi |
 
 ---
 
-## 3. Hasar Seviyesi Degerlendirme
+## 2. Motor Bolgesi Kontrolu
 
 ### Amac
-Tespit edilen hasarlari analiz ederek genel arac durumunu ve tahmini onarim maliyetini belirlemek.
+Motor bolumu fotografindan genel bakim durumunu, sizinti belirtilerini ve temizlik ihtiyacini tespit etmek.
 
-### Degerlendirme Kriterleri
-- **Kozmetik Hasar:** Aracin islevini etkilemez
-- **Fonksiyonel Hasar:** Guvenlik/performans etkiler
-- **Yapisal Hasar:** Ciddi, profesyonel mudahale sart
+### Analiz Edilecek Parametreler
+- **Genel Temizlik:** Kir, toz birikimi
+- **Sizinti Belirtileri:** Yag, antifriz, fren hidrolik
+- **Kayis Durumu:** Gorulebildigi olcude
+- **Aku Terminalleri:** Oksidasyon, korozyon
+- **Hortum Durumu:** Catlak, yaslasma
 
 ### Girdi
 ```json
 {
-  "damages": [...],  // Hasar tespitinden gelen liste
+  "image": "base64_encoded_image",
   "vehicle_info": {
     "brand": "Toyota",
     "model": "Corolla",
     "year": 2020,
-    "market": "TR"
+    "fuel_type": "gasoline | diesel | hybrid | electric",
+    "current_km": 45000
+  },
+  "last_oil_change_km": 40000
+}
+```
+
+### Beklenen Cikti
+```json
+{
+  "overall_cleanliness": "clean | dusty | dirty",
+  "leak_detection": {
+    "detected": false,
+    "type": null,
+    "location": null,
+    "severity": null
+  },
+  "visible_components": {
+    "battery_terminals": "good | oxidized | corroded",
+    "belts": "good | worn | not_visible",
+    "hoses": "good | aged | cracked | not_visible"
+  },
+  "oil_condition_estimate": "ok | check_needed | change_needed",
+  "maintenance_recommendations": [
+    {
+      "component": "motor bolgesi",
+      "action": "Genel temizlik onerilir",
+      "urgency": "low"
+    }
+  ],
+  "confidence": 0.80
+}
+```
+
+### Test Prompt Sablonu
+
+```
+Sen bir arac bakim uzmanlisin. Motor bolgesi fotografini inceleyerek BAKIM odakli analiz yap.
+
+GOREV:
+1. Genel temizlik durumunu degerlendir
+2. Sizinti belirtisi var mi kontrol et
+3. Gorunen parcalarin durumunu incele
+4. Bakim onerileri sun
+
+KONTROL NOKTALARI:
+- Yag sizintisi: Koyu lekeler, islak alanlar
+- Antifriz sizintisi: Yesil/turuncu lekeler
+- Aku terminalleri: Beyaz/yesil oksidasyon
+- Kayislar: Catlak, asinma
+- Hortumlar: Sertlesme, catlak
+
+SIZINTI SEVIYELERI:
+- none: Sizinti yok
+- minor: Hafif nem, takip edilmeli
+- moderate: Belirgin sizinti, servise gotur
+- severe: Ciddi sizinti, hemen mudahale
+
+ONEMLI:
+- Bu bir BAKIM sistemi
+- Sadece gorulebilen sorunlari raporla
+- Emin olmadigin durumlar icin "serviste kontrol ettirin" one
+
+CIKTI: JSON formatinda
+```
+
+### Test Senaryolari
+
+| Senaryo | Aciklama | Beklenen Sonuc |
+|---------|----------|----------------|
+| TS-2.1 | Temiz motor bolgesi | cleanliness: clean |
+| TS-2.2 | Tozlu motor | cleanliness: dusty |
+| TS-2.3 | Yag sizintisi belirtisi | leak_detection.detected: true |
+| TS-2.4 | Oksitlenmis aku | battery_terminals: oxidized |
+| TS-2.5 | Yaslanmis hortumlar | hoses: aged |
+
+---
+
+## 3. Aydinlatma Sistemi Kontrolu
+
+### Amac
+Far ve stop fotograflarindan aydinlatma sisteminin calisma durumunu ve bakim ihtiyacini belirlemek.
+
+### Analiz Edilecek Parametreler
+- **Far Durumu:** Net/buzlu/sarimis
+- **Ampul Durumu:** Gorulebilir yanma/kararma
+- **Lens Temizligi:** Kir, cizik
+- **Hizalama:** Gorusel tahmin
+
+### Girdi
+```json
+{
+  "image": "base64_encoded_image",
+  "light_type": "headlight | taillight | fog | signal",
+  "light_position": "left | right | both",
+  "vehicle_info": {
+    "brand": "Toyota",
+    "model": "Corolla",
+    "year": 2020
   }
 }
 ```
@@ -217,161 +296,226 @@ Tespit edilen hasarlari analiz ederek genel arac durumunu ve tahmini onarim mali
 ### Beklenen Cikti
 ```json
 {
-  "overall_score": 75,  // 0-100 arasi
-  "condition_label": "good | fair | poor | critical",
-  "repair_urgency": "none | low | medium | high | immediate",
-  "estimated_repair_cost": {
-    "min": 2500,
-    "max": 4000,
-    "currency": "TRY"
+  "lens_condition": "clear | cloudy | yellowed | damaged",
+  "cleanliness": "clean | dirty",
+  "visible_issues": [],
+  "maintenance_recommendation": {
+    "action": "none | clean | polish | replace",
+    "urgency": "none | soon | immediate",
+    "description": "Farlar iyi durumda"
   },
-  "repair_recommendations": [
-    {
-      "damage_ref": 0,
-      "action": "Boya rotusu yeterli",
-      "priority": "low",
-      "estimated_cost": { "min": 500, "max": 1000 }
-    }
-  ],
-  "safety_impact": "none | minor | significant | severe"
+  "confidence": 0.85
 }
 ```
 
 ### Test Prompt Sablonu
 
 ```
-Sen bir arac degerleme ve hasar analiz uzmanlisin.
+Sen bir arac bakim uzmanlisin. Far/stop fotografini inceleyerek BAKIM odakli analiz yap.
 
 GOREV:
-1. Verilen hasar listesini analiz et
-2. Genel arac durumu puani ver (0-100)
-3. Onarim oncelik sirasini belirle
-4. Tahmini maliyet hesapla (Turkiye pazari)
+1. Lens durumunu degerlendir (sari, buzlu, temiz)
+2. Temizlik durumunu kontrol et
+3. Gorunen sorunlari belirle
+4. Bakim onerisi sun
 
-PUANLAMA KRITERLERI:
-- 90-100: Mukemmel, hasar yok veya minimal
-- 70-89: Iyi, kucuk kozmetik hasarlar
-- 50-69: Orta, onarim gerektiren hasarlar
-- 30-49: Kotu, ciddi hasarlar
-- 0-29: Kritik, yapisal hasar
+LENS DURUMLARI:
+- clear: Net, seffaf (ideal)
+- cloudy: Hafif buzlanma (polish ile duzelebilir)
+- yellowed: Sararmis (polish veya degisim)
+- damaged: Kirik veya catlak
 
-MALIYET REFERANSI (2025 Turkiye):
-- Kucuk cizik rotusu: 500-1500 TL
-- Gocuk duzeltme (PDR): 1000-3000 TL
-- Panel boyama: 3000-8000 TL
-- Tampon degisimi: 5000-15000 TL
-- Cam degisimi: 2000-10000 TL
+BAKIM ONERILERI:
+- clear + clean: Bakim gerektirmez
+- cloudy: Far parlatma seti ile temizlik
+- yellowed: Profesyonel parlatma veya degisim
+- damaged: Degisim gerekli
 
-CIKTI FORMATI:
-JSON formatinda detayli degerlendirme dondur.
-
-ARAC: {brand} {model} ({year})
-PAZAR: {market}
-HASAR LISTESI:
-{damages_json}
+CIKTI: JSON formatinda
 ```
 
 ### Test Senaryolari
 
 | Senaryo | Aciklama | Beklenen Sonuc |
 |---------|----------|----------------|
-| TS-3.1 | Hasarsiz arac | score: 95-100 |
-| TS-3.2 | Tek minor cizik | score: 85-90, low urgency |
-| TS-3.3 | Coklu orta hasar | score: 60-75, medium urgency |
-| TS-3.4 | Ciddi hasar | score: <50, high urgency |
-| TS-3.5 | Guvenlik etkileyen | safety_impact: significant |
+| TS-3.1 | Temiz, net far | lens: clear, action: none |
+| TS-3.2 | Buzlu far | lens: cloudy, action: polish |
+| TS-3.3 | Sarimis far | lens: yellowed, action: polish/replace |
+| TS-3.4 | Kirli far | cleanliness: dirty |
 
 ---
 
-## 4. Plaka Tanima
+## 4. Sivi Seviyeleri Kontrolu
 
 ### Amac
-Arac fotograflarindan plaka numarasini otomatik okumak.
+Motor bolumu fotografindan gorulebilen sivi haznelerinin seviyelerini tahmin etmek.
 
-### Desteklenen Plaka Formatlari
-- Turkiye standart plakalari (34 ABC 123)
-- Turkiye eski format (34 AB 1234)
-- Ozel plakalar (diplomatik, resmi)
+### Analiz Edilecek Parametreler
+- **Cam Suyu:** Seviye tahmini
+- **Antifriz:** Seviye ve renk
+- **Fren Hidrolik:** Seviye
 
 ### Girdi
 ```json
 {
   "image": "base64_encoded_image",
-  "region": "TR"
+  "fluid_type": "washer | coolant | brake | all",
+  "vehicle_info": {
+    "brand": "Toyota",
+    "model": "Corolla",
+    "year": 2020
+  }
 }
 ```
 
 ### Beklenen Cikti
 ```json
 {
-  "plate_detected": true,
-  "plate_text": "34 ABC 123",
-  "plate_format": "standard",
-  "city_code": "34",
-  "city_name": "Istanbul",
-  "confidence": 0.95,
-  "bounding_box": { "x": 200, "y": 450, "width": 150, "height": 40 }
+  "fluids_detected": [
+    {
+      "type": "washer",
+      "level": "full | adequate | low | empty | not_visible",
+      "condition": "ok | contaminated | not_visible",
+      "action_needed": "none | refill | check"
+    }
+  ],
+  "general_recommendation": "Tum sivi seviyeleri normal gorunuyor",
+  "confidence": 0.75
 }
 ```
 
 ### Test Prompt Sablonu
 
 ```
-Sen bir plaka tanima sistemisin.
+Sen bir arac bakim uzmanlisin. Motor bolgesi fotografinda gorunen sivi haznelerini analiz et.
 
 GOREV:
-1. Fotograftaki arac plakasini bul
-2. Plaka metnini oku
-3. Plaka formatini belirle
-4. Il kodunu coz
+1. Gorunen sivi haznelerini tespit et
+2. Seviyelerini tahmin et
+3. Renk/kalite durumunu degerlendir
+4. Bakim onerisi sun
 
-TURKIYE PLAKA FORMATI:
-- Standart: [Il Kodu] [Harfler] [Rakamlar]
-- Ornekler: 34 ABC 123, 06 A 1234, 35 AB 12
+SIVI TURLERI:
+- washer: Cam suyu (genelde mavi hazne)
+- coolant: Antifriz (genelde seffaf hazne, renkli sivi)
+- brake: Fren hidrolik (kucuk hazne, sari sivi)
 
-IL KODLARI:
-01-Adana, 06-Ankara, 07-Antalya, 16-Bursa, 34-Istanbul, 35-Izmir...
+SEVIYE DEGERLENDIRME:
+- full: Dolu (%80-100)
+- adequate: Yeterli (%50-80)
+- low: Dusuk (%20-50)
+- empty: Bos (%0-20)
 
-KURALLAR:
-- Plaka bulunamazsa plate_detected: false dondur
-- Kismi okunabilen plakalarda confidence dusuk olsun
-- Sadece Turkiye plakalari destekleniyor
+ONEMLI:
+- Gorunmeyen hazneler icin "not_visible" kullan
+- Tahminlerde dikkatli ol, kesin olma
+- Profesyonel kontrol onerisinde bulun
 
-CIKTI FORMATI:
-JSON formatinda dondur.
+CIKTI: JSON formatinda
 ```
-
-### Test Senaryolari
-
-| Senaryo | Aciklama | Beklenen Sonuc |
-|---------|----------|----------------|
-| TS-4.1 | Net gorunen plaka | Yuksek confidence |
-| TS-4.2 | Uzak/bulanik plaka | Dusuk confidence |
-| TS-4.3 | Plaka yok | plate_detected: false |
-| TS-4.4 | Farkli sehir kodlari | Dogru city_name |
-| TS-4.5 | Eski format plaka | plate_format: legacy |
 
 ---
 
-## 5. Gorsel Rapor Olusturma
+## 5. EV Sarj Sistemi Kontrolu (Elektrikli Araclar)
 
 ### Amac
-Tum analizleri birlestirerek kullanici dostu gorsel rapor olusturmak.
+Elektrikli arac sarj portunu inceleyerek temizlik ve bakim durumunu belirlemek.
 
-### Rapor Icerigi
-- Genel arac durumu ozeti
-- Tespit edilen hasarlar (gorsel isaretli)
-- Lastik durumu
-- Onarim onerileri
-- Tahmini maliyet
+### Analiz Edilecek Parametreler
+- **Port Temizligi:** Kir, toz
+- **Pin Durumu:** Oksidasyon, hasar
+- **Kapak Durumu:** Tam kapanma
+- **Genel Durum:** Kullanima hazir mi
 
 ### Girdi
 ```json
 {
-  "vehicle_info": {...},
-  "damage_analysis": {...},
-  "tire_analysis": [...],
-  "images": [...]
+  "image": "base64_encoded_image",
+  "port_type": "type2 | ccs | chademo",
+  "vehicle_info": {
+    "brand": "Tesla",
+    "model": "Model 3",
+    "year": 2023
+  }
+}
+```
+
+### Beklenen Cikti
+```json
+{
+  "port_cleanliness": "clean | dusty | dirty",
+  "pin_condition": "good | oxidized | damaged | not_visible",
+  "visible_damage": false,
+  "maintenance_recommendation": {
+    "action": "none | clean | inspect | service",
+    "urgency": "none | soon | immediate",
+    "description": "Sarj portu temiz ve iyi durumda"
+  },
+  "confidence": 0.80
+}
+```
+
+### Test Prompt Sablonu
+
+```
+Sen bir elektrikli arac bakim uzmanlisin. Sarj portu fotografini analiz et.
+
+GOREV:
+1. Port temizligini degerlendir
+2. Pin/konnektor durumunu kontrol et
+3. Gorunen hasar var mi belirle
+4. Bakim onerisi sun
+
+KONTROL NOKTALARI:
+- Toz/kir birikimi
+- Pin oksidasyonu (yesil/beyaz lekeler)
+- Plastik parcalarda catlak
+- Yabanci cisim
+
+BAKIM ONERILERI:
+- clean: Temiz, bakim gerektirmez
+- dusty: Kuru bezle silin
+- dirty: Ozel temizleyici ile temizlik
+- oxidized: Servis kontrolu onerilir
+
+CIKTI: JSON formatinda
+```
+
+---
+
+## 6. Bakim Raporu Olusturma
+
+### Amac
+Tum analizleri birlestirerek kullanici dostu, anlasilir bir bakim raporu olusturmak.
+
+### Rapor Icerigi
+- Genel arac bakim durumu
+- Iyi durumda olan parcalar
+- Dikkat gerektiren parcalar
+- Acil bakim gerektiren parcalar
+- Onerilen islemler listesi
+- Sonraki bakim tarihi/km onerisi
+
+### Girdi
+```json
+{
+  "vehicle_info": {
+    "brand": "Toyota",
+    "model": "Corolla",
+    "year": 2020,
+    "current_km": 45000,
+    "fuel_type": "gasoline"
+  },
+  "analysis_results": {
+    "tires": [...],
+    "engine_bay": {...},
+    "lights": {...},
+    "fluids": {...}
+  },
+  "previous_maintenance": {
+    "last_date": "2025-06-15",
+    "last_km": 40000
+  }
 }
 ```
 
@@ -380,63 +524,123 @@ Tum analizleri birlestirerek kullanici dostu gorsel rapor olusturmak.
 {
   "report_id": "RPT-2025-001234",
   "generated_at": "2025-12-17T10:45:00Z",
+  "vehicle": "Toyota Corolla 2020",
+  "current_km": 45000,
+
   "summary": {
-    "overall_condition": "good",
-    "score": 82,
-    "urgent_issues": 0,
-    "attention_needed": 2
+    "overall_status": "good | attention | critical",
+    "score": 85,
+    "good_items": 8,
+    "attention_items": 2,
+    "critical_items": 0
   },
-  "sections": [
+
+  "good_condition": [
+    "On lastikler iyi durumda",
+    "Motor bolgesi temiz",
+    "Farlar net ve temiz"
+  ],
+
+  "needs_attention": [
     {
-      "title": "Dis Gorunum",
-      "status": "attention",
-      "findings": ["Sol camurlukta hafif cizik", "Arka tamponda kucuk gocuk"],
-      "image_refs": ["img_001", "img_002"]
-    },
-    {
-      "title": "Lastikler",
-      "status": "good",
-      "findings": ["Tum lastikler yeterli dis derinliginde"],
-      "image_refs": ["img_003"]
+      "item": "Arka sol lastik",
+      "issue": "Dis derinligi dusuk (3.5mm)",
+      "recommendation": "2-3 ay icinde degisim planlayın",
+      "urgency": "medium"
     }
   ],
-  "recommendations": [
-    "3 ay icinde boya rotusu onerilir",
-    "Lastikler 15.000 km sonra kontrol edilmeli"
+
+  "critical_issues": [],
+
+  "maintenance_actions": [
+    {
+      "action": "Yag degisimi",
+      "reason": "Son degisimden bu yana 5.000 km",
+      "urgency": "soon"
+    },
+    {
+      "action": "Lastik rotasyonu",
+      "reason": "On/arka asinma farki",
+      "urgency": "soon"
+    }
   ],
-  "next_check_date": "2026-03-17"
+
+  "next_maintenance": {
+    "recommended_date": "2026-03-17",
+    "recommended_km": 50000,
+    "reason": "Yag degisim araligi"
+  },
+
+  "tips": [
+    "Kis lastigi kontrolu yapin",
+    "Antifriz seviyesini takip edin"
+  ]
 }
 ```
 
 ### Test Prompt Sablonu
 
 ```
-Sen bir arac rapor olusturma sistemisin.
+Sen bir arac bakim danismanisin. Analiz sonuclarini kullanici dostu bir rapora donustur.
 
 GOREV:
-1. Tum analiz sonuclarini birlesitir
-2. Kullanici dostu ozet olustur
-3. Oncelikli aksiyonlari belirle
-4. Sonraki kontrol tarihini oner
+1. Tum analiz sonuclarini birlesir
+2. Iyi/dikkat/kritik olarak kategorize et
+3. Anlasilir Turkce aciklamalar yaz
+4. Somut bakim onerileri sun
+5. Sonraki bakim tarihini oner
 
-RAPOR YAPISI:
-- Ozet: Genel durum ve puan
-- Bolumler: Her alan icin detay
-- Oneriler: Yapilmasi gerekenler
-- Sonraki Kontrol: Tarih onerisi
+RAPOR FORMATI:
+- Ozet: Genel durum puani ve ozet
+- Iyi Durumda: Sorun olmayan parcalar
+- Dikkat Gerektiren: Yakin zamanda bakim gereken
+- Kritik: Hemen mudahale gereken (varsa)
+- Bakim Aksiyonlari: Yapilmasi gereken islemler
+- Sonraki Bakim: Tarih ve km onerisi
 
-DURUM ETIKETLERI:
-- good: Sorun yok (yesil)
-- attention: Dikkat gerekli (sari)
-- critical: Acil mudahale (kirmizi)
+DILI VE USLUP:
+- Sade Turkce, teknik terimlerden kacin
+- Kullaniciyi korkutma, cozum odakli ol
+- Pratik ve uygulanabilir oneriler sun
+- Pozitif tonla baslat ("Araciniz genel olarak iyi durumda")
 
-DILI: Turkce, anlasilir, teknik olmayan
+ONEMLI:
+- Hasar degerlendirmesi YAPMA
+- Maliyet tahmini verme (bakima odaklan)
+- Servise gitmeyi gerektiren durumlar icin yonlendir
 
-CIKTI FORMATI:
-JSON formatinda rapor dondur.
+CIKTI: JSON formatinda
+```
 
-ANALIZ VERILERI:
-{analysis_data}
+---
+
+## Bakim Hatirlatma Mantigi
+
+Sistem asagidaki kurallara gore hatirlatma gonderir:
+
+### Zaman Bazli Hatirlatmalar
+| Bakim Turu | Varsayilan Aralik |
+|------------|-------------------|
+| Genel kontrol | 3 ay |
+| Yag degisimi | 6 ay veya 10.000 km |
+| Lastik kontrolu | 3 ay |
+| Fren kontrolu | 12 ay veya 20.000 km |
+
+### Kilometre Bazli Hatirlatmalar
+| Bakim Turu | Kilometre Araligi |
+|------------|-------------------|
+| Yag degisimi | Her 10.000 km |
+| Filtre degisimi | Her 15.000 km |
+| Lastik rotasyonu | Her 10.000 km |
+| Bakim servisi | Her 15.000-20.000 km |
+
+### Hatirlatma Mesaji Ornekleri
+```
+"Son bakiminizdan bu yana 45 gun gecti. Yeni bir bakim analizi yapmanizi oneririz."
+
+"Araciniz son bakimdan bu yana 5.000 km yol aldi. Yag seviyesi kontrolu onerilir."
+
+"Lastik kontrolu zamani! Son kontrolden bu yana 3 ay gecti."
 ```
 
 ---
@@ -447,13 +651,13 @@ ANALIZ VERILERI:
 Her modul icin test senaryolari tek tek calistirilacak.
 
 ### Asama 2: Entegrasyon Testleri
-Moduller arasi veri akisi test edilecek.
+Fotograflar sirali cekilip tam rapor olusturma testi.
 
 ### Asama 3: Prompt Optimizasyonu
 Test sonuclarina gore promptlar iyilestirilecek.
 
-### Asama 4: Edge Case Testleri
-Sinir durumlar ve hatali girdiler test edilecek.
+### Asama 4: Kullanici Testi
+Gercek kullanicilarla test edilecek.
 
 ---
 
@@ -461,11 +665,11 @@ Sinir durumlar ve hatali girdiler test edilecek.
 
 | Metrik | Hedef | Olcum Yontemi |
 |--------|-------|---------------|
-| Hasar Tespit Dogrulugu | >90% | Manuel dogrulama |
 | Lastik Analiz Dogrulugu | >85% | Gercek olcum karsilastirma |
-| Plaka Tanima Dogrulugu | >95% | Otomatik test seti |
-| Yanlis Pozitif Orani | <5% | Manuel dogrulama |
-| Ortalama Yanit Suresi | <3sn | Performans olcumu |
+| Yanlis Pozitif Orani | <10% | Manuel dogrulama |
+| Kullanici Memnuniyeti | >4/5 | Anket |
+| Rapor Anlasilirlik | >90% | Kullanici testi |
+| Ortalama Analiz Suresi | <30sn | Performans olcumu |
 
 ---
 
@@ -475,6 +679,7 @@ Sinir durumlar ve hatali girdiler test edilecek.
 - Her test sonucu dokumante edilecek
 - Basarisiz testler icin prompt revizyonu yapilacak
 - Nihai promptlar `prompts/` klasorune kaydedilecek
+- Buyuk hasar tespiti KAPSAM DISINDA - kullaniciya bunu belirt
 
 ---
 
