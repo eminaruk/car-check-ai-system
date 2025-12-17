@@ -1,0 +1,433 @@
+{
+  "vehicles": [
+    {
+      "id": "VH001",
+      "plate": "34 ABC 123",
+      "brand": "Toyota",
+      "model": "Corolla",
+      "year": 2020,
+      "fuel_type": "benzin",
+      "category": "ICE",
+      "engine_size": "1.6",
+      "current_km": 45000,
+      "color": "Beyaz",
+      "owner_id": "USR001",
+      "owner_name": "Ahmet Yilmaz",
+      "registration_date": "2020-03-15",
+      "last_maintenance": {
+        "date": "2025-06-15",
+        "km": 40000,
+        "type": "periyodik_bakim"
+      },
+      "maintenance_history": [
+        {
+          "date": "2024-12-10",
+          "km": 30000,
+          "type": "yag_degisimi",
+          "notes": "Yag ve filtre degistirildi"
+        },
+        {
+          "date": "2024-06-20",
+          "km": 20000,
+          "type": "periyodik_bakim",
+          "notes": "Genel kontrol yapildi"
+        }
+      ]
+    },
+    {
+      "id": "VH002",
+      "plate": "06 DEF 456",
+      "brand": "Volkswagen",
+      "model": "Passat",
+      "year": 2019,
+      "fuel_type": "dizel",
+      "category": "ICE",
+      "engine_size": "1.6 TDI",
+      "current_km": 87000,
+      "color": "Siyah",
+      "owner_id": "USR002",
+      "owner_name": "Mehmet Demir",
+      "registration_date": "2019-07-22",
+      "last_maintenance": {
+        "date": "2025-09-01",
+        "km": 85000,
+        "type": "periyodik_bakim"
+      },
+      "maintenance_history": []
+    },
+    {
+      "id": "VH003",
+      "plate": "35 GHI 789",
+      "brand": "Renault",
+      "model": "Clio",
+      "year": 2021,
+      "fuel_type": "benzin",
+      "category": "ICE",
+      "engine_size": "1.0 TCe",
+      "current_km": 32000,
+      "color": "Kirmizi",
+      "owner_id": "USR003",
+      "owner_name": "Ayse Kaya",
+      "registration_date": "2021-02-10",
+      "last_maintenance": {
+        "date": "2025-08-20",
+        "km": 30000,
+        "type": "yag_degisimi"
+      },
+      "maintenance_history": []
+    },
+    {
+      "id": "VH004",
+      "plate": "07 JKL 012",
+      "brand": "Ford",
+      "model": "Focus",
+      "year": 2018,
+      "fuel_type": "dizel",
+      "category": "ICE",
+      "engine_size": "1.5 TDCi",
+      "current_km": 120000,
+      "color": "Mavi",
+      "owner_id": "USR004",
+      "owner_name": "Fatma Ozturk",
+      "registration_date": "2018-11-05",
+      "last_maintenance": {
+        "date": "2025-05-10",
+        "km": 115000,
+        "type": "periyodik_bakim"
+      },
+      "maintenance_history": []
+    },
+    {
+      "id": "VH005",
+      "plate": "16 MNO 345",
+      "brand": "Fiat",
+      "model": "Egea",
+      "year": 2022,
+      "fuel_type": "lpg",
+      "category": "ICE",
+      "engine_size": "1.4 LPG",
+      "current_km": 28000,
+      "color": "Gri",
+      "owner_id": "USR005",
+      "owner_name": "Ali Celik",
+      "registration_date": "2022-04-18",
+      "last_maintenance": {
+        "date": "2025-10-05",
+        "km": 25000,
+        "type": "yag_degisimi"
+      },
+      "maintenance_history": []
+    },
+    {
+      "id": "VH006",
+      "plate": "34 PQR 678",
+      "brand": "Toyota",
+      "model": "Corolla Hybrid",
+      "year": 2023,
+      "fuel_type": "hibrit",
+      "category": "HEV",
+      "engine_size": "1.8 Hybrid",
+      "current_km": 15000,
+      "color": "Beyaz",
+      "owner_id": "USR006",
+      "owner_name": "Zeynep Arslan",
+      "registration_date": "2023-01-20",
+      "last_maintenance": {
+        "date": "2025-07-15",
+        "km": 10000,
+        "type": "periyodik_bakim"
+      },
+      "maintenance_history": []
+    },
+    {
+      "id": "VH007",
+      "plate": "06 STU 901",
+      "brand": "Honda",
+      "model": "Civic Hybrid",
+      "year": 2022,
+      "fuel_type": "hibrit",
+      "category": "HEV",
+      "engine_size": "2.0 e:HEV",
+      "current_km": 35000,
+      "color": "Lacivert",
+      "owner_id": "USR007",
+      "owner_name": "Burak Sahin",
+      "registration_date": "2022-06-12",
+      "last_maintenance": {
+        "date": "2025-06-01",
+        "km": 30000,
+        "type": "periyodik_bakim"
+      },
+      "maintenance_history": []
+    },
+    {
+      "id": "VH008",
+      "plate": "35 VWX 234",
+      "brand": "Lexus",
+      "model": "ES 300h",
+      "year": 2021,
+      "fuel_type": "hibrit",
+      "category": "HEV",
+      "engine_size": "2.5 Hybrid",
+      "current_km": 48000,
+      "color": "Gumus",
+      "owner_id": "USR008",
+      "owner_name": "Deniz Yildiz",
+      "registration_date": "2021-09-30",
+      "last_maintenance": {
+        "date": "2025-09-15",
+        "km": 45000,
+        "type": "periyodik_bakim"
+      },
+      "maintenance_history": []
+    },
+    {
+      "id": "VH009",
+      "plate": "34 YZA 567",
+      "brand": "BMW",
+      "model": "330e",
+      "year": 2023,
+      "fuel_type": "plugin_hibrit",
+      "category": "PHEV",
+      "engine_size": "2.0 PHEV",
+      "current_km": 22000,
+      "color": "Siyah",
+      "owner_id": "USR009",
+      "owner_name": "Cem Akin",
+      "registration_date": "2023-03-25",
+      "last_maintenance": {
+        "date": "2025-08-10",
+        "km": 20000,
+        "type": "periyodik_bakim"
+      },
+      "maintenance_history": []
+    },
+    {
+      "id": "VH010",
+      "plate": "06 BCD 890",
+      "brand": "Mercedes-Benz",
+      "model": "C 300e",
+      "year": 2022,
+      "fuel_type": "plugin_hibrit",
+      "category": "PHEV",
+      "engine_size": "2.0 PHEV",
+      "current_km": 38000,
+      "color": "Beyaz",
+      "owner_id": "USR010",
+      "owner_name": "Selin Korkmaz",
+      "registration_date": "2022-08-14",
+      "last_maintenance": {
+        "date": "2025-07-20",
+        "km": 35000,
+        "type": "periyodik_bakim"
+      },
+      "maintenance_history": []
+    },
+    {
+      "id": "VH011",
+      "plate": "07 EFG 123",
+      "brand": "Volvo",
+      "model": "XC60 Recharge",
+      "year": 2023,
+      "fuel_type": "plugin_hibrit",
+      "category": "PHEV",
+      "engine_size": "2.0 T8 PHEV",
+      "current_km": 18000,
+      "color": "Yesil",
+      "owner_id": "USR011",
+      "owner_name": "Emre Tas",
+      "registration_date": "2023-05-08",
+      "last_maintenance": {
+        "date": "2025-11-01",
+        "km": 15000,
+        "type": "periyodik_bakim"
+      },
+      "maintenance_history": []
+    },
+    {
+      "id": "VH012",
+      "plate": "34 HIJ 456",
+      "brand": "Tesla",
+      "model": "Model 3",
+      "year": 2023,
+      "fuel_type": "elektrik",
+      "category": "BEV",
+      "engine_size": "Elektrik",
+      "battery_capacity_kwh": 60,
+      "current_km": 25000,
+      "color": "Kirmizi",
+      "owner_id": "USR012",
+      "owner_name": "Kerem Ozdemir",
+      "registration_date": "2023-02-14",
+      "last_maintenance": {
+        "date": "2025-08-25",
+        "km": 20000,
+        "type": "genel_kontrol"
+      },
+      "maintenance_history": []
+    },
+    {
+      "id": "VH013",
+      "plate": "06 KLM 789",
+      "brand": "Volkswagen",
+      "model": "ID.4",
+      "year": 2024,
+      "fuel_type": "elektrik",
+      "category": "BEV",
+      "engine_size": "Elektrik",
+      "battery_capacity_kwh": 77,
+      "current_km": 12000,
+      "color": "Mavi",
+      "owner_id": "USR013",
+      "owner_name": "Elif Aydin",
+      "registration_date": "2024-01-10",
+      "last_maintenance": {
+        "date": "2025-07-05",
+        "km": 10000,
+        "type": "genel_kontrol"
+      },
+      "maintenance_history": []
+    },
+    {
+      "id": "VH014",
+      "plate": "35 NOP 012",
+      "brand": "BMW",
+      "model": "iX3",
+      "year": 2023,
+      "fuel_type": "elektrik",
+      "category": "BEV",
+      "engine_size": "Elektrik",
+      "battery_capacity_kwh": 80,
+      "current_km": 30000,
+      "color": "Siyah",
+      "owner_id": "USR014",
+      "owner_name": "Murat Koc",
+      "registration_date": "2023-04-22",
+      "last_maintenance": {
+        "date": "2025-10-18",
+        "km": 28000,
+        "type": "genel_kontrol"
+      },
+      "maintenance_history": []
+    },
+    {
+      "id": "VH015",
+      "plate": "34 QRS 345",
+      "brand": "Hyundai",
+      "model": "Kona Electric",
+      "year": 2022,
+      "fuel_type": "elektrik",
+      "category": "BEV",
+      "engine_size": "Elektrik",
+      "battery_capacity_kwh": 64,
+      "current_km": 42000,
+      "color": "Beyaz",
+      "owner_id": "USR015",
+      "owner_name": "Gizem Erdogan",
+      "registration_date": "2022-09-05",
+      "last_maintenance": {
+        "date": "2025-09-28",
+        "km": 40000,
+        "type": "genel_kontrol"
+      },
+      "maintenance_history": []
+    }
+  ],
+  "categories": {
+    "ICE": {
+      "name": "Icten Yanmali Motor",
+      "fuel_types": ["benzin", "dizel", "lpg", "cng"],
+      "photo_count": 10,
+      "has_engine_bay": true,
+      "has_exhaust": true,
+      "has_charging_port": false
+    },
+    "HEV": {
+      "name": "Hibrit",
+      "fuel_types": ["hibrit"],
+      "photo_count": 10,
+      "has_engine_bay": true,
+      "has_exhaust": true,
+      "has_charging_port": false
+    },
+    "PHEV": {
+      "name": "Plug-in Hibrit",
+      "fuel_types": ["plugin_hibrit"],
+      "photo_count": 11,
+      "has_engine_bay": true,
+      "has_exhaust": true,
+      "has_charging_port": true
+    },
+    "BEV": {
+      "name": "Tam Elektrikli",
+      "fuel_types": ["elektrik"],
+      "photo_count": 9,
+      "has_engine_bay": false,
+      "has_exhaust": false,
+      "has_charging_port": true
+    }
+  },
+  "photo_requirements": {
+    "ICE": [
+      {"order": 1, "id": "tire_front_left", "name": "Sol On Lastik", "required": true},
+      {"order": 2, "id": "tire_front_right", "name": "Sag On Lastik", "required": true},
+      {"order": 3, "id": "tire_rear_left", "name": "Sol Arka Lastik", "required": true},
+      {"order": 4, "id": "tire_rear_right", "name": "Sag Arka Lastik", "required": true},
+      {"order": 5, "id": "engine_bay", "name": "Motor Bolgesi", "required": true},
+      {"order": 6, "id": "headlights", "name": "On Farlar", "required": true},
+      {"order": 7, "id": "taillights", "name": "Arka Stoplar", "required": true},
+      {"order": 8, "id": "dashboard", "name": "Gosterge Paneli", "required": true},
+      {"order": 9, "id": "exhaust", "name": "Egzoz", "required": true},
+      {"order": 10, "id": "oil_dipstick", "name": "Yag Cubugu", "required": false}
+    ],
+    "HEV": [
+      {"order": 1, "id": "tire_front_left", "name": "Sol On Lastik", "required": true},
+      {"order": 2, "id": "tire_front_right", "name": "Sag On Lastik", "required": true},
+      {"order": 3, "id": "tire_rear_left", "name": "Sol Arka Lastik", "required": true},
+      {"order": 4, "id": "tire_rear_right", "name": "Sag Arka Lastik", "required": true},
+      {"order": 5, "id": "engine_bay", "name": "Motor Bolgesi", "required": true},
+      {"order": 6, "id": "headlights", "name": "On Farlar", "required": true},
+      {"order": 7, "id": "taillights", "name": "Arka Stoplar", "required": true},
+      {"order": 8, "id": "dashboard", "name": "Gosterge Paneli", "required": true},
+      {"order": 9, "id": "exhaust", "name": "Egzoz", "required": true},
+      {"order": 10, "id": "hybrid_cooling", "name": "Hibrit Batarya Sogutucu", "required": false}
+    ],
+    "PHEV": [
+      {"order": 1, "id": "tire_front_left", "name": "Sol On Lastik", "required": true},
+      {"order": 2, "id": "tire_front_right", "name": "Sag On Lastik", "required": true},
+      {"order": 3, "id": "tire_rear_left", "name": "Sol Arka Lastik", "required": true},
+      {"order": 4, "id": "tire_rear_right", "name": "Sag Arka Lastik", "required": true},
+      {"order": 5, "id": "engine_bay", "name": "Motor Bolgesi", "required": true},
+      {"order": 6, "id": "headlights", "name": "On Farlar", "required": true},
+      {"order": 7, "id": "taillights", "name": "Arka Stoplar", "required": true},
+      {"order": 8, "id": "dashboard", "name": "Gosterge Paneli", "required": true},
+      {"order": 9, "id": "exhaust", "name": "Egzoz", "required": true},
+      {"order": 10, "id": "charging_port_closed", "name": "Sarj Portu (Kapali)", "required": true},
+      {"order": 11, "id": "charging_port_open", "name": "Sarj Portu (Acik)", "required": true}
+    ],
+    "BEV": [
+      {"order": 1, "id": "tire_front_left", "name": "Sol On Lastik", "required": true},
+      {"order": 2, "id": "tire_front_right", "name": "Sag On Lastik", "required": true},
+      {"order": 3, "id": "tire_rear_left", "name": "Sol Arka Lastik", "required": true},
+      {"order": 4, "id": "tire_rear_right", "name": "Sag Arka Lastik", "required": true},
+      {"order": 5, "id": "frunk_power_electronics", "name": "On Bolum (Frunk/Guc Elektronigi)", "required": true},
+      {"order": 6, "id": "headlights", "name": "On Farlar", "required": true},
+      {"order": 7, "id": "taillights", "name": "Arka Stoplar", "required": true},
+      {"order": 8, "id": "dashboard", "name": "Gosterge Paneli / Ekran", "required": true},
+      {"order": 9, "id": "charging_port_closed", "name": "Sarj Portu (Kapali)", "required": true},
+      {"order": 10, "id": "charging_port_open", "name": "Sarj Portu (Acik)", "required": true}
+    ]
+  },
+  "metadata": {
+    "version": "1.0.0",
+    "created_at": "2025-12-17",
+    "last_updated": "2025-12-17",
+    "total_vehicles": 15,
+    "categories_count": {
+      "ICE": 5,
+      "HEV": 3,
+      "PHEV": 3,
+      "BEV": 4
+    }
+  }
+}

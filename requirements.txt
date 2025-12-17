@@ -1,0 +1,17 @@
+# CarCheck AI - Dependencies
+
+# Google Gemini API
+google-generativeai>=0.8.0
+
+# Utilities
+python-dotenv>=1.0.0
+Pillow>=10.0.0
+
+# Testing
+pytest>=8.0.0
+
+# Future dependencies (uncomment when needed)
+# fastapi>=0.109.0
+# uvicorn>=0.27.0
+# pydantic>=2.5.0
+# sqlalchemy>=2.0.0
