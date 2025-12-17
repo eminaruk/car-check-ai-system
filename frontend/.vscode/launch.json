@@ -1,0 +1,30 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Flutter Web (HTML Renderer)",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "args": [
+        "-d",
+        "chrome",
+        "--web-renderer",
+        "html"
+      ]
+    },
+    {
+      "name": "Flutter Web (CanvasKit)",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "args": [
+        "-d",
+        "chrome",
+        "--web-renderer",
+        "canvaskit"
+      ]
+    }
+  ]
+}
+

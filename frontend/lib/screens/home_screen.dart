@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'add_vehicle_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -42,10 +43,10 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(height: 40),
             ElevatedButton.icon(
               onPressed: () {
-                // Sonra ekleyeceğiz
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('Araç ekleme özelliği yakında eklenecek'),
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const AddVehicleScreen(),
                   ),
                 );
               },
