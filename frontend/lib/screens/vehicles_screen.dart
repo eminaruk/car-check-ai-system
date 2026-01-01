@@ -1,38 +1,71 @@
 import 'package:flutter/material.dart';
 import 'add_vehicle_screen.dart';
+import '../services/storage_service.dart';
 
-class VehiclesScreen extends StatelessWidget {
+class VehiclesScreen extends StatefulWidget {
   const VehiclesScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    // Şimdilik boş liste (ileride state management ile dolacak)
-    final List<Map<String, dynamic>> vehicles = [];
+  State<VehiclesScreen> createState() => _VehiclesScreenState();
+}
 
+class _VehiclesScreenState extends State<VehiclesScreen> {
+  List<Map<String, dynamic>> vehicles = [];
+  bool isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadVehicles();
+  }
+
+  Future<void> _loadVehicles() async {
+    final loadedVehicles = await StorageService.getVehicles();
+    setState(() {
+      vehicles = loadedVehicles;
+      isLoading = false;
+    });
+  }
+
+  Future<void> _navigateToAddVehicle() async {
+    final result = await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const AddVehicleScreen(),
+      ),
+    );
+
+    if (result == true) {
+      _loadVehicles();
+    }
+  }
+
+  Future<void> _deleteVehicle(String id) async {
+    await StorageService.deleteVehicle(id);
+    _loadVehicles();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Araçlarım'),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
-      body: vehicles.isEmpty
-          ? _EmptyVehicleState(context)
-          : _VehicleList(vehicles: vehicles),
+      body: isLoading
+          ? const Center(child: CircularProgressIndicator())
+          : vehicles.isEmpty
+              ? _EmptyVehicleState(context, _navigateToAddVehicle)
+              : _VehicleList(vehicles: vehicles, onDelete: _deleteVehicle),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const AddVehicleScreen(),
-            ),
-          );
-        },
+        onPressed: _navigateToAddVehicle,
         icon: const Icon(Icons.add),
         label: const Text('Araç Ekle'),
       ),
     );
   }
 
-  Widget _EmptyVehicleState(BuildContext context) {
+  Widget _EmptyVehicleState(BuildContext context, VoidCallback onAdd) {
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(32.0),
@@ -61,14 +94,7 @@ class VehiclesScreen extends StatelessWidget {
             ),
             const SizedBox(height: 24),
             ElevatedButton.icon(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const AddVehicleScreen(),
-                  ),
-                );
-              },
+              onPressed: onAdd,
               icon: const Icon(Icons.add),
               label: const Text('İlk Aracınızı Ekleyin'),
               style: ElevatedButton.styleFrom(
@@ -87,8 +113,9 @@ class VehiclesScreen extends StatelessWidget {
 
 class _VehicleList extends StatelessWidget {
   final List<Map<String, dynamic>> vehicles;
+  final Function(String) onDelete;
 
-  const _VehicleList({required this.vehicles});
+  const _VehicleList({required this.vehicles, required this.onDelete});
 
   @override
   Widget build(BuildContext context) {
@@ -97,7 +124,7 @@ class _VehicleList extends StatelessWidget {
       itemCount: vehicles.length,
       itemBuilder: (context, index) {
         final vehicle = vehicles[index];
-        return _VehicleCard(vehicle: vehicle);
+        return _VehicleCard(vehicle: vehicle, onDelete: onDelete);
       },
     );
   }
@@ -105,8 +132,9 @@ class _VehicleList extends StatelessWidget {
 
 class _VehicleCard extends StatelessWidget {
   final Map<String, dynamic> vehicle;
+  final Function(String) onDelete;
 
-  const _VehicleCard({required this.vehicle});
+  const _VehicleCard({required this.vehicle, required this.onDelete});
 
   @override
   Widget build(BuildContext context) {
@@ -179,9 +207,32 @@ class _VehicleCard extends StatelessWidget {
             ),
           ],
           onSelected: (value) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('$value işlemi yakında eklenecek')),
-            );
+            if (value == 'delete') {
+              showDialog(
+                context: context,
+                builder: (ctx) => AlertDialog(
+                  title: const Text('Aracı Sil'),
+                  content: Text('${vehicle['name']} silmek istediğinize emin misiniz?'),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(ctx),
+                      child: const Text('İptal'),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        onDelete(vehicle['id']);
+                        Navigator.pop(ctx);
+                      },
+                      child: const Text('Sil', style: TextStyle(color: Colors.red)),
+                    ),
+                  ],
+                ),
+              );
+            } else {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text('$value işlemi yakında eklenecek')),
+              );
+            }
           },
         ),
       ),

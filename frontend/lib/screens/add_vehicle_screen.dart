@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../services/storage_service.dart';
 
 class AddVehicleScreen extends StatefulWidget {
   const AddVehicleScreen({super.key});
@@ -13,9 +14,11 @@ class _AddVehicleScreenState extends State<AddVehicleScreen> {
   final _brandController = TextEditingController();
   final _modelController = TextEditingController();
   final _yearController = TextEditingController();
-  
+  final _kmController = TextEditingController();
+
   String? _selectedTransmission;
   String? _selectedModification;
+  String? _selectedFuelType;
 
   @override
   void dispose() {
@@ -23,31 +26,34 @@ class _AddVehicleScreenState extends State<AddVehicleScreen> {
     _brandController.dispose();
     _modelController.dispose();
     _yearController.dispose();
+    _kmController.dispose();
     super.dispose();
   }
 
-  void _submitForm() {
+  Future<void> _submitForm() async {
     if (_formKey.currentState!.validate()) {
-      // Form geçerli, verileri işle
       final vehicleData = {
         'name': _nameController.text,
         'brand': _brandController.text,
         'model': _modelController.text,
         'year': int.tryParse(_yearController.text),
+        'fuelType': _selectedFuelType,
+        'km': int.tryParse(_kmController.text),
         'transmission': _selectedTransmission,
         'modification': _selectedModification,
       };
 
-      // Şimdilik sadece göster
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Araç eklendi: ${_nameController.text}'),
-          backgroundColor: Colors.green,
-        ),
-      );
+      await StorageService.saveVehicle(vehicleData);
 
-      // Geri dön
-      Navigator.of(context).pop();
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Araç eklendi: ${_nameController.text}'),
+            backgroundColor: Colors.green,
+          ),
+        );
+        Navigator.of(context).pop(true);
+      }
     }
   }
 
@@ -136,6 +142,59 @@ class _AddVehicleScreenState extends State<AddVehicleScreen> {
                   final year = int.tryParse(value);
                   if (year == null || year < 1900 || year > DateTime.now().year + 1) {
                     return 'Geçerli bir yıl girin';
+                  }
+                  return null;
+                },
+              ),
+              const SizedBox(height: 16),
+
+              // Yakıt Tipi
+              DropdownButtonFormField<String>(
+                value: _selectedFuelType,
+                decoration: const InputDecoration(
+                  labelText: 'Yakıt Tipi',
+                  border: OutlineInputBorder(),
+                  prefixIcon: Icon(Icons.local_gas_station),
+                ),
+                items: const [
+                  DropdownMenuItem(value: 'benzin', child: Text('Benzin')),
+                  DropdownMenuItem(value: 'dizel', child: Text('Dizel')),
+                  DropdownMenuItem(value: 'lpg', child: Text('LPG')),
+                  DropdownMenuItem(value: 'hibrit', child: Text('Hibrit')),
+                  DropdownMenuItem(value: 'plugin_hibrit', child: Text('Plugin Hibrit')),
+                  DropdownMenuItem(value: 'elektrik', child: Text('Elektrik')),
+                ],
+                onChanged: (value) {
+                  setState(() {
+                    _selectedFuelType = value;
+                  });
+                },
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Lütfen yakıt tipi seçin';
+                  }
+                  return null;
+                },
+              ),
+              const SizedBox(height: 16),
+
+              // Kilometre
+              TextFormField(
+                controller: _kmController,
+                decoration: const InputDecoration(
+                  labelText: 'Kilometre',
+                  hintText: 'Örn: 45000',
+                  border: OutlineInputBorder(),
+                  prefixIcon: Icon(Icons.speed),
+                ),
+                keyboardType: TextInputType.number,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Lütfen kilometre girin';
+                  }
+                  final km = int.tryParse(value);
+                  if (km == null || km < 0) {
+                    return 'Geçerli bir kilometre girin';
                   }
                   return null;
                 },
