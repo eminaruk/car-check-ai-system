@@ -1,0 +1,180 @@
+{
+  "report_id": "RPT-2026-000123",
+  "generated_at": "2026-01-03T14:30:00Z",
+
+  "vehicle": {
+    "id": "VH001",
+    "plate": "34 ABC 123",
+    "brand": "Toyota",
+    "model": "Corolla",
+    "year": 2020,
+    "category": "ICE",
+    "fuel_type": "benzin",
+    "current_km": 45000
+  },
+
+  "overall_summary": {
+    "health_score": 82,
+    "status": "good",
+    "status_text": "Araciniz genel olarak iyi durumda",
+    "analyzed_parts_count": 5,
+    "good_count": 3,
+    "attention_count": 2,
+    "critical_count": 0
+  },
+
+  "part_analyses": [
+    {
+      "part_id": "engine_bay",
+      "part_name": "Motor Bolgesi",
+      "order": 1,
+      "health_score": 75,
+      "status": "attention",
+      "analysis": {
+        "overall_cleanliness": "dusty",
+        "leak_detection": {
+          "detected": false,
+          "type": null,
+          "severity": "none"
+        },
+        "visible_components": {
+          "battery_terminals": "oxidized",
+          "belts": "good",
+          "hoses": "good"
+        },
+        "fluid_levels": {
+          "coolant": "adequate",
+          "washer": "low",
+          "brake_fluid": "adequate"
+        }
+      },
+      "findings": [
+        {
+          "type": "attention",
+          "component": "Aku terminalleri",
+          "description": "Hafif oksidasyon mevcut",
+          "recommendation": "Terminal temizligi yapilmali"
+        },
+        {
+          "type": "attention",
+          "component": "Cam suyu",
+          "description": "Seviye dusuk",
+          "recommendation": "Cam suyu eklenmeli"
+        }
+      ],
+      "confidence": 0.85
+    },
+    {
+      "part_id": "headlights",
+      "part_name": "On Farlar",
+      "order": 2,
+      "health_score": 90,
+      "status": "good",
+      "analysis": {
+        "lens_condition": "clear",
+        "cleanliness": "clean",
+        "visible_issues": []
+      },
+      "findings": [],
+      "confidence": 0.92
+    },
+    {
+      "part_id": "taillights",
+      "part_name": "Arka Stoplar",
+      "order": 3,
+      "health_score": 95,
+      "status": "good",
+      "analysis": {
+        "lens_condition": "clear",
+        "cleanliness": "clean",
+        "visible_issues": []
+      },
+      "findings": [],
+      "confidence": 0.90
+    },
+    {
+      "part_id": "dashboard",
+      "part_name": "Gosterge Paneli",
+      "order": 4,
+      "health_score": 85,
+      "status": "good",
+      "analysis": {
+        "odometer_reading": 45230,
+        "fuel_level": "3/4",
+        "warning_lights": [],
+        "critical_warnings": false
+      },
+      "findings": [],
+      "confidence": 0.88
+    },
+    {
+      "part_id": "exhaust",
+      "part_name": "Egzoz",
+      "order": 5,
+      "health_score": 70,
+      "status": "attention",
+      "analysis": {
+        "overall_condition": "fair",
+        "rust_corrosion": {
+          "detected": true,
+          "severity": "minor",
+          "description": "Egzoz ucunda hafif pas baslangici"
+        },
+        "soot_buildup": "light",
+        "physical_damage": {
+          "detected": false
+        }
+      },
+      "findings": [
+        {
+          "type": "attention",
+          "component": "Egzoz ucu",
+          "description": "Hafif pas baslangici goruldu",
+          "recommendation": "Gelecek bakimda kontrol edilmeli"
+        }
+      ],
+      "confidence": 0.80
+    }
+  ],
+
+  "recommendations": {
+    "immediate": [],
+    "soon": [
+      {
+        "action": "Aku terminali temizligi",
+        "reason": "Oksidasyon tespit edildi",
+        "estimated_priority": "medium"
+      },
+      {
+        "action": "Cam suyu takviyesi",
+        "reason": "Seviye dusuk",
+        "estimated_priority": "low"
+      }
+    ],
+    "scheduled": [
+      {
+        "action": "Egzoz kontrolu",
+        "reason": "Hafif pas baslangici",
+        "recommended_km": 50000
+      }
+    ]
+  },
+
+  "next_maintenance": {
+    "recommended_date": "2026-04-03",
+    "recommended_km": 50000,
+    "reason": "Periyodik bakim araligi"
+  },
+
+  "tips": [
+    "Motor bolgesini duzenli temizleyin",
+    "Sivi seviyelerini aylik kontrol edin"
+  ],
+
+  "metadata": {
+    "analysis_duration_ms": 4500,
+    "model_used": "gemini-2.0-flash",
+    "photos_analyzed": 5,
+    "average_confidence": 0.87
+  }
+}
