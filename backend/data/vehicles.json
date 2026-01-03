@@ -1,0 +1,28 @@
+[
+  {
+    "id": "1767406141178",
+    "createdAt": "2026-01-03T05:09:01.178085",
+    "updatedAt": "2026-01-03T05:26:26.897035",
+    "name": "Benim Arabam",
+    "brand": "Toyota",
+    "model": "Corolla",
+    "year": 2020,
+    "fuelType": "benzin",
+    "km": 55000,
+    "transmission": "otomatik",
+    "modification": "orijinal"
+  },
+  {
+    "id": "1767408647763",
+    "createdAt": "2026-01-03T05:50:47.763809",
+    "updatedAt": null,
+    "name": "tes",
+    "brand": "tesla",
+    "model": "model y",
+    "year": 2020,
+    "fuelType": "elektrik",
+    "km": 45200,
+    "transmission": "otomatik",
+    "modification": "hafif_modifiye"
+  }
+]

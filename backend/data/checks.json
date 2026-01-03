@@ -1,0 +1,23 @@
+[
+  {
+    "id": "1767408263751",
+    "createdAt": "2026-01-03T05:44:23.751785",
+    "vehicleId": "1767406141178",
+    "status": "Tamamlandı",
+    "photoCount": 10
+  },
+  {
+    "id": "1767408473389",
+    "createdAt": "2026-01-03T05:47:53.389083",
+    "vehicleId": "1767406141178",
+    "status": "Tamamlandı",
+    "photoCount": 10
+  },
+  {
+    "id": "1767408666457",
+    "createdAt": "2026-01-03T05:51:06.457988",
+    "vehicleId": "1767408647763",
+    "status": "Tamamlandı",
+    "photoCount": 10
+  }
+]

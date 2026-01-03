@@ -1,0 +1,167 @@
+
+
+
+
+	Backend
+cd "C:\Users\Emre\Desktop\My programs\Unity\Work\car-check-ai-system\backend"
+uvicorn main:app --reload --host 0.0.0.0 --port 8000
+
+
+	Flutter
+cd "C:\Users\Emre\Desktop\My programs\Unity\Work\car-check-ai-system\frontend"
+flutter run -d chrome --web-renderer html
+
+
+
+----------------------------- Bitenler ----------------------------------------
+
+------------ Versiyon ------- <0.0.1>
+- oluşturulan kodları belirle 
+- backent durumunu incele
+- chech sistemi ve görsel ekleme sırasını belirle
+- i18n dil modeli kullancak şekilde güncelle
+
+
+------------ Versiyon ------- <0.0.2>
+- backent kur ve geçici veritabanı oluştur
+- frontend bağlantılarını incele
+- check kısmı geçmiş verileri ve yeni check butonunu barındırsın
+
+
+
+
+----------------------------- Yapılacaklar ------------------------------------
+
+
+- anasayfadan hızlı check kısmını kaldır 
+
+- Check sistemi - Araç fotoğrafı yükleme ve analiz API'si
+- Firebase geçişi - storage.py'ı Firebase Firestore ile değiştirmek
+- Auth sistemi - Firebase Auth entegrasyonu
+
+
+- Server’da token doğrulama
+- Firestore’da kullanıcıya bağlı kayıt yapısı
+- Server’da upload doğrulama (type/size)
+
+
+- öğretici kur
+
+
+
+
+-------------------------------------------------------------------------------
+
+
+
+
+1. Araç Kayıt Bilgileri
+Marka (Toyota, BMW, vb.)
+Model (Corolla, 3 Serisi, vb.)
+Yıl (2020, 2023, vb.)
+Yakıt Tipi (benzin/dizel/lpg/hibrit/plugin_hibrit/elektrik)
+Kilometre (45000, 30000, vb.)
+
+
+2. Fotoğraflar (Yakıt Tipine Göre)
+
+ICE (benzin/dizel/lpg) – 10 fotoğraf:
+Sol ön lastik
+Sağ ön lastik
+Sol arka lastik
+Sağ arka lastik
+Motor bölgesi
+Ön farlar
+Arka stoplar
+Gösterge paneli
+Egzo
+Yağ çubuğu (opsiyonel)
+
+HEV (hibrit) – 10 fotoğraf:
+Aynı + hibrit batarya soğutucu (opsiyonel)
+
+PHEV (plugin_hibrit) – 11 fotoğraf:
+Aynı + şarj portu (kapalı)
+Şarj portu (açık)
+
+BEV (elektrik) – 9 fotoğraf:
+4 lastik + frunk/güç elektroniği + farlar + stoplar + gösterge + şarj portu kapalı/açık
+
+
+
+
+
+
+
+
+		/*
+
+You are my coding assistant.
+Your job is to directly answer my questions and implement my requests with minimum explanation.
+Rules:
+Be concise and precise
+Do not over-explain unless I explicitly ask
+Prefer code first, explanation last (max 1–2 lines)
+Do not repeat my question
+Do not add unrelated suggestions
+If something is ambiguous, make the best reasonable assumption and proceed
+Optimize for clean, production-ready code
+Avoid verbose comments unless necessary
+Use simple language
+Response format:
+If code is requested → return only the code
+If explanation is needed → max 3 bullet points
+
+
+		*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+----------------------------- Eski sürümler -----------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

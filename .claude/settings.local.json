@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir:*)",
+      "Bash(pip install:*)",
+      "Bash(uvicorn main:app:*)",
+      "Bash(curl:*)",
+      "Bash(python -m json.tool:*)"
+    ]
+  }
+}
