@@ -17,9 +17,9 @@ Bu dokuman, ilk surumde yer alacak AI ozelliklerini, test senaryolarini ve promp
    - Iyi durumda olan parcalar
    - Dikkat gerektiren parcalar
    - Acil bakim gerektiren parcalar
-   - Onerilen islemler (yag degisimi, lastik rotasyonu vb.)
+   - Onerilen islemler (yag degisimi vb.)
 8. Bakim kaydi sisteme kaydedilir
-9. Sistem duzenliaraliklerla hatirlatma gonderir:
+9. Sistem duzenli araliklerla hatirlatma gonderir:
    - "Son bakimdan bu yana X gun gecti"
    - "Kilometre Y'ye ulasti, Z bakimi onerilir"
 ```
@@ -35,10 +35,10 @@ Bu dokuman, ilk surumde yer alacak AI ozelliklerini, test senaryolarini ve promp
 - Kilometre ve zaman bazli hatirlatmalar
 
 ### BU UYGULAMA NE DEGILDIR
-- ❌ Hasar tespit sistemi (cizik, gocuk, kaporta hasari)
-- ❌ Kaza sonrasi degerlendirme
-- ❌ Sigorta hasar raporu
-- ❌ Ikinci el arac ekspertizi
+- Hasar tespit sistemi (cizik, gocuk, kaporta hasari)
+- Kaza sonrasi degerlendirme
+- Sigorta hasar raporu
+- Ikinci el arac ekspertizi
 
 > **ONEMLI:** Buyuk hasarlar (cizik, gocuk, carpisma izleri) bu uygulamanin kapsaminda DEGILDIR. Odak noktasi BAKIM'dir.
 
@@ -73,16 +73,15 @@ Kullanici arac eklerken yakit/guc tipi secer:
 
 ## Genel Bakis
 
-MVP'de 6 temel AI modulu bulunacaktir:
+MVP'de 5 temel AI modulu bulunacaktir:
 
 | # | Modul | Oncelik | Durum |
 |---|-------|---------|-------|
-| 1 | Lastik Durumu Analizi | Yuksek | Test Edilecek |
-| 2 | Motor Bolgesi Kontrolu | Yuksek | Test Edilecek |
-| 3 | Aydinlatma Sistemi Kontrolu | Orta | Test Edilecek |
-| 4 | Sivi Seviyeleri Kontrolu | Orta | Test Edilecek |
-| 5 | EV Sarj Sistemi Kontrolu | Orta | Test Edilecek |
-| 6 | Bakim Raporu Olusturma | Yuksek | Test Edilecek |
+| 1 | Motor Bolgesi Kontrolu | Yuksek | Test Edilecek |
+| 2 | Aydinlatma Sistemi Kontrolu | Orta | Test Edilecek |
+| 3 | Sivi Seviyeleri Kontrolu | Orta | Test Edilecek |
+| 4 | EV Sarj Sistemi Kontrolu | Orta | Test Edilecek |
+| 5 | Bakim Raporu Olusturma | Yuksek | Test Edilecek |
 
 ---
 
@@ -93,12 +92,6 @@ MVP'de 6 temel AI modulu bulunacaktir:
 ```
 Kontrol Noktasi              ICE    HEV    PHEV   BEV
 ────────────────────────────────────────────────────
-LASTIKLER
-  Sol On Lastik               ✓      ✓      ✓      ✓
-  Sag On Lastik               ✓      ✓      ✓      ✓
-  Sol Arka Lastik             ✓      ✓      ✓      ✓
-  Sag Arka Lastik             ✓      ✓      ✓      ✓
-
 MOTOR / GUC UNITESI
   Motor Bolgesi (kaput acik)  ✓      ✓      ✓      ✗
   Guc Elektronigi Bolgesi     ✗      ✗      ✗      ✓
@@ -116,7 +109,7 @@ GOSTERGE
 EGZOZ
   Egzoz Cikisi                ✓      ✓      ✓      ✗
 ────────────────────────────────────────────────────
-TOPLAM FOTOGRAF              10     10     11      9
+TOPLAM FOTOGRAF               6      6      7      5
 ```
 
 ---
@@ -128,16 +121,12 @@ TOPLAM FOTOGRAF              10     10     11      9
 
 | Sira | Bolge | Cekim Talimati | Kontrol Amaci |
 |------|-------|----------------|---------------|
-| 1 | **Sol On Lastik** | Lastigi tam karsiniza alin, dis yuzey net gorunsun. Yaklasik 50cm mesafeden cekin. | Dis derinligi, asinma paterni, yan duvar durumu |
-| 2 | **Sag On Lastik** | Ayni sekilde sag on lastigi cekin. | Dis derinligi, asinma paterni, yan duvar durumu |
-| 3 | **Sol Arka Lastik** | Sol arka lastigi ayni acidan cekin. | Dis derinligi, asinma paterni, yan duvar durumu |
-| 4 | **Sag Arka Lastik** | Sag arka lastigi ayni acidan cekin. | Dis derinligi, asinma paterni, yan duvar durumu |
-| 5 | **Motor Bolgesi** | Kaputu acin, motor bolgesinin tamamini cekecek sekilde yukselten bir acidan fotograflayin. Iyi aydinlatma saglayin. | Genel temizlik, sizinti, aku, kayis, hortum durumu |
-| 6 | **On Farlar** | Aracin onunden her iki fari gorecek sekilde cekin. | Lens durumu (sari, buzlu), temizlik |
-| 7 | **Arka Stop Lambalari** | Aracin arkasindan her iki stopu gorecek sekilde cekin. | Lens durumu, kirlilik, catlak |
-| 8 | **Gosterge Paneli** | Kontagi acin (calistirmaya gerek yok), gosterge panelini net gorunecek sekilde cekin. | Kilometre, uyari isiklari |
-| 9 | **Egzoz Cikisi** | Egzoz ucunu yakindan cekin. Birden fazla egzoz varsa hepsini cekin. | Pas, korozyon, is birikimi |
-| 10 | **Motor Yagi Cubugu** (opsiyonel) | Yag cubugunu cekip temizleyin, tekrar daldirip cikarin ve fotograflayin. | Yag seviyesi ve rengi |
+| 1 | **Motor Bolgesi** | Kaputu acin, motor bolgesinin tamamini cekecek sekilde yukselten bir acidan fotograflayin. Iyi aydinlatma saglayin. | Genel temizlik, sizinti, aku, kayis, hortum durumu |
+| 2 | **On Farlar** | Aracin onunden her iki fari gorecek sekilde cekin. | Lens durumu (sari, buzlu), temizlik |
+| 3 | **Arka Stop Lambalari** | Aracin arkasindan her iki stopu gorecek sekilde cekin. | Lens durumu, kirlilik, catlak |
+| 4 | **Gosterge Paneli** | Kontagi acin (calistirmaya gerek yok), gosterge panelini net gorunecek sekilde cekin. | Kilometre, uyari isiklari |
+| 5 | **Egzoz Cikisi** | Egzoz ucunu yakindan cekin. Birden fazla egzoz varsa hepsini cekin. | Pas, korozyon, is birikimi |
+| 6 | **Motor Yagi Cubugu** (opsiyonel) | Yag cubugunu cekip temizleyin, tekrar daldirip cikarin ve fotograflayin. | Yag seviyesi ve rengi |
 
 ### ICE Ozel Kontrol Noktalari
 
@@ -172,16 +161,12 @@ Kontrol Edilecekler:
 
 | Sira | Bolge | Cekim Talimati | Kontrol Amaci |
 |------|-------|----------------|---------------|
-| 1 | **Sol On Lastik** | Lastigi tam karsiniza alin, dis yuzey net gorunsun. | Dis derinligi, asinma paterni |
-| 2 | **Sag On Lastik** | Ayni sekilde sag on lastigi cekin. | Dis derinligi, asinma paterni |
-| 3 | **Sol Arka Lastik** | Sol arka lastigi ayni acidan cekin. | Dis derinligi, asinma paterni |
-| 4 | **Sag Arka Lastik** | Sag arka lastigi ayni acidan cekin. | Dis derinligi, asinma paterni |
-| 5 | **Motor Bolgesi** | Kaputu acin, motor bolgesinin tamamini cekin. Hibrit sistemde turuncu kablolara DOKUNMAYIN. | Motor durumu, elektrik bilesenleri |
-| 6 | **On Farlar** | Her iki fari gorecek sekilde cekin. | Lens durumu, temizlik |
-| 7 | **Arka Stop Lambalari** | Her iki stopu gorecek sekilde cekin. | Lens durumu, kirlilik |
-| 8 | **Gosterge Paneli** | Kontagi acin, gosterge panelini cekin. Hibrit batarya gostergesini de icersin. | Kilometre, batarya durumu, uyarilar |
-| 9 | **Egzoz Cikisi** | Egzoz ucunu yakindan cekin. | Pas, korozyon |
-| 10 | **Hibrit Batarya Sogutucu** (opsiyonel) | Genellikle arka koltuk altinda veya bagajda. Havalandirma izgararini cekin. | Toz birikimi, tikanilik |
+| 1 | **Motor Bolgesi** | Kaputu acin, motor bolgesinin tamamini cekin. Hibrit sistemde turuncu kablolara DOKUNMAYIN. | Motor durumu, elektrik bilesenleri |
+| 2 | **On Farlar** | Her iki fari gorecek sekilde cekin. | Lens durumu, temizlik |
+| 3 | **Arka Stop Lambalari** | Her iki stopu gorecek sekilde cekin. | Lens durumu, kirlilik |
+| 4 | **Gosterge Paneli** | Kontagi acin, gosterge panelini cekin. Hibrit batarya gostergesini de icersin. | Kilometre, batarya durumu, uyarilar |
+| 5 | **Egzoz Cikisi** | Egzoz ucunu yakindan cekin. | Pas, korozyon |
+| 6 | **Hibrit Batarya Sogutucu** (opsiyonel) | Genellikle arka koltuk altinda veya bagajda. Havalandirma izgararini cekin. | Toz birikimi, tikanilik |
 
 ### HEV Ozel Kontrol Noktalari
 
@@ -214,17 +199,13 @@ Kontrol Edilecekler:
 
 | Sira | Bolge | Cekim Talimati | Kontrol Amaci |
 |------|-------|----------------|---------------|
-| 1 | **Sol On Lastik** | Lastigi tam karsiniza alin, dis yuzey net gorunsun. | Dis derinligi, asinma paterni |
-| 2 | **Sag On Lastik** | Ayni sekilde sag on lastigi cekin. | Dis derinligi, asinma paterni |
-| 3 | **Sol Arka Lastik** | Sol arka lastigi ayni acidan cekin. | Dis derinligi, asinma paterni |
-| 4 | **Sag Arka Lastik** | Sag arka lastigi ayni acidan cekin. | Dis derinligi, asinma paterni |
-| 5 | **Motor Bolgesi** | Kaputu acin, motor bolgesinin tamamini cekin. | Motor ve elektrik sistem durumu |
-| 6 | **On Farlar** | Her iki fari gorecek sekilde cekin. | Lens durumu, temizlik |
-| 7 | **Arka Stop Lambalari** | Her iki stopu gorecek sekilde cekin. | Lens durumu, kirlilik |
-| 8 | **Gosterge Paneli** | Kontagi acin, gosterge panelini cekin. | Kilometre, batarya, uyarilar |
-| 9 | **Egzoz Cikisi** | Egzoz ucunu yakindan cekin. | Pas, korozyon |
-| 10 | **Sarj Portu (Kapali)** | Sarj kapagini kapali halde cekin. | Kapak durumu, hasar |
-| 11 | **Sarj Portu (Acik)** | Sarj kapagini acin, port icini cekin. | Pin durumu, temizlik, oksidasyon |
+| 1 | **Motor Bolgesi** | Kaputu acin, motor bolgesinin tamamini cekin. | Motor ve elektrik sistem durumu |
+| 2 | **On Farlar** | Her iki fari gorecek sekilde cekin. | Lens durumu, temizlik |
+| 3 | **Arka Stop Lambalari** | Her iki stopu gorecek sekilde cekin. | Lens durumu, kirlilik |
+| 4 | **Gosterge Paneli** | Kontagi acin, gosterge panelini cekin. | Kilometre, batarya, uyarilar |
+| 5 | **Egzoz Cikisi** | Egzoz ucunu yakindan cekin. | Pas, korozyon |
+| 6 | **Sarj Portu (Kapali)** | Sarj kapagini kapali halde cekin. | Kapak durumu, hasar |
+| 7 | **Sarj Portu (Acik)** | Sarj kapagini acin, port icini cekin. | Pin durumu, temizlik, oksidasyon |
 
 ### PHEV Ozel Kontrol Noktalari
 
@@ -266,16 +247,12 @@ Kontrol Edilecekler:
 
 | Sira | Bolge | Cekim Talimati | Kontrol Amaci |
 |------|-------|----------------|---------------|
-| 1 | **Sol On Lastik** | Lastigi tam karsiniza alin, dis yuzey net gorunsun. | Dis derinligi, asinma paterni |
-| 2 | **Sag On Lastik** | Ayni sekilde sag on lastigi cekin. | Dis derinligi, asinma paterni |
-| 3 | **Sol Arka Lastik** | Sol arka lastigi ayni acidan cekin. | Dis derinligi, asinma paterni |
-| 4 | **Sag Arka Lastik** | Sag arka lastigi ayni acidan cekin. | Dis derinligi, asinma paterni |
-| 5 | **On Bolum (Frunk/Guc Elektronigi)** | Kaputu acin. Bazi modellerde bagaj (frunk), bazilerinde guc elektronigi vardir. | Temizlik, genel durum |
-| 6 | **On Farlar** | Her iki fari gorecek sekilde cekin. | Lens durumu, temizlik |
-| 7 | **Arka Stop Lambalari** | Her iki stopu gorecek sekilde cekin. | Lens durumu, kirlilik |
-| 8 | **Gosterge Paneli / Ekran** | Araci calistirin, ana ekrani/gostergeyi cekin. | Kilometre, batarya %, uyarilar |
-| 9 | **Sarj Portu (Kapali)** | Sarj kapagini kapali halde cekin. | Kapak durumu |
-| 10 | **Sarj Portu (Acik)** | Sarj kapagini acin, port icini cekin. | Pin durumu, temizlik, oksidasyon |
+| 1 | **On Bolum (Frunk/Guc Elektronigi)** | Kaputu acin. Bazi modellerde bagaj (frunk), bazilerinde guc elektronigi vardir. | Temizlik, genel durum |
+| 2 | **On Farlar** | Her iki fari gorecek sekilde cekin. | Lens durumu, temizlik |
+| 3 | **Arka Stop Lambalari** | Her iki stopu gorecek sekilde cekin. | Lens durumu, kirlilik |
+| 4 | **Gosterge Paneli / Ekran** | Araci calistirin, ana ekrani/gostergeyi cekin. | Kilometre, batarya %, uyarilar |
+| 5 | **Sarj Portu (Kapali)** | Sarj kapagini kapali halde cekin. | Kapak durumu |
+| 6 | **Sarj Portu (Acik)** | Sarj kapagini acin, port icini cekin. | Pin durumu, temizlik, oksidasyon |
 
 ### BEV Ozel Kontrol Noktalari
 
@@ -318,7 +295,6 @@ OLMAYAN SEYLER (ICE'den farkli):
 
 OZEL DIKKAT GEREKTIREN:
 ├── Fren Balatalari ────────→ Rejeneratif fren nedeniyle daha az asinir
-├── Lastikler ──────────────→ EV'ler daha agir, ozel lastik onerilir
 └── 12V Aku ────────────────→ Hala var ve onemli!
 ```
 
@@ -336,15 +312,6 @@ OZEL DIKKAT GEREKTIREN:
 ### Ornek Cekim Acilar
 
 ```
-LASTIK:
-    ┌─────────┐
-    │  O   O  │  ← Bu acidan degil (ustten)
-    └─────────┘
-
-    ┌─────────┐
-    │ (     ) │  ← Bu acidan (yandan, dis gorunur)
-    └─────────┘
-
 MOTOR BOLGESI:
     ┌─────────────┐
     │   Kaput     │
@@ -364,100 +331,7 @@ SARJ PORTU:
 
 ---
 
-## 1. Lastik Durumu Analizi
-
-### Amac
-Lastik fotograflarindan dis derinligi, asinma durumu ve bakim ihtiyacini belirlemek.
-
-### Analiz Edilecek Parametreler
-- **Dis Derinligi Tahmini:** mm cinsinden
-- **Asinma Paterni:** Esit mi, esitsiz mi
-- **Yan Duvar Durumu:** Catlak, yaslasma belirtileri
-- **Hava Basinci Gostergesi:** Asinma paterninden tahmin
-- **Sonraki Bakim Onerisi:** Km veya ay cinsinden
-
-### Girdi
-```json
-{
-  "image": "base64_encoded_image",
-  "tire_position": "front_left | front_right | rear_left | rear_right",
-  "vehicle_info": {
-    "brand": "Toyota",
-    "model": "Corolla",
-    "year": 2020,
-    "current_km": 45000
-  },
-  "last_tire_change_km": 30000
-}
-```
-
-### Beklenen Cikti
-```json
-{
-  "tread_depth_mm": 4.5,
-  "tread_status": "good | attention | critical",
-  "wear_pattern": {
-    "type": "even | center | edge | cupping",
-    "description": "Esit asinma, normal kullanim"
-  },
-  "sidewall_condition": "good | aged | cracked",
-  "estimated_remaining_km": 15000,
-  "maintenance_recommendation": {
-    "action": "none | rotation | replacement | pressure_check",
-    "urgency": "none | soon | immediate",
-    "description": "Lastikler iyi durumda, 15.000 km sonra kontrol onerilir"
-  },
-  "confidence": 0.85
-}
-```
-
-### Test Prompt Sablonu
-
-```
-Sen bir arac bakim uzmanlisin. Lastik fotografini inceleyerek BAKIM odakli analiz yap.
-
-GOREV:
-1. Dis derinligini tahmin et (mm)
-2. Asinma paternini belirle
-3. Yan duvar durumunu kontrol et
-4. Kalan kullanim omrunu tahmin et
-5. Bakim onerisi sun
-
-DIS DERINLIGI REFERANS:
-- 8mm: Yeni lastik
-- 5-7mm: Cok iyi durumda
-- 4-5mm: Iyi durumda, takipte tut
-- 3-4mm: Dikkat, degisim planlenmali
-- 1.6mm alti: Kritik, hemen degistirilmeli
-
-ASINMA PATERNLERI VE ANLAMI:
-- even: Esit asinma → Normal, lastik rotasyonu yeterli
-- center: Ortadan asinma → Fazla hava basinci, ayarla
-- edge: Kenarlardan asinma → Dusuk hava basinci, ayarla
-- cupping: Dalgali asinma → Balans/rot kontrolu gerekli
-
-ONEMLI:
-- Bu bir BAKIM sistemi, hasar degerlendirmesi DEGIL
-- Kullaniciya anlasilir Turkce aciklamalar yap
-- Pratik ve uygulanabilir oneriler sun
-
-CIKTI: JSON formatinda
-```
-
-### Test Senaryolari
-
-| Senaryo | Aciklama | Beklenen Sonuc |
-|---------|----------|----------------|
-| TS-1.1 | Yeni lastik | 7-8mm, status: good |
-| TS-1.2 | Orta kullanilmis | 4-5mm, status: good/attention |
-| TS-1.3 | Asinmis lastik | <3mm, status: critical |
-| TS-1.4 | Ortadan asinmis | center pattern, basinc uyarisi |
-| TS-1.5 | Kenardan asinmis | edge pattern, basinc uyarisi |
-| TS-1.6 | Yaslanmis lastik | sidewall: aged, dikkat onerisi |
-
----
-
-## 2. Motor Bolgesi Kontrolu
+## 1. Motor Bolgesi Kontrolu
 
 ### Amac
 Motor bolumu fotografindan genel bakim durumunu, sizinti belirtilerini ve temizlik ihtiyacini tespit etmek.
@@ -538,7 +412,7 @@ SIZINTI SEVIYELERI:
 ONEMLI:
 - Bu bir BAKIM sistemi
 - Sadece gorulebilen sorunlari raporla
-- Emin olmadigin durumlar icin "serviste kontrol ettirin" one
+- Emin olmadigin durumlar icin "serviste kontrol ettirin" oner
 
 CIKTI: JSON formatinda
 ```
@@ -547,15 +421,15 @@ CIKTI: JSON formatinda
 
 | Senaryo | Aciklama | Beklenen Sonuc |
 |---------|----------|----------------|
-| TS-2.1 | Temiz motor bolgesi | cleanliness: clean |
-| TS-2.2 | Tozlu motor | cleanliness: dusty |
-| TS-2.3 | Yag sizintisi belirtisi | leak_detection.detected: true |
-| TS-2.4 | Oksitlenmis aku | battery_terminals: oxidized |
-| TS-2.5 | Yaslanmis hortumlar | hoses: aged |
+| TS-1.1 | Temiz motor bolgesi | cleanliness: clean |
+| TS-1.2 | Tozlu motor | cleanliness: dusty |
+| TS-1.3 | Yag sizintisi belirtisi | leak_detection.detected: true |
+| TS-1.4 | Oksitlenmis aku | battery_terminals: oxidized |
+| TS-1.5 | Yaslanmis hortumlar | hoses: aged |
 
 ---
 
-## 3. Aydinlatma Sistemi Kontrolu
+## 2. Aydinlatma Sistemi Kontrolu
 
 ### Amac
 Far ve stop fotograflarindan aydinlatma sisteminin calisma durumunu ve bakim ihtiyacini belirlemek.
@@ -625,14 +499,14 @@ CIKTI: JSON formatinda
 
 | Senaryo | Aciklama | Beklenen Sonuc |
 |---------|----------|----------------|
-| TS-3.1 | Temiz, net far | lens: clear, action: none |
-| TS-3.2 | Buzlu far | lens: cloudy, action: polish |
-| TS-3.3 | Sarimis far | lens: yellowed, action: polish/replace |
-| TS-3.4 | Kirli far | cleanliness: dirty |
+| TS-2.1 | Temiz, net far | lens: clear, action: none |
+| TS-2.2 | Buzlu far | lens: cloudy, action: polish |
+| TS-2.3 | Sarimis far | lens: yellowed, action: polish/replace |
+| TS-2.4 | Kirli far | cleanliness: dirty |
 
 ---
 
-## 4. Sivi Seviyeleri Kontrolu
+## 3. Sivi Seviyeleri Kontrolu
 
 ### Amac
 Motor bolumu fotografindan gorulebilen sivi haznelerinin seviyelerini tahmin etmek.
@@ -703,7 +577,7 @@ CIKTI: JSON formatinda
 
 ---
 
-## 5. EV Sarj Sistemi Kontrolu (Elektrikli Araclar)
+## 4. EV Sarj Sistemi Kontrolu (Elektrikli Araclar)
 
 ### Amac
 Elektrikli arac sarj portunu inceleyerek temizlik ve bakim durumunu belirlemek.
@@ -770,7 +644,7 @@ CIKTI: JSON formatinda
 
 ---
 
-## 6. Bakim Raporu Olusturma
+## 5. Bakim Raporu Olusturma
 
 ### Amac
 Tum analizleri birlestirerek kullanici dostu, anlasilir bir bakim raporu olusturmak.
@@ -783,122 +657,6 @@ Tum analizleri birlestirerek kullanici dostu, anlasilir bir bakim raporu olustur
 - Onerilen islemler listesi
 - Sonraki bakim tarihi/km onerisi
 
-### Girdi
-```json
-{
-  "vehicle_info": {
-    "brand": "Toyota",
-    "model": "Corolla",
-    "year": 2020,
-    "current_km": 45000,
-    "fuel_type": "gasoline"
-  },
-  "analysis_results": {
-    "tires": [...],
-    "engine_bay": {...},
-    "lights": {...},
-    "fluids": {...}
-  },
-  "previous_maintenance": {
-    "last_date": "2025-06-15",
-    "last_km": 40000
-  }
-}
-```
-
-### Beklenen Cikti
-```json
-{
-  "report_id": "RPT-2025-001234",
-  "generated_at": "2025-12-17T10:45:00Z",
-  "vehicle": "Toyota Corolla 2020",
-  "current_km": 45000,
-
-  "summary": {
-    "overall_status": "good | attention | critical",
-    "score": 85,
-    "good_items": 8,
-    "attention_items": 2,
-    "critical_items": 0
-  },
-
-  "good_condition": [
-    "On lastikler iyi durumda",
-    "Motor bolgesi temiz",
-    "Farlar net ve temiz"
-  ],
-
-  "needs_attention": [
-    {
-      "item": "Arka sol lastik",
-      "issue": "Dis derinligi dusuk (3.5mm)",
-      "recommendation": "2-3 ay icinde degisim planlayın",
-      "urgency": "medium"
-    }
-  ],
-
-  "critical_issues": [],
-
-  "maintenance_actions": [
-    {
-      "action": "Yag degisimi",
-      "reason": "Son degisimden bu yana 5.000 km",
-      "urgency": "soon"
-    },
-    {
-      "action": "Lastik rotasyonu",
-      "reason": "On/arka asinma farki",
-      "urgency": "soon"
-    }
-  ],
-
-  "next_maintenance": {
-    "recommended_date": "2026-03-17",
-    "recommended_km": 50000,
-    "reason": "Yag degisim araligi"
-  },
-
-  "tips": [
-    "Kis lastigi kontrolu yapin",
-    "Antifriz seviyesini takip edin"
-  ]
-}
-```
-
-### Test Prompt Sablonu
-
-```
-Sen bir arac bakim danismanisin. Analiz sonuclarini kullanici dostu bir rapora donustur.
-
-GOREV:
-1. Tum analiz sonuclarini birlesir
-2. Iyi/dikkat/kritik olarak kategorize et
-3. Anlasilir Turkce aciklamalar yaz
-4. Somut bakim onerileri sun
-5. Sonraki bakim tarihini oner
-
-RAPOR FORMATI:
-- Ozet: Genel durum puani ve ozet
-- Iyi Durumda: Sorun olmayan parcalar
-- Dikkat Gerektiren: Yakin zamanda bakim gereken
-- Kritik: Hemen mudahale gereken (varsa)
-- Bakim Aksiyonlari: Yapilmasi gereken islemler
-- Sonraki Bakim: Tarih ve km onerisi
-
-DILI VE USLUP:
-- Sade Turkce, teknik terimlerden kacin
-- Kullaniciyi korkutma, cozum odakli ol
-- Pratik ve uygulanabilir oneriler sun
-- Pozitif tonla baslat ("Araciniz genel olarak iyi durumda")
-
-ONEMLI:
-- Hasar degerlendirmesi YAPMA
-- Maliyet tahmini verme (bakima odaklan)
-- Servise gitmeyi gerektiren durumlar icin yonlendir
-
-CIKTI: JSON formatinda
-```
-
 ---
 
 ## Bakim Hatirlatma Mantigi
@@ -910,7 +668,6 @@ Sistem asagidaki kurallara gore hatirlatma gonderir:
 |------------|-------------------|
 | Genel kontrol | 3 ay |
 | Yag degisimi | 6 ay veya 10.000 km |
-| Lastik kontrolu | 3 ay |
 | Fren kontrolu | 12 ay veya 20.000 km |
 
 ### Kilometre Bazli Hatirlatmalar
@@ -918,7 +675,6 @@ Sistem asagidaki kurallara gore hatirlatma gonderir:
 |------------|-------------------|
 | Yag degisimi | Her 10.000 km |
 | Filtre degisimi | Her 15.000 km |
-| Lastik rotasyonu | Her 10.000 km |
 | Bakim servisi | Her 15.000-20.000 km |
 
 ### Hatirlatma Mesaji Ornekleri
@@ -926,8 +682,6 @@ Sistem asagidaki kurallara gore hatirlatma gonderir:
 "Son bakiminizdan bu yana 45 gun gecti. Yeni bir bakim analizi yapmanizi oneririz."
 
 "Araciniz son bakimdan bu yana 5.000 km yol aldi. Yag seviyesi kontrolu onerilir."
-
-"Lastik kontrolu zamani! Son kontrolden bu yana 3 ay gecti."
 ```
 
 ---
@@ -952,7 +706,6 @@ Gercek kullanicilarla test edilecek.
 
 | Metrik | Hedef | Olcum Yontemi |
 |--------|-------|---------------|
-| Lastik Analiz Dogrulugu | >85% | Gercek olcum karsilastirma |
 | Yanlis Pozitif Orani | <10% | Manuel dogrulama |
 | Kullanici Memnuniyeti | >4/5 | Anket |
 | Rapor Anlasilirlik | >90% | Kullanici testi |
@@ -970,4 +723,217 @@ Gercek kullanicilarla test edilecek.
 
 ---
 
-*Son Guncelleme: Aralik 2025*
+## Rapor JSON Formati
+
+Bakim analizi sonucunda olusturulan rapor asagidaki JSON yapisini kullanir.
+Ornek dosya: `data/sample_report.json`
+
+### Ana Yapi
+
+```
+{
+  report_id          : Benzersiz rapor kimliği (RPT-YYYY-NNNNNN)
+  generated_at       : Rapor olusturma zamani (ISO 8601)
+  vehicle            : Arac bilgileri
+  overall_summary    : Genel ozet ve saglik puani
+  part_analyses[]    : Her parcanin detayli analizi
+  recommendations    : Bakim onerileri
+  next_maintenance   : Sonraki bakim tarihi/km
+  tips               : Kullanici icin ipuclari
+  metadata           : Teknik bilgiler
+}
+```
+
+### Saglik Puani (health_score)
+
+| Puan Araligi | Durum | Renk | Aciklama |
+|--------------|-------|------|----------|
+| 90-100 | `good` | Yesil | Mukemmel durumda |
+| 70-89 | `attention` | Sari | Dikkat gerektiriyor |
+| 0-69 | `critical` | Kirmizi | Acil mudahale gerekli |
+
+### overall_summary Alani
+
+```json
+{
+  "health_score": 82,
+  "status": "good | attention | critical",
+  "status_text": "Kullaniciya gosterilecek Turkce mesaj",
+  "analyzed_parts_count": 5,
+  "good_count": 3,
+  "attention_count": 2,
+  "critical_count": 0
+}
+```
+
+### part_analyses[] Alani
+
+Her analiz edilen parca icin:
+
+```json
+{
+  "part_id": "engine_bay",
+  "part_name": "Motor Bolgesi",
+  "order": 1,
+  "health_score": 75,
+  "status": "attention",
+  "analysis": {
+    // Parcaya ozel analiz detaylari
+    // Her parca tipi icin farkli alanlar
+  },
+  "findings": [
+    {
+      "type": "good | attention | critical",
+      "component": "Alt bilesen adi",
+      "description": "Tespit edilen durum",
+      "recommendation": "Onerilen aksiyon"
+    }
+  ],
+  "confidence": 0.85
+}
+```
+
+### Parca Bazli Analiz Detaylari
+
+#### Motor Bolgesi (engine_bay)
+```json
+{
+  "overall_cleanliness": "clean | dusty | dirty",
+  "leak_detection": {
+    "detected": true | false,
+    "type": "oil | coolant | brake_fluid | none",
+    "severity": "none | minor | moderate | severe"
+  },
+  "visible_components": {
+    "battery_terminals": "good | oxidized | corroded | not_visible",
+    "belts": "good | worn | cracked | not_visible",
+    "hoses": "good | aged | cracked | not_visible"
+  },
+  "fluid_levels": {
+    "coolant": "full | adequate | low | not_visible",
+    "washer": "full | adequate | low | not_visible",
+    "brake_fluid": "full | adequate | low | not_visible"
+  }
+}
+```
+
+#### Farlar (headlights / taillights)
+```json
+{
+  "lens_condition": "clear | cloudy | yellowed | damaged",
+  "cleanliness": "clean | dirty",
+  "visible_issues": ["sorun1", "sorun2"]
+}
+```
+
+#### Gosterge Paneli (dashboard)
+```json
+{
+  "odometer_reading": 45230,
+  "fuel_level": "full | 3/4 | half | 1/4 | low | not_visible",
+  "warning_lights": [
+    {
+      "type": "uyari_turu",
+      "color": "red | yellow | green",
+      "description": "aciklama"
+    }
+  ],
+  "critical_warnings": true | false
+}
+```
+
+#### Egzoz (exhaust)
+```json
+{
+  "overall_condition": "good | fair | poor",
+  "rust_corrosion": {
+    "detected": true | false,
+    "severity": "none | minor | moderate | severe",
+    "description": "aciklama"
+  },
+  "soot_buildup": "none | light | moderate | heavy",
+  "physical_damage": {
+    "detected": true | false,
+    "description": "aciklama veya null"
+  }
+}
+```
+
+#### Sarj Portu (charging_port) - PHEV/BEV
+```json
+{
+  "port_cleanliness": "clean | dusty | dirty",
+  "pin_condition": "good | oxidized | damaged | not_visible",
+  "cap_condition": "good | damaged",
+  "visible_damage": true | false
+}
+```
+
+### recommendations Alani
+
+```json
+{
+  "immediate": [
+    // Hemen yapilmasi gereken islemler (kritik)
+  ],
+  "soon": [
+    // Yakin zamanda yapilmasi gereken islemler
+    {
+      "action": "Yapilacak islem",
+      "reason": "Neden gerekli",
+      "estimated_priority": "high | medium | low"
+    }
+  ],
+  "scheduled": [
+    // Planlanan bakimda yapilacaklar
+    {
+      "action": "Yapilacak islem",
+      "reason": "Neden gerekli",
+      "recommended_km": 50000
+    }
+  ]
+}
+```
+
+### metadata Alani
+
+```json
+{
+  "analysis_duration_ms": 4500,
+  "model_used": "gemini-2.0-flash",
+  "photos_analyzed": 5,
+  "average_confidence": 0.87
+}
+```
+
+### Frontend Kullanim Ornekleri
+
+#### Saglik Puani Gostergesi
+```
+[████████████████████░░░░] 82%
+Araciniz iyi durumda
+```
+
+#### Parca Listesi
+```
+✅ On Farlar .............. 90%
+✅ Arka Stoplar ........... 95%
+✅ Gosterge Paneli ........ 85%
+⚠️ Motor Bolgesi .......... 75%
+⚠️ Egzoz .................. 70%
+```
+
+#### Bulgular Karti
+```
+⚠️ Aku terminalleri
+   Hafif oksidasyon mevcut
+   → Terminal temizligi yapilmali
+
+⚠️ Cam suyu
+   Seviye dusuk
+   → Cam suyu eklenmeli
+```
+
+---
+
+*Son Guncelleme: Ocak 2026*

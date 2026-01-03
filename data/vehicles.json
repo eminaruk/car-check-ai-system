@@ -336,32 +336,43 @@
   "categories": {
     "ICE": {
       "name": "Icten Yanmali Motor",
-      "fuel_types": ["benzin", "dizel", "lpg", "cng"],
-      "photo_count": 10,
+      "fuel_types": [
+        "benzin",
+        "dizel",
+        "lpg",
+        "cng"
+      ],
+      "photo_count": 6,
       "has_engine_bay": true,
       "has_exhaust": true,
       "has_charging_port": false
     },
     "HEV": {
       "name": "Hibrit",
-      "fuel_types": ["hibrit"],
-      "photo_count": 10,
+      "fuel_types": [
+        "hibrit"
+      ],
+      "photo_count": 6,
       "has_engine_bay": true,
       "has_exhaust": true,
       "has_charging_port": false
     },
     "PHEV": {
       "name": "Plug-in Hibrit",
-      "fuel_types": ["plugin_hibrit"],
-      "photo_count": 11,
+      "fuel_types": [
+        "plugin_hibrit"
+      ],
+      "photo_count": 7,
       "has_engine_bay": true,
       "has_exhaust": true,
       "has_charging_port": true
     },
     "BEV": {
       "name": "Tam Elektrikli",
-      "fuel_types": ["elektrik"],
-      "photo_count": 9,
+      "fuel_types": [
+        "elektrik"
+      ],
+      "photo_count": 6,
       "has_engine_bay": false,
       "has_exhaust": false,
       "has_charging_port": true
@@ -369,59 +380,168 @@
   },
   "photo_requirements": {
     "ICE": [
-      {"order": 1, "id": "tire_front_left", "name": "Sol On Lastik", "required": true},
-      {"order": 2, "id": "tire_front_right", "name": "Sag On Lastik", "required": true},
-      {"order": 3, "id": "tire_rear_left", "name": "Sol Arka Lastik", "required": true},
-      {"order": 4, "id": "tire_rear_right", "name": "Sag Arka Lastik", "required": true},
-      {"order": 5, "id": "engine_bay", "name": "Motor Bolgesi", "required": true},
-      {"order": 6, "id": "headlights", "name": "On Farlar", "required": true},
-      {"order": 7, "id": "taillights", "name": "Arka Stoplar", "required": true},
-      {"order": 8, "id": "dashboard", "name": "Gosterge Paneli", "required": true},
-      {"order": 9, "id": "exhaust", "name": "Egzoz", "required": true},
-      {"order": 10, "id": "oil_dipstick", "name": "Yag Cubugu", "required": false}
+      {
+        "order": 1,
+        "id": "engine_bay",
+        "name": "Motor Bolgesi",
+        "required": true
+      },
+      {
+        "order": 2,
+        "id": "headlights",
+        "name": "On Farlar",
+        "required": true
+      },
+      {
+        "order": 3,
+        "id": "taillights",
+        "name": "Arka Stoplar",
+        "required": true
+      },
+      {
+        "order": 4,
+        "id": "dashboard",
+        "name": "Gosterge Paneli",
+        "required": true
+      },
+      {
+        "order": 5,
+        "id": "exhaust",
+        "name": "Egzoz",
+        "required": true
+      },
+      {
+        "order": 6,
+        "id": "oil_dipstick",
+        "name": "Yag Cubugu",
+        "required": false
+      }
     ],
     "HEV": [
-      {"order": 1, "id": "tire_front_left", "name": "Sol On Lastik", "required": true},
-      {"order": 2, "id": "tire_front_right", "name": "Sag On Lastik", "required": true},
-      {"order": 3, "id": "tire_rear_left", "name": "Sol Arka Lastik", "required": true},
-      {"order": 4, "id": "tire_rear_right", "name": "Sag Arka Lastik", "required": true},
-      {"order": 5, "id": "engine_bay", "name": "Motor Bolgesi", "required": true},
-      {"order": 6, "id": "headlights", "name": "On Farlar", "required": true},
-      {"order": 7, "id": "taillights", "name": "Arka Stoplar", "required": true},
-      {"order": 8, "id": "dashboard", "name": "Gosterge Paneli", "required": true},
-      {"order": 9, "id": "exhaust", "name": "Egzoz", "required": true},
-      {"order": 10, "id": "hybrid_cooling", "name": "Hibrit Batarya Sogutucu", "required": false}
+      {
+        "order": 1,
+        "id": "engine_bay",
+        "name": "Motor Bolgesi",
+        "required": true
+      },
+      {
+        "order": 2,
+        "id": "headlights",
+        "name": "On Farlar",
+        "required": true
+      },
+      {
+        "order": 3,
+        "id": "taillights",
+        "name": "Arka Stoplar",
+        "required": true
+      },
+      {
+        "order": 4,
+        "id": "dashboard",
+        "name": "Gosterge Paneli",
+        "required": true
+      },
+      {
+        "order": 5,
+        "id": "exhaust",
+        "name": "Egzoz",
+        "required": true
+      },
+      {
+        "order": 6,
+        "id": "hybrid_cooling",
+        "name": "Hibrit Batarya Sogutucu",
+        "required": false
+      }
     ],
     "PHEV": [
-      {"order": 1, "id": "tire_front_left", "name": "Sol On Lastik", "required": true},
-      {"order": 2, "id": "tire_front_right", "name": "Sag On Lastik", "required": true},
-      {"order": 3, "id": "tire_rear_left", "name": "Sol Arka Lastik", "required": true},
-      {"order": 4, "id": "tire_rear_right", "name": "Sag Arka Lastik", "required": true},
-      {"order": 5, "id": "engine_bay", "name": "Motor Bolgesi", "required": true},
-      {"order": 6, "id": "headlights", "name": "On Farlar", "required": true},
-      {"order": 7, "id": "taillights", "name": "Arka Stoplar", "required": true},
-      {"order": 8, "id": "dashboard", "name": "Gosterge Paneli", "required": true},
-      {"order": 9, "id": "exhaust", "name": "Egzoz", "required": true},
-      {"order": 10, "id": "charging_port_closed", "name": "Sarj Portu (Kapali)", "required": true},
-      {"order": 11, "id": "charging_port_open", "name": "Sarj Portu (Acik)", "required": true}
+      {
+        "order": 1,
+        "id": "engine_bay",
+        "name": "Motor Bolgesi",
+        "required": true
+      },
+      {
+        "order": 2,
+        "id": "headlights",
+        "name": "On Farlar",
+        "required": true
+      },
+      {
+        "order": 3,
+        "id": "taillights",
+        "name": "Arka Stoplar",
+        "required": true
+      },
+      {
+        "order": 4,
+        "id": "dashboard",
+        "name": "Gosterge Paneli",
+        "required": true
+      },
+      {
+        "order": 5,
+        "id": "exhaust",
+        "name": "Egzoz",
+        "required": true
+      },
+      {
+        "order": 6,
+        "id": "charging_port_closed",
+        "name": "Sarj Portu (Kapali)",
+        "required": true
+      },
+      {
+        "order": 7,
+        "id": "charging_port_open",
+        "name": "Sarj Portu (Acik)",
+        "required": true
+      }
     ],
     "BEV": [
-      {"order": 1, "id": "tire_front_left", "name": "Sol On Lastik", "required": true},
-      {"order": 2, "id": "tire_front_right", "name": "Sag On Lastik", "required": true},
-      {"order": 3, "id": "tire_rear_left", "name": "Sol Arka Lastik", "required": true},
-      {"order": 4, "id": "tire_rear_right", "name": "Sag Arka Lastik", "required": true},
-      {"order": 5, "id": "frunk_power_electronics", "name": "On Bolum (Frunk/Guc Elektronigi)", "required": true},
-      {"order": 6, "id": "headlights", "name": "On Farlar", "required": true},
-      {"order": 7, "id": "taillights", "name": "Arka Stoplar", "required": true},
-      {"order": 8, "id": "dashboard", "name": "Gosterge Paneli / Ekran", "required": true},
-      {"order": 9, "id": "charging_port_closed", "name": "Sarj Portu (Kapali)", "required": true},
-      {"order": 10, "id": "charging_port_open", "name": "Sarj Portu (Acik)", "required": true}
+      {
+        "order": 1,
+        "id": "frunk_power_electronics",
+        "name": "On Bolum (Frunk/Guc Elektronigi)",
+        "required": true
+      },
+      {
+        "order": 2,
+        "id": "headlights",
+        "name": "On Farlar",
+        "required": true
+      },
+      {
+        "order": 3,
+        "id": "taillights",
+        "name": "Arka Stoplar",
+        "required": true
+      },
+      {
+        "order": 4,
+        "id": "dashboard",
+        "name": "Gosterge Paneli / Ekran",
+        "required": true
+      },
+      {
+        "order": 5,
+        "id": "charging_port_closed",
+        "name": "Sarj Portu (Kapali)",
+        "required": true
+      },
+      {
+        "order": 6,
+        "id": "charging_port_open",
+        "name": "Sarj Portu (Acik)",
+        "required": true
+      }
     ]
   },
   "metadata": {
-    "version": "1.0.0",
+    "version": "1.1.0",
     "created_at": "2025-12-17",
-    "last_updated": "2025-12-17",
+    "last_updated": "2026-01-03",
     "total_vehicles": 15,
     "categories_count": {
       "ICE": 5,

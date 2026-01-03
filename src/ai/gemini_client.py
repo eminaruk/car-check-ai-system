@@ -10,7 +10,6 @@ from pathlib import Path
 from typing import Optional, Dict, Any
 from datetime import datetime
 
-
 class GeminiVisionClient:
     """Gemini Vision API istemcisi"""
 
@@ -160,68 +159,9 @@ class GeminiVisionClient:
                 "error": str(e)
             }
 
-
 # Analiz Promptlari
 class MaintenancePrompts:
     """Bakim analizi icin prompt sablonlari"""
-
-    @staticmethod
-    def tire_analysis(vehicle_info: Dict[str, Any], tire_position: str) -> str:
-        """Lastik analizi promptu"""
-        return f"""Sen bir arac bakim uzmanlisin. Bu lastik fotografini inceleyerek BAKIM odakli analiz yap.
-
-ARAC BILGISI:
-- Marka: {vehicle_info.get('brand', 'Bilinmiyor')}
-- Model: {vehicle_info.get('model', 'Bilinmiyor')}
-- Yil: {vehicle_info.get('year', 'Bilinmiyor')}
-- Kilometre: {vehicle_info.get('current_km', 'Bilinmiyor')} km
-- Lastik Konumu: {tire_position}
-
-GOREV:
-1. Dis derinligini tahmin et (mm cinsinden)
-2. Asinma paternini belirle (even/center/edge/cupping)
-3. Yan duvar durumunu kontrol et
-4. Kalan kullanim omrunu tahmin et (km)
-5. Bakim onerisi sun
-
-DIS DERINLIGI REFERANS:
-- 8mm: Yeni lastik
-- 5-7mm: Cok iyi durumda
-- 4-5mm: Iyi durumda, takipte tut
-- 3-4mm: Dikkat, degisim planlenmali
-- 1.6mm alti: Kritik, hemen degistirilmeli
-
-ASINMA PATERNLERI:
-- even: Esit asinma (normal)
-- center: Ortadan asinma (fazla hava basinci)
-- edge: Kenarlardan asinma (dusuk hava basinci)
-- cupping: Dalgali asinma (balans/rot sorunu)
-
-ONEMLI:
-- Bu bir BAKIM sistemi, hasar degerlendirmesi DEGIL
-- Sadece gorulebilen durumu raporla
-- Turkce ve anlasilir aciklamalar yap
-
-CIKTI FORMATI (JSON):
-{{
-    "tire_position": "{tire_position}",
-    "tread_depth_mm": <sayi>,
-    "tread_status": "good | attention | critical",
-    "wear_pattern": {{
-        "type": "even | center | edge | cupping",
-        "description": "<aciklama>"
-    }},
-    "sidewall_condition": "good | aged | cracked",
-    "estimated_remaining_km": <sayi>,
-    "maintenance_recommendation": {{
-        "action": "none | rotation | replacement | pressure_check",
-        "urgency": "none | soon | immediate",
-        "description": "<Turkce aciklama>"
-    }},
-    "confidence": <0-1 arasi>
-}}
-
-Sadece JSON formatinda yanit ver, baska bir sey yazma."""
 
     @staticmethod
     def engine_bay_analysis(vehicle_info: Dict[str, Any]) -> str:
@@ -411,7 +351,6 @@ CIKTI FORMATI (JSON):
 }}
 
 Sadece JSON formatinda yanit ver, baska bir sey yazma."""
-
 
 # Test fonksiyonu
 def test_connection(api_key: str) -> bool:
