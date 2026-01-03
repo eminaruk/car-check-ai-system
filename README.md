@@ -181,15 +181,102 @@ main                        # Production-ready kod
 # Repoyu klonla
 git clone https://github.com/eminaruk/car-check-ai-system.git
 cd car-check-ai-system
-
-# Backend kurulumu (detaylar backend/README.md'de)
-cd backend
-# ...
-
-# Frontend kurulumu (detaylar frontend/README.md'de)
-cd frontend
-# ...
 ```
+
+## Firebase Kurulumu
+
+Proje veritabani olarak **Firebase Cloud Firestore** kullanmaktadir.
+
+### Gereksinimler
+
+- Node.js >= 18.x
+- Java JDK >= 21 (Emulator icin)
+- Firebase CLI
+
+### Firebase CLI Kurulumu
+
+```bash
+# Firebase CLI'yi global olarak yukle
+npm install -g firebase-tools
+
+# Firebase'e giris yap
+firebase login
+```
+
+### Projeyi Baslat
+
+```bash
+# Bagimliliklari yukle
+npm install
+
+# Firebase projesine baglan
+firebase use carcheck-1967f
+```
+
+### Yerel Gelistirme (Emulator)
+
+Emulator, Firebase'in yerel kopyasidir. Gercek veritabanina dokunmadan test yapabilirsiniz.
+
+**Terminal 1 - Emulator'u baslat:**
+```bash
+npm run emulator
+```
+
+**Terminal 2 - Test verilerini yukle:**
+```bash
+npm run seed
+```
+
+Emulator UI: http://127.0.0.1:4000
+
+### Test Giris Bilgileri
+
+| Email | Sifre | Aciklama |
+|-------|-------|----------|
+| ahmet@test.com | test123456 | Premium kullanici, 2 arac |
+| mehmet@test.com | test123456 | Ucretsiz kullanici, 1 arac |
+| ayse@test.com | test123456 | Bos profil |
+
+### Emulator Portlari
+
+| Servis | Port | UI |
+|--------|------|-----|
+| Auth | 9099 | http://127.0.0.1:4000/auth |
+| Firestore | 8080 | http://127.0.0.1:4000/firestore |
+| Storage | 9199 | http://127.0.0.1:4000/storage |
+
+### Kullanilabilir Komutlar
+
+```bash
+npm run emulator       # Emulator'u baslat
+npm run seed           # Test verilerini yukle
+npm run deploy         # Firebase'e deploy et (production)
+npm run deploy:rules   # Sadece kurallari deploy et
+npm run deploy:indexes # Sadece indeksleri deploy et
+```
+
+### Mobile App'te Emulator Kullanimi
+
+```typescript
+import firestore from '@react-native-firebase/firestore';
+import auth from '@react-native-firebase/auth';
+import storage from '@react-native-firebase/storage';
+
+if (__DEV__) {
+  // Android emulator icin 10.0.2.2, iOS simulator icin localhost
+  const host = Platform.OS === 'android' ? '10.0.2.2' : 'localhost';
+
+  auth().useEmulator(`http://${host}:9099`);
+  firestore().useEmulator(host, 8080);
+  storage().useEmulator(host, 9199);
+}
+```
+
+### Dokumantasyon
+
+Detayli Firebase dokumantasyonu icin:
+- `docs/firebase-database-schema.md` - Veritabani sema yapisi
+- `docs/firebase-setup-guide.md` - Detayli kurulum rehberi
 
 ## Ekip Yapisi
 

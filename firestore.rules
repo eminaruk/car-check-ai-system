@@ -1,0 +1,170 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ============================================
+    // YARDIMCI FONKSIYONLAR
+    // ============================================
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function getUserData() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
+    }
+
+    function isVehicleOwner(vehicleId) {
+      return isAuthenticated() &&
+        get(/databases/$(database)/documents/vehicles/$(vehicleId)).data.ownerId == request.auth.uid;
+    }
+
+    function isValidVehicleCategory(category) {
+      return category in ['ICE', 'HEV', 'PHEV', 'BEV'];
+    }
+
+    // ============================================
+    // USERS KOLEKSIYONU
+    // ============================================
+
+    match /users/{userId} {
+      // Kullanici kendi profilini okuyabilir
+      allow read: if isOwner(userId);
+
+      // Kullanici kendi profilini olusturabilir (sadece kayit sirasinda)
+      allow create: if isOwner(userId) &&
+        request.resource.data.keys().hasAll(['email', 'displayName', 'createdAt']) &&
+        request.resource.data.accountStatus == 'active';
+
+      // Kullanici kendi profilini guncelleyebilir (bazi alanlar haric)
+      allow update: if isOwner(userId) &&
+        !request.resource.data.diff(resource.data).affectedKeys().hasAny(['uid', 'createdAt', 'subscription']);
+
+      // Silme yasak (soft delete kullanilacak)
+      allow delete: if false;
+
+      // Kayitli konumlar alt koleksiyonu
+      match /saved_locations/{locationId} {
+        allow read, write: if isOwner(userId);
+      }
+    }
+
+    // ============================================
+    // VEHICLES KOLEKSIYONU
+    // ============================================
+
+    match /vehicles/{vehicleId} {
+      // Sadece arac sahibi okuyabilir
+      allow read: if isAuthenticated() &&
+        resource.data.ownerId == request.auth.uid;
+
+      // Arac olusturma (sahiplik kontrolu)
+      allow create: if isAuthenticated() &&
+        request.resource.data.ownerId == request.auth.uid &&
+        isValidVehicleCategory(request.resource.data.category) &&
+        request.resource.data.keys().hasAll(['plate', 'brand', 'model', 'year', 'category']);
+
+      // Arac guncelleme (sahiplik degistirilemez)
+      allow update: if isVehicleOwner(vehicleId) &&
+        !request.resource.data.diff(resource.data).affectedKeys().hasAny(['ownerId', 'createdAt']);
+
+      // Arac silme (veya soft delete)
+      allow delete: if isVehicleOwner(vehicleId);
+
+      // Hatirlaticilar alt koleksiyonu
+      match /reminders/{reminderId} {
+        allow read, write: if isVehicleOwner(vehicleId);
+      }
+
+      // Bakim gecmisi alt koleksiyonu
+      match /maintenance_history/{recordId} {
+        allow read, write: if isVehicleOwner(vehicleId);
+      }
+    }
+
+    // ============================================
+    // MAINTENANCE REPORTS KOLEKSIYONU
+    // ============================================
+
+    match /maintenance_reports/{reportId} {
+      // Rapor sahibi veya paylasilan raporlar okunabilir
+      allow read: if isAuthenticated() &&
+        (resource.data.userId == request.auth.uid || resource.data.isShared == true);
+
+      // Rapor olusturma (normalde Cloud Functions yapar, ama client da yapabilir)
+      allow create: if isAuthenticated() &&
+        request.resource.data.userId == request.auth.uid &&
+        request.resource.data.keys().hasAll(['vehicleId', 'generatedAt', 'status']);
+
+      // Rapor guncelleme (sadece belirli alanlar)
+      allow update: if isAuthenticated() &&
+        resource.data.userId == request.auth.uid &&
+        request.resource.data.diff(resource.data).affectedKeys()
+          .hasOnly(['isShared', 'shareToken', 'sharedAt']);
+
+      // Rapor silinemez
+      allow delete: if false;
+
+      // Rapor fotograflari alt koleksiyonu
+      match /photos/{photoId} {
+        allow read: if isAuthenticated() &&
+          get(/databases/$(database)/documents/maintenance_reports/$(reportId)).data.userId == request.auth.uid;
+        allow create: if isAuthenticated() &&
+          get(/databases/$(database)/documents/maintenance_reports/$(reportId)).data.userId == request.auth.uid;
+        allow update, delete: if false;
+      }
+    }
+
+    // ============================================
+    // NOTIFICATIONS KOLEKSIYONU
+    // ============================================
+
+    match /notifications/{notificationId} {
+      // Kullanici kendi bildirimlerini okuyabilir
+      allow read: if isAuthenticated() &&
+        resource.data.userId == request.auth.uid;
+
+      // Kullanici sadece okundu durumunu guncelleyebilir
+      allow update: if isAuthenticated() &&
+        resource.data.userId == request.auth.uid &&
+        request.resource.data.diff(resource.data).affectedKeys().hasOnly(['readAt', 'status']);
+
+      // Olusturma ve silme yasak (Cloud Functions yapar)
+      allow create, delete: if false;
+    }
+
+    // ============================================
+    // FEEDBACK KOLEKSIYONU
+    // ============================================
+
+    match /feedback/{feedbackId} {
+      // Kullanici kendi geri bildirimlerini okuyabilir
+      allow read: if isAuthenticated() &&
+        resource.data.userId == request.auth.uid;
+
+      // Geri bildirim olusturma
+      allow create: if isAuthenticated() &&
+        request.resource.data.userId == request.auth.uid &&
+        request.resource.data.keys().hasAll(['type', 'message', 'createdAt']);
+
+      // Guncelleme ve silme yasak
+      allow update, delete: if false;
+    }
+
+    // ============================================
+    // APP SETTINGS KOLEKSIYONU (Public Read)
+    // ============================================
+
+    match /app_settings/{settingId} {
+      // Herkes okuyabilir (abonelik planlari, arac katalogu vs.)
+      allow read: if true;
+
+      // Yazma yasak (Admin SDK ile yapilir)
+      allow write: if false;
+    }
+  }
+}
