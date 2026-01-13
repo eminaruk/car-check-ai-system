@@ -1,0 +1,91 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    // ============================================
+    // YARDIMCI FONKSIYONLAR
+    // ============================================
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return request.auth.uid == userId;
+    }
+
+    function isValidImageType() {
+      return request.resource.contentType.matches('image/.*');
+    }
+
+    function isValidFileSize(maxSizeMB) {
+      return request.resource.size < maxSizeMB * 1024 * 1024;
+    }
+
+    // ============================================
+    // KULLANICI DOSYALARI
+    // ============================================
+
+    match /users/{userId}/{allPaths=**} {
+      // Kullanici kendi dosyalarini okuyabilir
+      allow read: if isAuthenticated() && isOwner(userId);
+
+      // Kullanici kendi dosyalarini yukleyebilir (max 5MB, sadece resim)
+      allow write: if isAuthenticated() &&
+        isOwner(userId) &&
+        isValidImageType() &&
+        isValidFileSize(5);
+    }
+
+    // ============================================
+    // ARAC FOTOGRAFLARI
+    // ============================================
+
+    match /vehicles/{vehicleId}/{allPaths=**} {
+      // Authenticated kullanicilar okuyabilir
+      allow read: if isAuthenticated();
+
+      // Sadece authenticated kullanicilar yukleyebilir (max 10MB)
+      allow write: if isAuthenticated() &&
+        isValidImageType() &&
+        isValidFileSize(10);
+    }
+
+    // ============================================
+    // ANALIZ FOTOGRAFLARI
+    // ============================================
+
+    match /analysis_photos/{reportId}/{allPaths=**} {
+      // Authenticated kullanicilar okuyabilir
+      allow read: if isAuthenticated();
+
+      // Analiz fotograflari yuklenebilir (max 15MB)
+      allow write: if isAuthenticated() &&
+        isValidImageType() &&
+        isValidFileSize(15);
+    }
+
+    // ============================================
+    // BAKIM DOKUMANLARI
+    // ============================================
+
+    match /maintenance_documents/{vehicleId}/{allPaths=**} {
+      allow read: if isAuthenticated();
+
+      // PDF ve resim kabul edilir (max 20MB)
+      allow write: if isAuthenticated() &&
+        (request.resource.contentType.matches('image/.*') ||
+         request.resource.contentType == 'application/pdf') &&
+        isValidFileSize(20);
+    }
+
+    // ============================================
+    // GERI BILDIRIM EKLERI
+    // ============================================
+
+    match /feedback_attachments/{feedbackId}/{allPaths=**} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated() && isValidFileSize(10);
+    }
+  }
+}
