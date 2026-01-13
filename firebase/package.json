@@ -1,11 +1,10 @@
 {
-  "name": "car-check-ai-system",
+  "name": "carcheck-firebase",
   "version": "1.0.0",
-  "description": "CarCheck AI - Arac bakim takip ve analiz sistemi",
+  "description": "CarCheck AI - Firebase Emulator ve Seed",
   "scripts": {
-    "emulator": "firebase emulators:start",
+    "emulator": "firebase emulators:start --import=./emulator-data --export-on-exit=./emulator-data",
     "seed": "node scripts/seed-emulator.js",
-    "emulator:seed": "npm run seed",
     "deploy": "firebase deploy --only firestore,storage",
     "deploy:rules": "firebase deploy --only firestore:rules,storage",
     "deploy:indexes": "firebase deploy --only firestore:indexes"

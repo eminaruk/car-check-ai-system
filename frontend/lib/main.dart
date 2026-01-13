@@ -15,8 +15,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: const ColorScheme.light(
-          primary: Color(0xFF2196F3), // Blue
-          secondary: Color(0xFF03A9F4), // Light Blue
+          primary: Color(0xFF2196F3),
+          secondary: Color(0xFF03A9F4),
         ),
         useMaterial3: true,
       ),
@@ -24,4 +24,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-

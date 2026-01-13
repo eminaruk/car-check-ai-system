@@ -7,7 +7,7 @@
 node_modules/
 
 # Firebase
-emulator-data/
+firebase/emulator-data/
 *-debug.log
 firebase-debug.log
 firestore-debug.log
@@ -37,3 +37,4 @@ logs/
 tmp/
 temp/
 *.tmp
+tmpclaude-*

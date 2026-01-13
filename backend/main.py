@@ -1,9 +1,20 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from contextlib import asynccontextmanager
 
 from app.routers import vehicles_router, checks_router
+from app.services import initialize_firebase
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Uygulama baslangicinda Firebase'i baslat"""
+    initialize_firebase()
+    yield
+
 
 app = FastAPI(
+    lifespan=lifespan,
     title="CarCheck AI API",
     description="Arac bakim ve ariza tespit sistemi backend API",
     version="0.1.0"

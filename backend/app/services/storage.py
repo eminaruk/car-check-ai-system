@@ -1,116 +1,197 @@
-import json
 from datetime import datetime
 from typing import List, Optional
-from pathlib import Path
-
-from ..config import VEHICLES_FILE, CHECKS_FILE
+from .firebase_service import get_firestore
 
 
 class StorageService:
-    @staticmethod
-    def _read_vehicles() -> List[dict]:
-        if not VEHICLES_FILE.exists():
-            return []
+    """Firestore tabanli depolama servisi"""
 
-        with open(VEHICLES_FILE, "r", encoding="utf-8") as f:
-            try:
-                return json.load(f)
-            except json.JSONDecodeError:
-                return []
-
-    @staticmethod
-    def _write_vehicles(vehicles: List[dict]) -> None:
-        with open(VEHICLES_FILE, "w", encoding="utf-8") as f:
-            json.dump(vehicles, f, ensure_ascii=False, indent=2)
+    # ============================================
+    # VEHICLES
+    # ============================================
 
     @classmethod
     def get_all_vehicles(cls) -> List[dict]:
-        return cls._read_vehicles()
+        """Tum araclari getir"""
+        db = get_firestore()
+        vehicles_ref = db.collection('vehicles')
+
+        # Sadece aktif araclari getir
+        docs = vehicles_ref.where('status', '==', 'active').order_by(
+            'createdAt', direction='DESCENDING'
+        ).stream()
+
+        vehicles = []
+        for doc in docs:
+            vehicle = doc.to_dict()
+            vehicle['id'] = doc.id
+            # currentKm -> km donusumu (frontend uyumu)
+            if 'currentKm' in vehicle:
+                vehicle['km'] = vehicle.pop('currentKm')
+            vehicles.append(vehicle)
+
+        return vehicles
 
     @classmethod
     def get_vehicle_by_id(cls, vehicle_id: str) -> Optional[dict]:
-        vehicles = cls._read_vehicles()
-        for vehicle in vehicles:
-            if vehicle.get("id") == vehicle_id:
-                return vehicle
-        return None
+        """Belirli bir araci getir"""
+        db = get_firestore()
+        doc = db.collection('vehicles').document(vehicle_id).get()
 
-    @classmethod
-    def create_vehicle(cls, vehicle_data: dict) -> dict:
-        vehicles = cls._read_vehicles()
+        if not doc.exists:
+            return None
 
-        vehicle = {
-            "id": str(int(datetime.now().timestamp() * 1000)),
-            "createdAt": datetime.now().isoformat(),
-            "updatedAt": None,
-            **vehicle_data
-        }
+        vehicle = doc.to_dict()
+        vehicle['id'] = doc.id
+        if 'currentKm' in vehicle:
+            vehicle['km'] = vehicle.pop('currentKm')
 
-        vehicles.append(vehicle)
-        cls._write_vehicles(vehicles)
         return vehicle
 
     @classmethod
+    def create_vehicle(cls, vehicle_data: dict) -> dict:
+        """Yeni arac ekle"""
+        db = get_firestore()
+
+        # Frontend'den gelen km -> Firestore currentKm
+        if 'km' in vehicle_data:
+            vehicle_data['currentKm'] = vehicle_data.pop('km')
+
+        # Kategori belirle
+        fuel_type = vehicle_data.get('fuelType', '')
+        vehicle_data['category'] = cls._get_category_from_fuel_type(fuel_type)
+
+        # Firestore alanlari
+        vehicle_data['status'] = 'active'
+        vehicle_data['createdAt'] = datetime.now()
+        vehicle_data['updatedAt'] = datetime.now()
+
+        # Firestore'a ekle
+        doc_ref = db.collection('vehicles').add(vehicle_data)
+        vehicle_id = doc_ref[1].id
+
+        # Eklenen aracu dondur
+        vehicle_data['id'] = vehicle_id
+        if 'currentKm' in vehicle_data:
+            vehicle_data['km'] = vehicle_data.pop('currentKm')
+
+        return vehicle_data
+
+    @classmethod
     def update_vehicle(cls, vehicle_id: str, update_data: dict) -> Optional[dict]:
-        vehicles = cls._read_vehicles()
+        """Arac guncelle"""
+        db = get_firestore()
+        doc_ref = db.collection('vehicles').document(vehicle_id)
 
-        for i, vehicle in enumerate(vehicles):
-            if vehicle.get("id") == vehicle_id:
-                update_data = {k: v for k, v in update_data.items() if v is not None}
-                vehicles[i] = {
-                    **vehicle,
-                    **update_data,
-                    "updatedAt": datetime.now().isoformat()
-                }
-                cls._write_vehicles(vehicles)
-                return vehicles[i]
+        # Mevcut dokuman var mi kontrol et
+        if not doc_ref.get().exists:
+            return None
 
-        return None
+        # km -> currentKm donusumu
+        if 'km' in update_data:
+            update_data['currentKm'] = update_data.pop('km')
+
+        # Kategori guncelle
+        if 'fuelType' in update_data:
+            update_data['category'] = cls._get_category_from_fuel_type(
+                update_data['fuelType']
+            )
+
+        # updatedAt ekle
+        update_data['updatedAt'] = datetime.now()
+
+        # None degerleri cikar
+        update_data = {k: v for k, v in update_data.items() if v is not None}
+
+        # Guncelle
+        doc_ref.update(update_data)
+
+        # Guncellenmis aracu dondur
+        return cls.get_vehicle_by_id(vehicle_id)
 
     @classmethod
     def delete_vehicle(cls, vehicle_id: str) -> bool:
-        vehicles = cls._read_vehicles()
-        initial_count = len(vehicles)
+        """Arac sil (soft delete)"""
+        db = get_firestore()
+        doc_ref = db.collection('vehicles').document(vehicle_id)
 
-        vehicles = [v for v in vehicles if v.get("id") != vehicle_id]
+        if not doc_ref.get().exists:
+            return False
 
-        if len(vehicles) < initial_count:
-            cls._write_vehicles(vehicles)
-            return True
+        # Soft delete - status'u deleted yap
+        doc_ref.update({
+            'status': 'deleted',
+            'updatedAt': datetime.now()
+        })
 
-        return False
+        return True
 
-    # Check methods
-    @staticmethod
-    def _read_checks() -> List[dict]:
-        if not CHECKS_FILE.exists():
-            return []
-
-        with open(CHECKS_FILE, "r", encoding="utf-8") as f:
-            try:
-                return json.load(f)
-            except json.JSONDecodeError:
-                return []
-
-    @staticmethod
-    def _write_checks(checks: List[dict]) -> None:
-        with open(CHECKS_FILE, "w", encoding="utf-8") as f:
-            json.dump(checks, f, ensure_ascii=False, indent=2)
+    # ============================================
+    # CHECKS / MAINTENANCE REPORTS
+    # ============================================
 
     @classmethod
     def get_all_checks(cls) -> List[dict]:
-        return cls._read_checks()
+        """Tum checkleri getir"""
+        db = get_firestore()
+        reports_ref = db.collection('maintenance_reports')
+
+        docs = reports_ref.order_by(
+            'generatedAt', direction='DESCENDING'
+        ).stream()
+
+        checks = []
+        for doc in docs:
+            check = doc.to_dict()
+            check['id'] = doc.id
+
+            # generatedAt -> createdAt donusumu (frontend uyumu)
+            if 'generatedAt' in check:
+                generated_at = check['generatedAt']
+                if hasattr(generated_at, 'isoformat'):
+                    check['createdAt'] = generated_at.isoformat()
+                else:
+                    check['createdAt'] = str(generated_at)
+
+            # photoCount hesapla
+            if 'partAnalyses' in check:
+                check['photoCount'] = len(check.get('partAnalyses', []))
+            elif 'photoCount' not in check:
+                check['photoCount'] = 0
+
+            checks.append(check)
+
+        return checks
 
     @classmethod
     def create_check(cls, check_data: dict) -> dict:
-        checks = cls._read_checks()
+        """Yeni check olustur"""
+        db = get_firestore()
 
-        check = {
-            "id": str(int(datetime.now().timestamp() * 1000)),
-            "createdAt": datetime.now().isoformat(),
-            **check_data
+        # Firestore alanlari
+        check_data['generatedAt'] = datetime.now()
+        check_data['status'] = check_data.get('status', 'completed')
+
+        # Firestore'a ekle
+        doc_ref = db.collection('maintenance_reports').add(check_data)
+        check_id = doc_ref[1].id
+
+        # Eklenen checki dondur
+        check_data['id'] = check_id
+        check_data['createdAt'] = check_data['generatedAt'].isoformat()
+
+        return check_data
+
+    # ============================================
+    # HELPER METHODS
+    # ============================================
+
+    @staticmethod
+    def _get_category_from_fuel_type(fuel_type: str) -> str:
+        """Yakit tipinden kategori belirle"""
+        mapping = {
+            'elektrik': 'BEV',
+            'hibrit': 'HEV',
+            'plugin_hibrit': 'PHEV',
         }
-
-        checks.append(check)
-        cls._write_checks(checks)
-        return check
+        return mapping.get(fuel_type, 'ICE')

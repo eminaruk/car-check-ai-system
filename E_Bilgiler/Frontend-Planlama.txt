@@ -1,32 +1,35 @@
 
 
+  Terminal 1 - Firebase Emulator:
+  cd "C:\Users\Emre\Desktop\My programs\Unity\Work\car-check-ai-system\firebase"
+  npm run emulator
 
+  Terminal 2 - Backend:
+  cd "C:\Users\Emre\Desktop\My programs\Unity\Work\car-check-ai-system\backend"
+  uvicorn main:app --reload --host 0.0.0.0 --port 8000
 
-	Backend
-cd "C:\Users\Emre\Desktop\My programs\Unity\Work\car-check-ai-system\backend"
-uvicorn main:app --reload --host 0.0.0.0 --port 8000
+  Terminal 3 - Seed (ilk seferde):
+  cd "C:\Users\Emre\Desktop\My programs\Unity\Work\car-check-ai-system\firebase"
+  npm run seed
 
+  Terminal 4 - Flutter:
+  cd "C:\Users\Emre\Desktop\My programs\Unity\Work\car-check-ai-system\frontend"
+  flutter run -d chrome --web-renderer html
 
-	Flutter
-cd "C:\Users\Emre\Desktop\My programs\Unity\Work\car-check-ai-system\frontend"
-flutter run -d chrome --web-renderer html
+claude --allow-dangerously-skip-permissions 
 
 
 
 ----------------------------- Bitenler ----------------------------------------
 
------------- Versiyon ------- <0.0.1>
-- oluşturulan kodları belirle 
-- backent durumunu incele
-- chech sistemi ve görsel ekleme sırasını belirle
-- i18n dil modeli kullancak şekilde güncelle
 
 
------------- Versiyon ------- <0.0.2>
-- backent kur ve geçici veritabanı oluştur
-- frontend bağlantılarını incele
-- check kısmı geçmiş verileri ve yeni check butonunu barındırsın
-- anasayfadan hızlı check kısmını kaldır 
+------------ Versiyon ------- <0.0.3>
+- Firebase geçişi - storage.py'ı Firebase Firestore ile değiştirmek
+- Firestore’da kullanıcıya bağlı kayıt yapısı
+
+
+
 
 
 
@@ -36,14 +39,16 @@ flutter run -d chrome --web-renderer html
 
 
 - Check sistemi - Araç fotoğrafı yükleme ve analiz API'si
-- Firebase geçişi - storage.py'ı Firebase Firestore ile değiştirmek
+
+
 - Auth sistemi - Firebase Auth entegrasyonu
 
 
-- Server’da token doğrulama
-- Firestore’da kullanıcıya bağlı kayıt yapısı
-- Server’da upload doğrulama (type/size)
 
+
+
+
+----------------------------- Sonrası ------------------------------------
 
 - öğretici kur
 
@@ -144,6 +149,20 @@ If explanation is needed → max 3 bullet points
 
 
 ----------------------------- Eski sürümler -----------------------------------
+
+
+------------ Versiyon ------- <0.0.1>
+- oluşturulan kodları belirle 
+- backent durumunu incele
+- chech sistemi ve görsel ekleme sırasını belirle
+- i18n dil modeli kullancak şekilde güncelle
+
+
+------------ Versiyon ------- <0.0.2>
+- backent kur ve geçici veritabanı oluştur
+- frontend bağlantılarını incele
+- check kısmı geçmiş verileri ve yeni check butonunu barındırsın
+- anasayfadan hızlı check kısmını kaldır 
 
 
 
