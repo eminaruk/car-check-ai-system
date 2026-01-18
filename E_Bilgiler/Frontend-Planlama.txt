@@ -23,6 +23,7 @@ claude --allow-dangerously-skip-permissions
 ------------ Versiyon ------- <0.0.3>
 - Firebase geçişi - storage.py'ı Firebase Firestore ile değiştirmek
 - Firestore’da kullanıcıya bağlı kayıt yapısı
+- dil ve tema özellikleri ekle
 
 
 
@@ -31,6 +32,8 @@ claude --allow-dangerously-skip-permissions
 
 
 ----------------------------- Yapılacaklar ------------------------------------
+
+
 
 - frontend tasarımını iyileştir
 

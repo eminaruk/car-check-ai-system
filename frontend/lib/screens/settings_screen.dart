@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../main.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -75,9 +76,9 @@ class SettingsScreen extends StatelessWidget {
               _SettingsTile(
                 icon: Icons.dark_mode_outlined,
                 title: 'Tema',
-                subtitle: 'Açık',
+                subtitle: _getThemeSubtitle(context),
                 onTap: () {
-                  _showComingSoon(context);
+                  _showThemeDialog(context);
                 },
               ),
             ],
@@ -164,6 +165,72 @@ class SettingsScreen extends StatelessWidget {
 
           const SizedBox(height: 32),
         ],
+      ),
+    );
+  }
+
+  String _getThemeSubtitle(BuildContext context) {
+    final notifier = ThemeNotifier.of(context);
+    if (notifier == null) return 'Sistem';
+    switch (notifier.themeMode) {
+      case ThemeMode.dark:
+        return 'Karanlık';
+      case ThemeMode.light:
+        return 'Açık';
+      case ThemeMode.system:
+        return 'Sistem';
+    }
+  }
+
+  void _showThemeDialog(BuildContext context) {
+    final notifier = ThemeNotifier.of(context);
+    if (notifier == null) {
+      _showComingSoon(context);
+      return;
+    }
+
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Tema Seçin'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            RadioListTile<ThemeMode>(
+              title: const Text('Açık'),
+              value: ThemeMode.light,
+              groupValue: notifier.themeMode,
+              onChanged: (value) {
+                if (value != null) {
+                  notifier.onThemeChanged(value);
+                  Navigator.pop(context);
+                }
+              },
+            ),
+            RadioListTile<ThemeMode>(
+              title: const Text('Karanlık'),
+              value: ThemeMode.dark,
+              groupValue: notifier.themeMode,
+              onChanged: (value) {
+                if (value != null) {
+                  notifier.onThemeChanged(value);
+                  Navigator.pop(context);
+                }
+              },
+            ),
+            RadioListTile<ThemeMode>(
+              title: const Text('Sistem'),
+              value: ThemeMode.system,
+              groupValue: notifier.themeMode,
+              onChanged: (value) {
+                if (value != null) {
+                  notifier.onThemeChanged(value);
+                  Navigator.pop(context);
+                }
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
