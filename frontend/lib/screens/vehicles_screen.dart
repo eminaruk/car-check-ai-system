@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'add_vehicle_screen.dart';
 import 'edit_vehicle_screen.dart';
 import '../services/storage_service.dart';
@@ -63,7 +64,7 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Araçlarım'),
+        title: Text(AppLocalizations.of(context)!.myVehicles),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
       body: isLoading
@@ -74,7 +75,7 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
       floatingActionButton: FloatingActionButton.extended(
         onPressed: _navigateToAddVehicle,
         icon: const Icon(Icons.add),
-        label: const Text('Araç Ekle'),
+        label: Text(AppLocalizations.of(context)!.addVehicle),
       ),
     );
   }
@@ -92,16 +93,16 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
               color: Colors.grey[400],
             ),
             const SizedBox(height: 16),
-            const Text(
-              'Henüz araç eklenmedi',
-              style: TextStyle(
+            Text(
+              AppLocalizations.of(context)!.noVehiclesAdded,
+              style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(height: 8),
             Text(
-              'İlk aracınızı ekleyerek başlayın',
+              AppLocalizations.of(context)!.addFirstVehicle,
               style: TextStyle(
                 color: Colors.grey[600],
               ),
@@ -110,7 +111,7 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
             ElevatedButton.icon(
               onPressed: _navigateToAddVehicle,
               icon: const Icon(Icons.add),
-              label: const Text('İlk Aracınızı Ekleyin'),
+              label: Text(AppLocalizations.of(context)!.addYourFirstVehicle),
               style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 24,
@@ -155,7 +156,7 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
           ),
         ),
         title: Text(
-          vehicle['name'] ?? 'Araç',
+          vehicle['name'] ?? AppLocalizations.of(context)!.vehicle,
           style: const TextStyle(fontWeight: FontWeight.bold),
         ),
         subtitle: Column(
@@ -164,7 +165,7 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
             const SizedBox(height: 4),
             Text('${vehicle['brand']} ${vehicle['model']}'),
             Text(
-              'Son Check: Henüz yapılmadı',
+              AppLocalizations.of(context)!.lastCheck,
               style: TextStyle(
                 fontSize: 12,
                 color: Colors.grey[600],
@@ -174,23 +175,23 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
         ),
         trailing: PopupMenuButton(
           itemBuilder: (context) => [
-            const PopupMenuItem(
+            PopupMenuItem(
               value: 'edit',
               child: Row(
                 children: [
-                  Icon(Icons.edit),
-                  SizedBox(width: 8),
-                  Text('Düzenle'),
+                  const Icon(Icons.edit),
+                  const SizedBox(width: 8),
+                  Text(AppLocalizations.of(context)!.edit),
                 ],
               ),
             ),
-            const PopupMenuItem(
+            PopupMenuItem(
               value: 'delete',
               child: Row(
                 children: [
-                  Icon(Icons.delete, color: Colors.red),
-                  SizedBox(width: 8),
-                  Text('Sil', style: TextStyle(color: Colors.red)),
+                  const Icon(Icons.delete, color: Colors.red),
+                  const SizedBox(width: 8),
+                  Text(AppLocalizations.of(context)!.delete, style: const TextStyle(color: Colors.red)),
                 ],
               ),
             ),
@@ -211,19 +212,19 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: const Text('Aracı Sil'),
-        content: Text('${vehicle['name']} adlı aracınızı silmek istediğinize emin misiniz?'),
+        title: Text(AppLocalizations.of(context)!.deleteVehicle),
+        content: Text(AppLocalizations.of(context)!.deleteVehicleConfirm(vehicle['name'] ?? '')),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: const Text('İptal'),
+            child: Text(AppLocalizations.of(context)!.cancel),
           ),
           TextButton(
             onPressed: () {
               _deleteVehicle(vehicle['id']);
               Navigator.pop(ctx);
             },
-            child: const Text('Sil', style: TextStyle(color: Colors.red)),
+            child: Text(AppLocalizations.of(context)!.delete, style: const TextStyle(color: Colors.red)),
           ),
         ],
       ),
@@ -231,27 +232,29 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
   }
 
   void _showVehicleDetails(Map<String, dynamic> vehicle) {
+    final l10n = AppLocalizations.of(context)!;
+
     final fuelTypes = {
-      'benzin': 'Benzin',
-      'dizel': 'Dizel',
-      'lpg': 'LPG',
-      'hibrit': 'Hibrit',
-      'plugin_hibrit': 'Plugin Hibrit',
-      'elektrik': 'Elektrik',
+      'benzin': l10n.fuelBenzin,
+      'dizel': l10n.fuelDizel,
+      'lpg': l10n.fuelLpg,
+      'hibrit': l10n.fuelHibrit,
+      'plugin_hibrit': l10n.fuelPluginHibrit,
+      'elektrik': l10n.fuelElektrik,
     };
 
     final transmissions = {
-      'manuel': 'Manuel',
-      'otomatik': 'Otomatik',
-      'yari_otomatik': 'Yari Otomatik',
-      'cvt': 'CVT',
+      'manuel': l10n.transmissionManuel,
+      'otomatik': l10n.transmissionOtomatik,
+      'yari_otomatik': l10n.transmissionYariOtomatik,
+      'cvt': l10n.transmissionCvt,
     };
 
     final modifications = {
-      'orijinal': 'Orijinal',
-      'hafif_modifiye': 'Hafif Modifiye',
-      'orta_modifiye': 'Orta Modifiye',
-      'agir_modifiye': 'Agir Modifiye',
+      'orijinal': l10n.modificationOrijinal,
+      'hafif_modifiye': l10n.modificationHafif,
+      'orta_modifiye': l10n.modificationOrta,
+      'agir_modifiye': l10n.modificationAgir,
     };
 
     showModalBottomSheet(
@@ -298,7 +301,7 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        vehicle['name'] ?? 'Arac',
+                        vehicle['name'] ?? l10n.vehicle,
                         style: const TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -319,11 +322,11 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
             const SizedBox(height: 24),
             const Divider(),
             const SizedBox(height: 16),
-            _buildDetailRow('Yil', '${vehicle['year']}'),
-            _buildDetailRow('Kilometre', '${vehicle['km']} km'),
-            _buildDetailRow('Yakit Tipi', fuelTypes[vehicle['fuelType']] ?? vehicle['fuelType'] ?? '-'),
-            _buildDetailRow('Vites', transmissions[vehicle['transmission']] ?? vehicle['transmission'] ?? '-'),
-            _buildDetailRow('Modifiye', modifications[vehicle['modification']] ?? vehicle['modification'] ?? '-'),
+            _buildDetailRow(AppLocalizations.of(context)!.year, '${vehicle['year']}'),
+            _buildDetailRow(AppLocalizations.of(context)!.km, '${vehicle['km']} km'),
+            _buildDetailRow(AppLocalizations.of(context)!.fuelType, fuelTypes[vehicle['fuelType']] ?? vehicle['fuelType'] ?? '-'),
+            _buildDetailRow(AppLocalizations.of(context)!.transmission, transmissions[vehicle['transmission']] ?? vehicle['transmission'] ?? '-'),
+            _buildDetailRow(AppLocalizations.of(context)!.modification, modifications[vehicle['modification']] ?? vehicle['modification'] ?? '-'),
             const SizedBox(height: 24),
             Row(
               children: [
@@ -334,7 +337,7 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
                       _navigateToEditVehicle(vehicle);
                     },
                     icon: const Icon(Icons.edit),
-                    label: const Text('Duzenle'),
+                    label: Text(l10n.edit),
                   ),
                 ),
                 const SizedBox(width: 12),
@@ -342,7 +345,7 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
                   child: ElevatedButton.icon(
                     onPressed: () => Navigator.pop(ctx),
                     icon: const Icon(Icons.close),
-                    label: const Text('Kapat'),
+                    label: Text(AppLocalizations.of(context)!.close),
                   ),
                 ),
               ],

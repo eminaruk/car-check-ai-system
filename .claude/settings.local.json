@@ -10,7 +10,10 @@
       "Bash(java -version:*)",
       "Bash(netstat:*)",
       "Bash(findstr:*)",
-      "Bash(firebase emulators:start:*)"
+      "Bash(firebase emulators:start:*)",
+      "Bash(flutter gen-l10n:*)",
+      "Bash(flutter analyze:*)",
+      "Bash(flutter pub run:*)"
     ]
   }
 }

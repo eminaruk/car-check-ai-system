@@ -1,0 +1,147 @@
+{
+  "@@locale": "zh",
+  "appTitle": "Car Check AI",
+  "dashboardWelcome": "欢迎！",
+  "dashboardSubtitle": "使用AI驱动的维护分析系统检查您的车辆状态。",
+  "quickStats": "快速统计",
+  "vehicles": "车辆",
+  "checks": "检查",
+  "recentChecks": "最近的检查",
+  "noChecksYet": "还没有检查",
+  "addVehicleFirst": "首先添加车辆以开始第一次检查",
+  "myVehicles": "我的车辆",
+  "addVehicle": "添加车辆",
+  "noVehiclesAdded": "尚未添加车辆",
+  "addFirstVehicle": "添加您的第一辆车以开始",
+  "addYourFirstVehicle": "添加您的第一辆车",
+  "unknownVehicle": "未知车辆",
+  "edit": "编辑",
+  "delete": "删除",
+  "settings": "设置",
+  "language": "语言",
+  "theme": "主题",
+  "light": "浅色",
+  "dark": "深色",
+  "system": "系统",
+  "home": "首页",
+  "myVehiclesNav": "我的车辆",
+  "checksNav": "检查",
+  "notificationsComingSoon": "通知即将推出",
+  "cancel": "取消",
+  "deleteVehicle": "删除车辆",
+  "deleteVehicleConfirm": "您确定要删除 {vehicleName} 吗？",
+  "@deleteVehicleConfirm": {
+    "placeholders": {
+      "vehicleName": {
+        "type": "String"
+      }
+    }
+  },
+  "close": "关闭",
+  "year": "年份",
+  "km": "公里数",
+  "fuelType": "燃料类型",
+  "transmission": "变速器",
+  "modification": "改装",
+  "myChecks": "我的检查",
+  "newCheck": "新检查",
+  "noCheckYet": "还没有检查",
+  "startFirstCheck": "开始您的第一次检查",
+  "doFirstCheck": "进行您的第一次检查",
+  "needVehicleFirst": "您需要先添加一辆车辆",
+  "status": "状态",
+  "photoCount": "照片数量",
+  "completed": "已完成",
+  "selectVehicleTitle": "选择车辆",
+  "getPhotos": "获取照片",
+  "uploadPhoto": "上传照片",
+  "takeOrUploadPhoto": "拍摄 / 上传照片",
+  "required": "必需",
+  "optional": "可选",
+  "skip": "跳过",
+  "allPhotosUploaded": "所有照片已上传！",
+  "photosUploadedSuccess": "{count} 张照片成功上传",
+  "@photosUploadedSuccess": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "completeCheck": "完成检查",
+  "checkCompleted": "检查完成：{vehicleName}",
+  "@checkCompleted": {
+    "placeholders": {
+      "vehicleName": {
+        "type": "String"
+      }
+    }
+  },
+  "takePhotosInOrder": "请按顺序拍照",
+  "selectTheme": "选择主题",
+  "lastCheck": "最后检查：尚未",
+  "photoOfTotal": "照片 {current}/{total}",
+  "@photoOfTotal": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "user": "用户",
+  "accountSettingsHint": "管理您的账户和偏好设置",
+  "appSection": "应用程序",
+  "notifications": "通知",
+  "notificationsSubtitle": "管理警报和提醒",
+  "dataSection": "数据",
+  "backup": "备份",
+  "backupSubtitle": "将数据保存到云端",
+  "deleteData": "删除数据",
+  "deleteDataSubtitle": "永久删除所有数据",
+  "aboutSection": "关于",
+  "aboutApp": "关于应用",
+  "versionInfo": "版本 1.0.0",
+  "privacyPolicy": "隐私政策",
+  "termsOfService": "服务条款",
+  "helpSupport": "帮助与支持",
+  "logout": "退出登录",
+  "comingSoon": "即将推出",
+  "deleteDataTitle": "删除数据",
+  "deleteDataConfirm": "您确定要删除所有数据吗？此操作无法撤销。",
+  "dataDeleted": "所有数据已删除",
+  "ok": "确定",
+  "appDescription": "AI驱动的车辆检查系统，用于维护分析。",
+  "copyright": "版权所有 2025 Car Check AI",
+  "vehicle": "车辆",
+  "fuelBenzin": "汽油",
+  "fuelDizel": "柴油",
+  "fuelLpg": "液化石油气",
+  "fuelHibrit": "混合动力",
+  "fuelPluginHibrit": "插电式混合动力",
+  "fuelElektrik": "电动",
+  "transmissionManuel": "手动",
+  "transmissionOtomatik": "自动",
+  "transmissionYariOtomatik": "半自动",
+  "transmissionCvt": "无级变速",
+  "modificationOrijinal": "原装",
+  "modificationHafif": "轻度",
+  "modificationOrta": "中度",
+  "modificationAgir": "重度",
+  "photoTireFl": "左前轮胎",
+  "photoTireFr": "右前轮胎",
+  "photoTireRl": "左后轮胎",
+  "photoTireRr": "右后轮胎",
+  "photoEngine": "发动机",
+  "photoHeadlights": "前大灯",
+  "photoTaillights": "尾灯",
+  "photoDashboard": "仪表盘",
+  "photoExhaust": "排气管",
+  "photoOilStick": "机油尺",
+  "photoFrunk": "前备箱",
+  "photoChargePortClosed": "充电口关闭",
+  "photoChargePortOpen": "充电口打开",
+  "photoHybridCooler": "混动冷却器"
+}

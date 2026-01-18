@@ -1,0 +1,147 @@
+{
+  "@@locale": "nl",
+  "appTitle": "Car Check AI",
+  "dashboardWelcome": "Welkom!",
+  "dashboardSubtitle": "Controleer de status van uw voertuig met het door AI aangedreven onderhoudsanalysesysteem.",
+  "quickStats": "Snelle Statistieken",
+  "vehicles": "Voertuigen",
+  "checks": "Controles",
+  "recentChecks": "Recente Controles",
+  "noChecksYet": "Nog geen controles",
+  "addVehicleFirst": "Voeg eerst een voertuig toe om uw eerste controle te starten",
+  "myVehicles": "Mijn Voertuigen",
+  "addVehicle": "Voertuig Toevoegen",
+  "noVehiclesAdded": "Nog geen voertuigen toegevoegd",
+  "addFirstVehicle": "Voeg uw eerste voertuig toe om te beginnen",
+  "addYourFirstVehicle": "Voeg Uw Eerste Voertuig Toe",
+  "unknownVehicle": "Onbekend Voertuig",
+  "edit": "Bewerken",
+  "delete": "Verwijderen",
+  "settings": "Instellingen",
+  "language": "Taal",
+  "theme": "Thema",
+  "light": "Licht",
+  "dark": "Donker",
+  "system": "Systeem",
+  "home": "Start",
+  "myVehiclesNav": "Mijn Voertuigen",
+  "checksNav": "Controles",
+  "notificationsComingSoon": "Meldingen binnenkort",
+  "cancel": "Annuleren",
+  "deleteVehicle": "Voertuig Verwijderen",
+  "deleteVehicleConfirm": "Weet u zeker dat u {vehicleName} wilt verwijderen?",
+  "@deleteVehicleConfirm": {
+    "placeholders": {
+      "vehicleName": {
+        "type": "String"
+      }
+    }
+  },
+  "close": "Sluiten",
+  "year": "Jaar",
+  "km": "Kilometer",
+  "fuelType": "Brandstoftype",
+  "transmission": "Transmissie",
+  "modification": "Modificatie",
+  "myChecks": "Mijn Controles",
+  "newCheck": "Nieuwe Controle",
+  "noCheckYet": "Nog geen controles",
+  "startFirstCheck": "Start uw eerste controle",
+  "doFirstCheck": "Doe Uw Eerste Controle",
+  "needVehicleFirst": "U moet eerst een voertuig toevoegen",
+  "status": "Status",
+  "photoCount": "Aantal Foto's",
+  "completed": "Voltooid",
+  "selectVehicleTitle": "Voertuig Selecteren",
+  "getPhotos": "Foto's Ophalen",
+  "uploadPhoto": "Foto Uploaden",
+  "takeOrUploadPhoto": "Foto Maken / Uploaden",
+  "required": "Verplicht",
+  "optional": "Optioneel",
+  "skip": "Overslaan",
+  "allPhotosUploaded": "Alle Foto's Geüpload!",
+  "photosUploadedSuccess": "{count} foto's succesvol geüpload",
+  "@photosUploadedSuccess": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "completeCheck": "Controle Voltooien",
+  "checkCompleted": "Controle voltooid: {vehicleName}",
+  "@checkCompleted": {
+    "placeholders": {
+      "vehicleName": {
+        "type": "String"
+      }
+    }
+  },
+  "takePhotosInOrder": "Maak foto's alstublieft in volgorde",
+  "selectTheme": "Thema Selecteren",
+  "lastCheck": "Laatste Controle: Nog niet",
+  "photoOfTotal": "Foto {current} van {total}",
+  "@photoOfTotal": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "user": "Gebruiker",
+  "accountSettingsHint": "Beheer uw account en voorkeuren",
+  "appSection": "Applicatie",
+  "notifications": "Meldingen",
+  "notificationsSubtitle": "Beheer waarschuwingen en herinneringen",
+  "dataSection": "Gegevens",
+  "backup": "Back-up",
+  "backupSubtitle": "Sla uw gegevens op in de cloud",
+  "deleteData": "Gegevens Verwijderen",
+  "deleteDataSubtitle": "Verwijder al uw gegevens permanent",
+  "aboutSection": "Over",
+  "aboutApp": "Over de App",
+  "versionInfo": "Versie 1.0.0",
+  "privacyPolicy": "Privacybeleid",
+  "termsOfService": "Servicevoorwaarden",
+  "helpSupport": "Hulp en Ondersteuning",
+  "logout": "Uitloggen",
+  "comingSoon": "Binnenkort",
+  "deleteDataTitle": "Gegevens Verwijderen",
+  "deleteDataConfirm": "Weet u zeker dat u al uw gegevens wilt verwijderen? Deze actie kan niet ongedaan worden gemaakt.",
+  "dataDeleted": "Alle gegevens zijn verwijderd",
+  "ok": "OK",
+  "appDescription": "AI-gestuurd voertuigcontrolesysteem voor onderhoudsanalyse.",
+  "copyright": "Copyright 2025 Car Check AI",
+  "vehicle": "Voertuig",
+  "fuelBenzin": "Benzine",
+  "fuelDizel": "Diesel",
+  "fuelLpg": "LPG",
+  "fuelHibrit": "Hybride",
+  "fuelPluginHibrit": "Plug-in Hybride",
+  "fuelElektrik": "Elektrisch",
+  "transmissionManuel": "Handgeschakeld",
+  "transmissionOtomatik": "Automatisch",
+  "transmissionYariOtomatik": "Semi-Automatisch",
+  "transmissionCvt": "CVT",
+  "modificationOrijinal": "Origineel",
+  "modificationHafif": "Licht",
+  "modificationOrta": "Gemiddeld",
+  "modificationAgir": "Zwaar",
+  "photoTireFl": "Band Linksv Voor",
+  "photoTireFr": "Band Rechts Voor",
+  "photoTireRl": "Band Links Achter",
+  "photoTireRr": "Band Rechts Achter",
+  "photoEngine": "Motor",
+  "photoHeadlights": "Koplampen",
+  "photoTaillights": "Achterlichten",
+  "photoDashboard": "Dashboard",
+  "photoExhaust": "Uitlaat",
+  "photoOilStick": "Oliepeilstok",
+  "photoFrunk": "Frunk",
+  "photoChargePortClosed": "Laadpoort Gesloten",
+  "photoChargePortOpen": "Laadpoort Open",
+  "photoHybridCooler": "Hybride Koeler"
+}

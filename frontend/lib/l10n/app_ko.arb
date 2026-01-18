@@ -1,0 +1,147 @@
+{
+  "@@locale": "ko",
+  "appTitle": "Car Check AI",
+  "dashboardWelcome": "환영합니다!",
+  "dashboardSubtitle": "AI 기반 유지보수 분석 시스템으로 차량 상태를 확인하세요.",
+  "quickStats": "빠른 통계",
+  "vehicles": "차량",
+  "checks": "점검",
+  "recentChecks": "최근 점검",
+  "noChecksYet": "아직 점검이 없습니다",
+  "addVehicleFirst": "먼저 차량을 추가하여 첫 번째 점검을 시작하세요",
+  "myVehicles": "내 차량",
+  "addVehicle": "차량 추가",
+  "noVehiclesAdded": "아직 차량이 추가되지 않았습니다",
+  "addFirstVehicle": "첫 번째 차량을 추가하여 시작하세요",
+  "addYourFirstVehicle": "첫 번째 차량 추가",
+  "unknownVehicle": "알 수 없는 차량",
+  "edit": "편집",
+  "delete": "삭제",
+  "settings": "설정",
+  "language": "언어",
+  "theme": "테마",
+  "light": "밝은",
+  "dark": "어두운",
+  "system": "시스템",
+  "home": "홈",
+  "myVehiclesNav": "내 차량",
+  "checksNav": "점검",
+  "notificationsComingSoon": "알림 곧 제공",
+  "cancel": "취소",
+  "deleteVehicle": "차량 삭제",
+  "deleteVehicleConfirm": "{vehicleName}을(를) 삭제하시겠습니까?",
+  "@deleteVehicleConfirm": {
+    "placeholders": {
+      "vehicleName": {
+        "type": "String"
+      }
+    }
+  },
+  "close": "닫기",
+  "year": "연도",
+  "km": "킬로미터",
+  "fuelType": "연료 유형",
+  "transmission": "변속기",
+  "modification": "수정",
+  "myChecks": "내 점검",
+  "newCheck": "새 점검",
+  "noCheckYet": "아직 점검이 없습니다",
+  "startFirstCheck": "첫 번째 점검을 시작하세요",
+  "doFirstCheck": "첫 번째 점검을 수행하세요",
+  "needVehicleFirst": "먼저 차량을 추가해야 합니다",
+  "status": "상태",
+  "photoCount": "사진 수",
+  "completed": "완료됨",
+  "selectVehicleTitle": "차량 선택",
+  "getPhotos": "사진 가져오기",
+  "uploadPhoto": "사진 업로드",
+  "takeOrUploadPhoto": "사진 촬영 / 업로드",
+  "required": "필수",
+  "optional": "선택 사항",
+  "skip": "건너뛰기",
+  "allPhotosUploaded": "모든 사진이 업로드되었습니다!",
+  "photosUploadedSuccess": "{count}장의 사진이 성공적으로 업로드되었습니다",
+  "@photosUploadedSuccess": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "completeCheck": "점검 완료",
+  "checkCompleted": "점검 완료: {vehicleName}",
+  "@checkCompleted": {
+    "placeholders": {
+      "vehicleName": {
+        "type": "String"
+      }
+    }
+  },
+  "takePhotosInOrder": "순서대로 사진을 촬영해 주세요",
+  "selectTheme": "테마 선택",
+  "lastCheck": "마지막 점검: 아직 없음",
+  "photoOfTotal": "사진 {current}/{total}",
+  "@photoOfTotal": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "user": "사용자",
+  "accountSettingsHint": "계정 및 환경설정 관리",
+  "appSection": "앱",
+  "notifications": "알림",
+  "notificationsSubtitle": "알림 및 리마인더 관리",
+  "dataSection": "데이터",
+  "backup": "백업",
+  "backupSubtitle": "클라우드에 데이터 저장",
+  "deleteData": "데이터 삭제",
+  "deleteDataSubtitle": "모든 데이터를 영구적으로 삭제",
+  "aboutSection": "정보",
+  "aboutApp": "앱 정보",
+  "versionInfo": "버전 1.0.0",
+  "privacyPolicy": "개인정보 보호정책",
+  "termsOfService": "서비스 약관",
+  "helpSupport": "도움말 및 지원",
+  "logout": "로그아웃",
+  "comingSoon": "곧 제공 예정",
+  "deleteDataTitle": "데이터 삭제",
+  "deleteDataConfirm": "모든 데이터를 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.",
+  "dataDeleted": "모든 데이터가 삭제되었습니다",
+  "ok": "확인",
+  "appDescription": "유지보수 분석을 위한 AI 기반 차량 점검 시스템.",
+  "copyright": "저작권 2025 Car Check AI",
+  "vehicle": "차량",
+  "fuelBenzin": "휘발유",
+  "fuelDizel": "디젤",
+  "fuelLpg": "LPG",
+  "fuelHibrit": "하이브리드",
+  "fuelPluginHibrit": "플러그인 하이브리드",
+  "fuelElektrik": "전기",
+  "transmissionManuel": "수동",
+  "transmissionOtomatik": "자동",
+  "transmissionYariOtomatik": "반자동",
+  "transmissionCvt": "CVT",
+  "modificationOrijinal": "순정",
+  "modificationHafif": "경량",
+  "modificationOrta": "중간",
+  "modificationAgir": "중량",
+  "photoTireFl": "왼쪽 앞 타이어",
+  "photoTireFr": "오른쪽 앞 타이어",
+  "photoTireRl": "왼쪽 뒤 타이어",
+  "photoTireRr": "오른쪽 뒤 타이어",
+  "photoEngine": "엔진",
+  "photoHeadlights": "헤드라이트",
+  "photoTaillights": "테일라이트",
+  "photoDashboard": "대시보드",
+  "photoExhaust": "배기관",
+  "photoOilStick": "오일 레벨 게이지",
+  "photoFrunk": "프렁크",
+  "photoChargePortClosed": "충전 포트 닫힘",
+  "photoChargePortOpen": "충전 포트 열림",
+  "photoHybridCooler": "하이브리드 쿨러"
+}

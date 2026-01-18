@@ -1,0 +1,147 @@
+{
+  "@@locale": "no",
+  "appTitle": "Car Check AI",
+  "dashboardWelcome": "Velkommen!",
+  "dashboardSubtitle": "Sjekk kjøretøyets status med AI-drevet vedlikeholdsanalysesystem.",
+  "quickStats": "Hurtigstatistikk",
+  "vehicles": "Kjøretøy",
+  "checks": "Kontroller",
+  "recentChecks": "Nylige Kontroller",
+  "noChecksYet": "Ingen kontroller ennå",
+  "addVehicleFirst": "Legg til et kjøretøy først for å starte din første kontroll",
+  "myVehicles": "Mine Kjøretøy",
+  "addVehicle": "Legg til Kjøretøy",
+  "noVehiclesAdded": "Ingen kjøretøy lagt til ennå",
+  "addFirstVehicle": "Legg til ditt første kjøretøy for å komme i gang",
+  "addYourFirstVehicle": "Legg til Ditt Første Kjøretøy",
+  "unknownVehicle": "Ukjent Kjøretøy",
+  "edit": "Rediger",
+  "delete": "Slett",
+  "settings": "Innstillinger",
+  "language": "Språk",
+  "theme": "Tema",
+  "light": "Lys",
+  "dark": "Mørk",
+  "system": "System",
+  "home": "Hjem",
+  "myVehiclesNav": "Mine Kjøretøy",
+  "checksNav": "Kontroller",
+  "notificationsComingSoon": "Varsler kommer snart",
+  "cancel": "Avbryt",
+  "deleteVehicle": "Slett Kjøretøy",
+  "deleteVehicleConfirm": "Er du sikker på at du vil slette {vehicleName}?",
+  "@deleteVehicleConfirm": {
+    "placeholders": {
+      "vehicleName": {
+        "type": "String"
+      }
+    }
+  },
+  "close": "Lukk",
+  "year": "År",
+  "km": "Kilometer",
+  "fuelType": "Drivstofftype",
+  "transmission": "Girkasse",
+  "modification": "Modifisering",
+  "myChecks": "Mine Kontroller",
+  "newCheck": "Ny Kontroll",
+  "noCheckYet": "Ingen kontroller ennå",
+  "startFirstCheck": "Start din første kontroll",
+  "doFirstCheck": "Gjør Din Første Kontroll",
+  "needVehicleFirst": "Du må først legge til et kjøretøy",
+  "status": "Status",
+  "photoCount": "Antall Bilder",
+  "completed": "Fullført",
+  "selectVehicleTitle": "Velg Kjøretøy",
+  "getPhotos": "Hent Bilder",
+  "uploadPhoto": "Last Opp Bilde",
+  "takeOrUploadPhoto": "Ta / Last Opp Bilde",
+  "required": "Påkrevd",
+  "optional": "Valgfri",
+  "skip": "Hopp Over",
+  "allPhotosUploaded": "Alle Bilder Lastet Opp!",
+  "photosUploadedSuccess": "{count} bilder lastet opp vellykket",
+  "@photosUploadedSuccess": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "completeCheck": "Fullfør Kontroll",
+  "checkCompleted": "Kontroll fullført: {vehicleName}",
+  "@checkCompleted": {
+    "placeholders": {
+      "vehicleName": {
+        "type": "String"
+      }
+    }
+  },
+  "takePhotosInOrder": "Ta bilder i rekkefølge",
+  "selectTheme": "Velg Tema",
+  "lastCheck": "Siste Kontroll: Ikke ennå",
+  "photoOfTotal": "Bilde {current} av {total}",
+  "@photoOfTotal": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "user": "Bruker",
+  "accountSettingsHint": "Administrer konto og innstillinger",
+  "appSection": "App",
+  "notifications": "Varsler",
+  "notificationsSubtitle": "Administrer varsler og paaminnelser",
+  "dataSection": "Data",
+  "backup": "Sikkerhetskopi",
+  "backupSubtitle": "Lagre data i skyen",
+  "deleteData": "Slett Data",
+  "deleteDataSubtitle": "Fjern alle dine data permanent",
+  "aboutSection": "Om",
+  "aboutApp": "Om Appen",
+  "versionInfo": "Versjon 1.0.0",
+  "privacyPolicy": "Personvernerklaering",
+  "termsOfService": "Vilkaar for bruk",
+  "helpSupport": "Hjelp og Stoette",
+  "logout": "Logg ut",
+  "comingSoon": "Kommer snart",
+  "deleteDataTitle": "Slett Data",
+  "deleteDataConfirm": "Er du sikker paa at du vil slette alle dataene dine? Denne handlingen kan ikke angres.",
+  "dataDeleted": "Alle data er slettet",
+  "ok": "OK",
+  "appDescription": "AI-drevet kjoeretoykontrollsystem for vedlikeholdsanalyse.",
+  "copyright": "Opphavsrett 2025 Car Check AI",
+  "vehicle": "Kjoeretoey",
+  "fuelBenzin": "Bensin",
+  "fuelDizel": "Diesel",
+  "fuelLpg": "LPG",
+  "fuelHibrit": "Hybrid",
+  "fuelPluginHibrit": "Plugin-Hybrid",
+  "fuelElektrik": "Elektrisk",
+  "transmissionManuel": "Manuell",
+  "transmissionOtomatik": "Automatisk",
+  "transmissionYariOtomatik": "Halvautomatisk",
+  "transmissionCvt": "CVT",
+  "modificationOrijinal": "Original",
+  "modificationHafif": "Lett",
+  "modificationOrta": "Medium",
+  "modificationAgir": "Tung",
+  "photoTireFl": "Venstre Fordekk",
+  "photoTireFr": "Hoeyre Fordekk",
+  "photoTireRl": "Venstre Bakdekk",
+  "photoTireRr": "Hoeyre Bakdekk",
+  "photoEngine": "Motor",
+  "photoHeadlights": "Frontlykter",
+  "photoTaillights": "Baklykter",
+  "photoDashboard": "Dashbord",
+  "photoExhaust": "Eksos",
+  "photoOilStick": "Oljepinne",
+  "photoFrunk": "Frunk",
+  "photoChargePortClosed": "Ladeport Lukket",
+  "photoChargePortOpen": "Ladeport Aapen",
+  "photoHybridCooler": "Hybridkjoeler"
+}

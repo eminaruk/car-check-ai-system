@@ -23,7 +23,8 @@ claude --allow-dangerously-skip-permissions
 ------------ Versiyon ------- <0.0.3>
 - Firebase geçişi - storage.py'ı Firebase Firestore ile değiştirmek
 - Firestore’da kullanıcıya bağlı kayıt yapısı
-- dil ve tema özellikleri ekle
+- Dark mode (placeholder)
+- Dil değiştirme (placeholder) 18 dil
 
 
 
@@ -39,8 +40,6 @@ claude --allow-dangerously-skip-permissions
 
 - Gerçek görsel analiz
 - Bildirimler (placeholder)
-- Dark mode (placeholder)
-- Dil değiştirme (placeholder)
 
 - bildirim özelliği ekle
 

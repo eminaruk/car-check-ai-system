@@ -1,0 +1,147 @@
+{
+  "@@locale": "sv",
+  "appTitle": "Car Check AI",
+  "dashboardWelcome": "Välkommen!",
+  "dashboardSubtitle": "Kontrollera ditt fordon status med AI-drivet underhållsanalyssystem.",
+  "quickStats": "Snabbstatistik",
+  "vehicles": "Fordon",
+  "checks": "Kontroller",
+  "recentChecks": "Senaste Kontroller",
+  "noChecksYet": "Inga kontroller ännu",
+  "addVehicleFirst": "Lägg till ett fordon först för att starta din första kontroll",
+  "myVehicles": "Mina Fordon",
+  "addVehicle": "Lägg till Fordon",
+  "noVehiclesAdded": "Inga fordon tillagda ännu",
+  "addFirstVehicle": "Lägg till ditt första fordon för att komma igång",
+  "addYourFirstVehicle": "Lägg till Ditt Första Fordon",
+  "unknownVehicle": "Okänt Fordon",
+  "edit": "Redigera",
+  "delete": "Radera",
+  "settings": "Inställningar",
+  "language": "Språk",
+  "theme": "Tema",
+  "light": "Ljus",
+  "dark": "Mörk",
+  "system": "System",
+  "home": "Hem",
+  "myVehiclesNav": "Mina Fordon",
+  "checksNav": "Kontroller",
+  "notificationsComingSoon": "Meddelanden kommer snart",
+  "cancel": "Avbryt",
+  "deleteVehicle": "Ta Bort Fordon",
+  "deleteVehicleConfirm": "Är du säker på att du vill ta bort {vehicleName}?",
+  "@deleteVehicleConfirm": {
+    "placeholders": {
+      "vehicleName": {
+        "type": "String"
+      }
+    }
+  },
+  "close": "Stäng",
+  "year": "År",
+  "km": "Kilometer",
+  "fuelType": "Bränsletyp",
+  "transmission": "Växellåda",
+  "modification": "Modifiering",
+  "myChecks": "Mina Kontroller",
+  "newCheck": "Ny Kontroll",
+  "noCheckYet": "Inga kontroller ännu",
+  "startFirstCheck": "Starta din första kontroll",
+  "doFirstCheck": "Gör Din Första Kontroll",
+  "needVehicleFirst": "Du måste först lägga till ett fordon",
+  "status": "Status",
+  "photoCount": "Antal Foton",
+  "completed": "Klar",
+  "selectVehicleTitle": "Välj Fordon",
+  "getPhotos": "Hämta Foton",
+  "uploadPhoto": "Ladda Upp Foto",
+  "takeOrUploadPhoto": "Ta / Ladda Upp Foto",
+  "required": "Obligatorisk",
+  "optional": "Valfri",
+  "skip": "Hoppa Över",
+  "allPhotosUploaded": "Alla Foton Uppladdade!",
+  "photosUploadedSuccess": "{count} foton uppladdade framgångsrikt",
+  "@photosUploadedSuccess": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "completeCheck": "Slutför Kontroll",
+  "checkCompleted": "Kontroll slutförd: {vehicleName}",
+  "@checkCompleted": {
+    "placeholders": {
+      "vehicleName": {
+        "type": "String"
+      }
+    }
+  },
+  "takePhotosInOrder": "Ta bilder i ordning",
+  "selectTheme": "Välj Tema",
+  "lastCheck": "Senaste Kontroll: Inte ännu",
+  "photoOfTotal": "Foto {current} av {total}",
+  "@photoOfTotal": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "user": "Anvandare",
+  "accountSettingsHint": "Hantera konto och installningar",
+  "appSection": "App",
+  "notifications": "Aviseringar",
+  "notificationsSubtitle": "Hantera varningar och paminnelser",
+  "dataSection": "Data",
+  "backup": "Sakerhetskopiering",
+  "backupSubtitle": "Spara data i molnet",
+  "deleteData": "Radera Data",
+  "deleteDataSubtitle": "Ta bort all data permanent",
+  "aboutSection": "Om",
+  "aboutApp": "Om Appen",
+  "versionInfo": "Version 1.0.0",
+  "privacyPolicy": "Integritetspolicy",
+  "termsOfService": "Anvandarvillkor",
+  "helpSupport": "Hjalp och Support",
+  "logout": "Logga ut",
+  "comingSoon": "Kommer snart",
+  "deleteDataTitle": "Radera Data",
+  "deleteDataConfirm": "Ar du saker pa att du vill radera all data? Denna atgard kan inte angras.",
+  "dataDeleted": "All data har raderats",
+  "ok": "OK",
+  "appDescription": "AI-drivet fordonskontrollsystem for underhallsanalys.",
+  "copyright": "Upphovsratt 2025 Car Check AI",
+  "vehicle": "Fordon",
+  "fuelBenzin": "Bensin",
+  "fuelDizel": "Diesel",
+  "fuelLpg": "LPG",
+  "fuelHibrit": "Hybrid",
+  "fuelPluginHibrit": "Plugin-Hybrid",
+  "fuelElektrik": "Elektrisk",
+  "transmissionManuel": "Manuell",
+  "transmissionOtomatik": "Automatisk",
+  "transmissionYariOtomatik": "Halvautomatisk",
+  "transmissionCvt": "CVT",
+  "modificationOrijinal": "Original",
+  "modificationHafif": "Latt",
+  "modificationOrta": "Medium",
+  "modificationAgir": "Tung",
+  "photoTireFl": "Vanster Framdack",
+  "photoTireFr": "Hoger Framdack",
+  "photoTireRl": "Vanster Bakdack",
+  "photoTireRr": "Hoger Bakdack",
+  "photoEngine": "Motor",
+  "photoHeadlights": "Stralkastare",
+  "photoTaillights": "Bakljus",
+  "photoDashboard": "Instrumentbrada",
+  "photoExhaust": "Avgasror",
+  "photoOilStick": "Oljematare",
+  "photoFrunk": "Frunk",
+  "photoChargePortClosed": "Laddport Stangd",
+  "photoChargePortOpen": "Laddport Oppen",
+  "photoHybridCooler": "Hybridkylare"
+}

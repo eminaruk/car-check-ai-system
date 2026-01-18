@@ -1,0 +1,147 @@
+{
+  "@@locale": "tr",
+  "appTitle": "Car Check AI",
+  "dashboardWelcome": "Hoş Geldiniz!",
+  "dashboardSubtitle": "AI destekli araç bakım analiz sistemi ile aracınızın durumunu kontrol edin.",
+  "quickStats": "Hızlı İstatistikler",
+  "vehicles": "Araçlar",
+  "checks": "Check",
+  "recentChecks": "Son Check'ler",
+  "noChecksYet": "Henüz check yapılmadı",
+  "addVehicleFirst": "İlk check'inizi başlatmak için bir araç ekleyin",
+  "myVehicles": "Araçlarım",
+  "addVehicle": "Araç Ekle",
+  "noVehiclesAdded": "Henüz araç eklenmedi",
+  "addFirstVehicle": "İlk aracınızı ekleyerek başlayın",
+  "addYourFirstVehicle": "İlk Aracınızı Ekleyin",
+  "unknownVehicle": "Bilinmeyen Araç",
+  "edit": "Düzenle",
+  "delete": "Sil",
+  "settings": "Ayarlar",
+  "language": "Dil",
+  "theme": "Tema",
+  "light": "Açık",
+  "dark": "Karanlık",
+  "system": "Sistem",
+  "home": "Ana Sayfa",
+  "myVehiclesNav": "Araçlarım",
+  "checksNav": "Check",
+  "notificationsComingSoon": "Bildirimler yakında eklenecek",
+  "cancel": "İptal",
+  "deleteVehicle": "Aracı Sil",
+  "deleteVehicleConfirm": "{vehicleName} adlı aracınızı silmek istediğinize emin misiniz?",
+  "@deleteVehicleConfirm": {
+    "placeholders": {
+      "vehicleName": {
+        "type": "String"
+      }
+    }
+  },
+  "close": "Kapat",
+  "year": "Yıl",
+  "km": "Kilometre",
+  "fuelType": "Yakıt Tipi",
+  "transmission": "Vites",
+  "modification": "Modifiye",
+  "myChecks": "Checklerim",
+  "newCheck": "Yeni Check",
+  "noCheckYet": "Henüz check yapılmadı",
+  "startFirstCheck": "İlk check'inizi yaparak başlayın",
+  "doFirstCheck": "İlk Check'inizi Yapın",
+  "needVehicleFirst": "Önce bir araç eklemeniz gerekiyor",
+  "status": "Durum",
+  "photoCount": "Fotoğraf Sayısı",
+  "completed": "Tamamlandı",
+  "selectVehicleTitle": "Araç Seçin",
+  "getPhotos": "Görselleri Al",
+  "uploadPhoto": "Fotoğraf Yükle",
+  "takeOrUploadPhoto": "Fotoğraf Çek / Yükle",
+  "required": "Zorunlu",
+  "optional": "Opsiyonel",
+  "skip": "Atla",
+  "allPhotosUploaded": "Tüm Fotoğraflar Yüklendi!",
+  "photosUploadedSuccess": "{count} fotoğraf başarıyla yüklendi",
+  "@photosUploadedSuccess": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "completeCheck": "Check'i Tamamla",
+  "checkCompleted": "Check tamamlandı: {vehicleName}",
+  "@checkCompleted": {
+    "placeholders": {
+      "vehicleName": {
+        "type": "String"
+      }
+    }
+  },
+  "takePhotosInOrder": "Lütfen sıra ile fotoğrafları çekin",
+  "selectTheme": "Tema Seçin",
+  "lastCheck": "Son Check: Henüz yapılmadı",
+  "photoOfTotal": "Fotoğraf {current}/{total}",
+  "@photoOfTotal": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "user": "Kullanıcı",
+  "accountSettingsHint": "Hesap ayarları için tıklayın",
+  "appSection": "Uygulama",
+  "notifications": "Bildirimler",
+  "notificationsSubtitle": "Bildirim ayarlarını yönetin",
+  "dataSection": "Veri",
+  "backup": "Yedekleme",
+  "backupSubtitle": "Verilerinizi yedekleyin",
+  "deleteData": "Verileri Sil",
+  "deleteDataSubtitle": "Tüm verileri temizle",
+  "aboutSection": "Hakkında",
+  "aboutApp": "Uygulama Hakkında",
+  "versionInfo": "Versiyon 1.0.0",
+  "privacyPolicy": "Gizlilik Politikası",
+  "termsOfService": "Kullanım Koşulları",
+  "helpSupport": "Yardım & Destek",
+  "logout": "Çıkış Yap",
+  "comingSoon": "Bu özellik yakında eklenecek",
+  "deleteDataTitle": "Verileri Sil",
+  "deleteDataConfirm": "Tüm verileriniz silinecek. Bu işlem geri alınamaz. Emin misiniz?",
+  "dataDeleted": "Veriler silindi",
+  "ok": "Tamam",
+  "appDescription": "AI destekli araç bakım analiz uygulaması. Aracınızın durumunu fotoğraflarla analiz edin.",
+  "copyright": "© 2025 Car Check AI",
+  "vehicle": "Araç",
+  "fuelBenzin": "Benzin",
+  "fuelDizel": "Dizel",
+  "fuelLpg": "LPG",
+  "fuelHibrit": "Hibrit",
+  "fuelPluginHibrit": "Plugin Hibrit",
+  "fuelElektrik": "Elektrik",
+  "transmissionManuel": "Manuel",
+  "transmissionOtomatik": "Otomatik",
+  "transmissionYariOtomatik": "Yarı Otomatik",
+  "transmissionCvt": "CVT",
+  "modificationOrijinal": "Orijinal",
+  "modificationHafif": "Hafif Modifiye",
+  "modificationOrta": "Orta Modifiye",
+  "modificationAgir": "Ağır Modifiye",
+  "photoTireFl": "Sol Ön Lastik",
+  "photoTireFr": "Sağ Ön Lastik",
+  "photoTireRl": "Sol Arka Lastik",
+  "photoTireRr": "Sağ Arka Lastik",
+  "photoEngine": "Motor Bölgesi",
+  "photoHeadlights": "Ön Farlar",
+  "photoTaillights": "Arka Stoplar",
+  "photoDashboard": "Gösterge Paneli",
+  "photoExhaust": "Egzoz",
+  "photoOilStick": "Yağ Çubuğu",
+  "photoFrunk": "Frunk/Güç Elektroniği",
+  "photoChargePortClosed": "Şarj Portu (Kapalı)",
+  "photoChargePortOpen": "Şarj Portu (Açık)",
+  "photoHybridCooler": "Hibrit Batarya Soğutucu"
+}

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../services/storage_service.dart';
 
 class CheckScreen extends StatefulWidget {
@@ -68,8 +69,8 @@ class _CheckScreenState extends State<CheckScreen> {
   void _navigateToNewCheck() {
     if (vehicles.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Önce bir araç eklemeniz gerekiyor'),
+        SnackBar(
+          content: Text(AppLocalizations.of(context)!.needVehicleFirst),
           backgroundColor: Colors.orange,
         ),
       );
@@ -97,20 +98,20 @@ class _CheckScreenState extends State<CheckScreen> {
     }
   }
 
-  String _getVehicleName(String? vehicleId) {
-    if (vehicleId == null) return 'Bilinmeyen Araç';
+  String _getVehicleName(String? vehicleId, BuildContext context) {
+    if (vehicleId == null) return AppLocalizations.of(context)!.unknownVehicle;
     final vehicle = vehicles.firstWhere(
       (v) => v['id'] == vehicleId,
-      orElse: () => {'name': 'Bilinmeyen Araç'},
+      orElse: () => {'name': AppLocalizations.of(context)!.unknownVehicle},
     );
-    return vehicle['name'] ?? 'Bilinmeyen Araç';
+    return vehicle['name'] ?? AppLocalizations.of(context)!.unknownVehicle;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Checklerim'),
+        title: Text(AppLocalizations.of(context)!.myChecks),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
       body: isLoading
@@ -121,7 +122,7 @@ class _CheckScreenState extends State<CheckScreen> {
       floatingActionButton: FloatingActionButton.extended(
         onPressed: _navigateToNewCheck,
         icon: const Icon(Icons.add),
-        label: const Text('Yeni Check'),
+        label: Text(AppLocalizations.of(context)!.newCheck),
       ),
     );
   }
@@ -139,16 +140,16 @@ class _CheckScreenState extends State<CheckScreen> {
               color: Colors.grey[400],
             ),
             const SizedBox(height: 16),
-            const Text(
-              'Henüz check yapılmadı',
-              style: TextStyle(
+            Text(
+              AppLocalizations.of(context)!.noCheckYet,
+              style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(height: 8),
             Text(
-              'İlk check\'inizi yaparak başlayın',
+              AppLocalizations.of(context)!.startFirstCheck,
               style: TextStyle(
                 color: Colors.grey[600],
               ),
@@ -157,7 +158,7 @@ class _CheckScreenState extends State<CheckScreen> {
             ElevatedButton.icon(
               onPressed: _navigateToNewCheck,
               icon: const Icon(Icons.add),
-              label: const Text('İlk Check\'inizi Yapın'),
+              label: Text(AppLocalizations.of(context)!.doFirstCheck),
               style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 24,
@@ -209,7 +210,7 @@ class _CheckScreenState extends State<CheckScreen> {
           ),
         ),
         title: Text(
-          _getVehicleName(check['vehicleId']),
+          _getVehicleName(check['vehicleId'], context),
           style: const TextStyle(fontWeight: FontWeight.bold),
         ),
         subtitle: Column(
@@ -281,7 +282,7 @@ class _CheckScreenState extends State<CheckScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        _getVehicleName(check['vehicleId']),
+                        _getVehicleName(check['vehicleId'], context),
                         style: const TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -302,15 +303,15 @@ class _CheckScreenState extends State<CheckScreen> {
             const SizedBox(height: 24),
             const Divider(),
             const SizedBox(height: 16),
-            _buildDetailRow('Durum', check['status'] ?? 'Tamamlandı'),
-            _buildDetailRow('Fotoğraf Sayısı', '${check['photoCount'] ?? 0}'),
+            _buildDetailRow(AppLocalizations.of(context)!.status, check['status'] ?? AppLocalizations.of(context)!.completed),
+            _buildDetailRow(AppLocalizations.of(context)!.photoCount, '${check['photoCount'] ?? 0}'),
             const SizedBox(height: 24),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton.icon(
                 onPressed: () => Navigator.pop(ctx),
                 icon: const Icon(Icons.close),
-                label: const Text('Kapat'),
+                label: Text(AppLocalizations.of(context)!.close),
               ),
             ),
             const SizedBox(height: 16),
@@ -364,58 +365,59 @@ class _NewCheckScreenState extends State<NewCheckScreen> {
   Map<String, bool> photosTaken = {};
   bool photosCollected = false;
 
-  List<Map<String, dynamic>> _getRequiredPhotos(String? fuelType) {
+  List<Map<String, dynamic>> _getRequiredPhotos(String? fuelType, BuildContext context) {
     if (fuelType == null) return [];
+    final l10n = AppLocalizations.of(context)!;
 
     final basePhotos = [
-      {'id': 'tire_fl', 'title': 'Sol Ön Lastik', 'icon': Icons.tire_repair, 'required': true},
-      {'id': 'tire_fr', 'title': 'Sağ Ön Lastik', 'icon': Icons.tire_repair, 'required': true},
-      {'id': 'tire_rl', 'title': 'Sol Arka Lastik', 'icon': Icons.tire_repair, 'required': true},
-      {'id': 'tire_rr', 'title': 'Sağ Arka Lastik', 'icon': Icons.tire_repair, 'required': true},
+      {'id': 'tire_fl', 'title': l10n.photoTireFl, 'icon': Icons.tire_repair, 'required': true},
+      {'id': 'tire_fr', 'title': l10n.photoTireFr, 'icon': Icons.tire_repair, 'required': true},
+      {'id': 'tire_rl', 'title': l10n.photoTireRl, 'icon': Icons.tire_repair, 'required': true},
+      {'id': 'tire_rr', 'title': l10n.photoTireRr, 'icon': Icons.tire_repair, 'required': true},
     ];
 
     if (fuelType == 'elektrik') {
       return [
         ...basePhotos,
-        {'id': 'frunk', 'title': 'Frunk/Güç Elektroniği', 'icon': Icons.battery_charging_full, 'required': true},
-        {'id': 'headlights', 'title': 'Ön Farlar', 'icon': Icons.lightbulb, 'required': true},
-        {'id': 'taillights', 'title': 'Arka Stoplar', 'icon': Icons.lightbulb_outline, 'required': true},
-        {'id': 'dashboard', 'title': 'Gösterge Paneli', 'icon': Icons.dashboard, 'required': true},
-        {'id': 'charge_port_closed', 'title': 'Şarj Portu (Kapalı)', 'icon': Icons.power, 'required': true},
-        {'id': 'charge_port_open', 'title': 'Şarj Portu (Açık)', 'icon': Icons.power, 'required': true},
+        {'id': 'frunk', 'title': l10n.photoFrunk, 'icon': Icons.battery_charging_full, 'required': true},
+        {'id': 'headlights', 'title': l10n.photoHeadlights, 'icon': Icons.lightbulb, 'required': true},
+        {'id': 'taillights', 'title': l10n.photoTaillights, 'icon': Icons.lightbulb_outline, 'required': true},
+        {'id': 'dashboard', 'title': l10n.photoDashboard, 'icon': Icons.dashboard, 'required': true},
+        {'id': 'charge_port_closed', 'title': l10n.photoChargePortClosed, 'icon': Icons.power, 'required': true},
+        {'id': 'charge_port_open', 'title': l10n.photoChargePortOpen, 'icon': Icons.power, 'required': true},
       ];
     } else if (fuelType == 'plugin_hibrit') {
       return [
         ...basePhotos,
-        {'id': 'engine', 'title': 'Motor Bölgesi', 'icon': Icons.car_repair, 'required': true},
-        {'id': 'headlights', 'title': 'Ön Farlar', 'icon': Icons.lightbulb, 'required': true},
-        {'id': 'taillights', 'title': 'Arka Stoplar', 'icon': Icons.lightbulb_outline, 'required': true},
-        {'id': 'dashboard', 'title': 'Gösterge Paneli', 'icon': Icons.dashboard, 'required': true},
-        {'id': 'exhaust', 'title': 'Egzoz', 'icon': Icons.cloud, 'required': true},
-        {'id': 'oil_stick', 'title': 'Yağ Çubuğu', 'icon': Icons.opacity, 'required': false},
-        {'id': 'charge_port_closed', 'title': 'Şarj Portu (Kapalı)', 'icon': Icons.power, 'required': true},
-        {'id': 'charge_port_open', 'title': 'Şarj Portu (Açık)', 'icon': Icons.power, 'required': true},
+        {'id': 'engine', 'title': l10n.photoEngine, 'icon': Icons.car_repair, 'required': true},
+        {'id': 'headlights', 'title': l10n.photoHeadlights, 'icon': Icons.lightbulb, 'required': true},
+        {'id': 'taillights', 'title': l10n.photoTaillights, 'icon': Icons.lightbulb_outline, 'required': true},
+        {'id': 'dashboard', 'title': l10n.photoDashboard, 'icon': Icons.dashboard, 'required': true},
+        {'id': 'exhaust', 'title': l10n.photoExhaust, 'icon': Icons.cloud, 'required': true},
+        {'id': 'oil_stick', 'title': l10n.photoOilStick, 'icon': Icons.opacity, 'required': false},
+        {'id': 'charge_port_closed', 'title': l10n.photoChargePortClosed, 'icon': Icons.power, 'required': true},
+        {'id': 'charge_port_open', 'title': l10n.photoChargePortOpen, 'icon': Icons.power, 'required': true},
       ];
     } else if (fuelType == 'hibrit') {
       return [
         ...basePhotos,
-        {'id': 'engine', 'title': 'Motor Bölgesi', 'icon': Icons.car_repair, 'required': true},
-        {'id': 'headlights', 'title': 'Ön Farlar', 'icon': Icons.lightbulb, 'required': true},
-        {'id': 'taillights', 'title': 'Arka Stoplar', 'icon': Icons.lightbulb_outline, 'required': true},
-        {'id': 'dashboard', 'title': 'Gösterge Paneli', 'icon': Icons.dashboard, 'required': true},
-        {'id': 'exhaust', 'title': 'Egzoz', 'icon': Icons.cloud, 'required': true},
-        {'id': 'oil_stick', 'title': 'Yağ Çubuğu', 'icon': Icons.opacity, 'required': false},
-        {'id': 'hybrid_cooler', 'title': 'Hibrit Batarya Soğutucu', 'icon': Icons.ac_unit, 'required': false},
+        {'id': 'engine', 'title': l10n.photoEngine, 'icon': Icons.car_repair, 'required': true},
+        {'id': 'headlights', 'title': l10n.photoHeadlights, 'icon': Icons.lightbulb, 'required': true},
+        {'id': 'taillights', 'title': l10n.photoTaillights, 'icon': Icons.lightbulb_outline, 'required': true},
+        {'id': 'dashboard', 'title': l10n.photoDashboard, 'icon': Icons.dashboard, 'required': true},
+        {'id': 'exhaust', 'title': l10n.photoExhaust, 'icon': Icons.cloud, 'required': true},
+        {'id': 'oil_stick', 'title': l10n.photoOilStick, 'icon': Icons.opacity, 'required': false},
+        {'id': 'hybrid_cooler', 'title': l10n.photoHybridCooler, 'icon': Icons.ac_unit, 'required': false},
       ];
     } else {
       return [
         ...basePhotos,
-        {'id': 'engine', 'title': 'Motor Bölgesi', 'icon': Icons.car_repair, 'required': true},
-        {'id': 'headlights', 'title': 'Ön Farlar', 'icon': Icons.lightbulb, 'required': true},
-        {'id': 'taillights', 'title': 'Arka Stoplar', 'icon': Icons.lightbulb_outline, 'required': true},
-        {'id': 'dashboard', 'title': 'Gösterge Paneli', 'icon': Icons.dashboard, 'required': true},
-        {'id': 'exhaust', 'title': 'Egzoz', 'icon': Icons.cloud, 'required': true},
-        {'id': 'oil_stick', 'title': 'Yağ Çubuğu', 'icon': Icons.opacity, 'required': false},
+        {'id': 'engine', 'title': l10n.photoEngine, 'icon': Icons.car_repair, 'required': true},
+        {'id': 'headlights', 'title': l10n.photoHeadlights, 'icon': Icons.lightbulb, 'required': true},
+        {'id': 'taillights', 'title': l10n.photoTaillights, 'icon': Icons.lightbulb_outline, 'required': true},
+        {'id': 'dashboard', 'title': l10n.photoDashboard, 'icon': Icons.dashboard, 'required': true},
+        {'id': 'exhaust', 'title': l10n.photoExhaust, 'icon': Icons.cloud, 'required': true},
+        {'id': 'oil_stick', 'title': l10n.photoOilStick, 'icon': Icons.opacity, 'required': false},
       ];
     }
   }
@@ -425,8 +427,8 @@ class _NewCheckScreenState extends State<NewCheckScreen> {
       photosCollected = true;
     });
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Lütfen sıra ile fotoğrafları çekin'),
+      SnackBar(
+        content: Text(AppLocalizations.of(context)!.takePhotosInOrder),
         backgroundColor: Colors.blue,
       ),
     );
@@ -440,7 +442,7 @@ class _NewCheckScreenState extends State<NewCheckScreen> {
     final check = {
       'vehicleId': selectedVehicleId,
       'createdAt': DateTime.now().toIso8601String(),
-      'status': 'Tamamlandı',
+      'status': AppLocalizations.of(context)!.completed,
       'photoCount': photosTaken.length,
     };
 
@@ -449,7 +451,7 @@ class _NewCheckScreenState extends State<NewCheckScreen> {
     if (mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Check tamamlandı: ${selectedVehicle['name']}'),
+          content: Text(AppLocalizations.of(context)!.checkCompleted(selectedVehicle['name'] ?? '')),
           backgroundColor: Colors.green,
         ),
       );
@@ -487,7 +489,7 @@ class _NewCheckScreenState extends State<NewCheckScreen> {
                     borderRadius: BorderRadius.circular(4),
                   ),
                   child: Text(
-                    isRequired ? 'Zorunlu' : 'Opsiyonel',
+                    isRequired ? AppLocalizations.of(context)!.required : AppLocalizations.of(context)!.optional,
                     style: TextStyle(
                       fontSize: 12,
                       color: isRequired ? Colors.red : Colors.grey,
@@ -516,7 +518,7 @@ class _NewCheckScreenState extends State<NewCheckScreen> {
                   ),
                   const SizedBox(height: 16),
                   Text(
-                    'Fotoğraf Yükle',
+                    AppLocalizations.of(context)!.uploadPhoto,
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.grey[600],
@@ -536,9 +538,9 @@ class _NewCheckScreenState extends State<NewCheckScreen> {
                   });
                 },
                 icon: const Icon(Icons.camera_alt),
-                label: const Text(
-                  'Fotoğraf Çek / Yükle',
-                  style: TextStyle(fontSize: 16),
+                label: Text(
+                  AppLocalizations.of(context)!.takeOrUploadPhoto,
+                  style: const TextStyle(fontSize: 16),
                 ),
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(vertical: 16),
@@ -557,7 +559,7 @@ class _NewCheckScreenState extends State<NewCheckScreen> {
                       photosTaken[currentPhoto['id']] = true;
                     });
                   },
-                  child: const Text('Atla'),
+                  child: Text(AppLocalizations.of(context)!.skip),
                 ),
               ),
             ],
@@ -578,11 +580,11 @@ class _NewCheckScreenState extends State<NewCheckScreen> {
     final selectedVehicle = selectedVehicleId != null
         ? widget.vehicles.firstWhere((v) => v['id'] == selectedVehicleId)
         : null;
-    final requiredPhotos = _getRequiredPhotos(selectedVehicle?['fuelType']);
+    final requiredPhotos = _getRequiredPhotos(selectedVehicle?['fuelType'], context);
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Yeni Check'),
+        title: Text(AppLocalizations.of(context)!.newCheck),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
       body: SingleChildScrollView(
@@ -590,8 +592,8 @@ class _NewCheckScreenState extends State<NewCheckScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Araç Seçin',
+            Text(
+              AppLocalizations.of(context)!.selectVehicleTitle,
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -634,7 +636,7 @@ class _NewCheckScreenState extends State<NewCheckScreen> {
                     ),
                   ),
                   title: Text(
-                    vehicle['name'] ?? 'Araç',
+                    vehicle['name'] ?? AppLocalizations.of(context)!.vehicle,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: isSelected ? Theme.of(context).colorScheme.primary : null,
@@ -657,9 +659,9 @@ class _NewCheckScreenState extends State<NewCheckScreen> {
                   child: ElevatedButton.icon(
                     onPressed: _collectPhotos,
                     icon: const Icon(Icons.camera_alt),
-                    label: const Text(
-                      'Görselleri Al',
-                      style: TextStyle(fontSize: 16),
+                    label: Text(
+                      AppLocalizations.of(context)!.getPhotos,
+                      style: const TextStyle(fontSize: 16),
                     ),
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(vertical: 16),
@@ -673,7 +675,10 @@ class _NewCheckScreenState extends State<NewCheckScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Fotoğraf ${photosTaken.values.where((v) => v).length + 1}/${requiredPhotos.length}',
+                      AppLocalizations.of(context)!.photoOfTotal(
+                        photosTaken.values.where((v) => v).length + 1,
+                        requiredPhotos.length,
+                      ),
                       style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
@@ -719,9 +724,9 @@ class _NewCheckScreenState extends State<NewCheckScreen> {
                             ),
                           ),
                           const SizedBox(height: 16),
-                          const Text(
-                            'Tüm Fotoğraflar Yüklendi!',
-                            style: TextStyle(
+                          Text(
+                            AppLocalizations.of(context)!.allPhotosUploaded,
+                            style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
                               color: Colors.green,
@@ -729,7 +734,7 @@ class _NewCheckScreenState extends State<NewCheckScreen> {
                           ),
                           const SizedBox(height: 8),
                           Text(
-                            '${requiredPhotos.length} fotoğraf başarıyla yüklendi',
+                            AppLocalizations.of(context)!.photosUploadedSuccess(requiredPhotos.length),
                             style: TextStyle(
                               color: Colors.grey[600],
                             ),
@@ -744,9 +749,9 @@ class _NewCheckScreenState extends State<NewCheckScreen> {
                     child: ElevatedButton.icon(
                       onPressed: _startCheck,
                       icon: const Icon(Icons.play_arrow),
-                      label: const Text(
-                        'Check\'i Tamamla',
-                        style: TextStyle(fontSize: 16),
+                      label: Text(
+                        AppLocalizations.of(context)!.completeCheck,
+                        style: const TextStyle(fontSize: 16),
                       ),
                       style: ElevatedButton.styleFrom(
                         padding: const EdgeInsets.symmetric(vertical: 16),

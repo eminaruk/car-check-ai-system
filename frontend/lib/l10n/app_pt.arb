@@ -1,0 +1,147 @@
+{
+  "@@locale": "pt",
+  "appTitle": "Car Check AI",
+  "dashboardWelcome": "Bem-vindo!",
+  "dashboardSubtitle": "Verifique o status do seu veículo com o sistema de análise de manutenção alimentado por IA.",
+  "quickStats": "Estatísticas Rápidas",
+  "vehicles": "Veículos",
+  "checks": "Verificações",
+  "recentChecks": "Verificações Recentes",
+  "noChecksYet": "Ainda não há verificações",
+  "addVehicleFirst": "Adicione um veículo primeiro para iniciar sua primeira verificação",
+  "myVehicles": "Meus Veículos",
+  "addVehicle": "Adicionar Veículo",
+  "noVehiclesAdded": "Nenhum veículo adicionado ainda",
+  "addFirstVehicle": "Adicione seu primeiro veículo para começar",
+  "addYourFirstVehicle": "Adicione Seu Primeiro Veículo",
+  "unknownVehicle": "Veículo Desconhecido",
+  "edit": "Editar",
+  "delete": "Excluir",
+  "settings": "Configurações",
+  "language": "Idioma",
+  "theme": "Tema",
+  "light": "Claro",
+  "dark": "Escuro",
+  "system": "Sistema",
+  "home": "Início",
+  "myVehiclesNav": "Meus Veículos",
+  "checksNav": "Verificações",
+  "notificationsComingSoon": "Notificações em breve",
+  "cancel": "Cancelar",
+  "deleteVehicle": "Excluir Veículo",
+  "deleteVehicleConfirm": "Tem certeza de que deseja excluir {vehicleName}?",
+  "@deleteVehicleConfirm": {
+    "placeholders": {
+      "vehicleName": {
+        "type": "String"
+      }
+    }
+  },
+  "close": "Fechar",
+  "year": "Ano",
+  "km": "Quilometragem",
+  "fuelType": "Tipo de Combustível",
+  "transmission": "Transmissão",
+  "modification": "Modificação",
+  "myChecks": "Minhas Verificações",
+  "newCheck": "Nova Verificação",
+  "noCheckYet": "Ainda não há verificações",
+  "startFirstCheck": "Comece sua primeira verificação",
+  "doFirstCheck": "Faça Sua Primeira Verificação",
+  "needVehicleFirst": "Você precisa adicionar um veículo primeiro",
+  "status": "Status",
+  "photoCount": "Número de Fotos",
+  "completed": "Concluído",
+  "selectVehicleTitle": "Selecionar Veículo",
+  "getPhotos": "Obter Fotos",
+  "uploadPhoto": "Carregar Foto",
+  "takeOrUploadPhoto": "Tirar / Carregar Foto",
+  "required": "Obrigatório",
+  "optional": "Opcional",
+  "skip": "Pular",
+  "allPhotosUploaded": "Todas as Fotos Carregadas!",
+  "photosUploadedSuccess": "{count} fotos carregadas com sucesso",
+  "@photosUploadedSuccess": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "completeCheck": "Completar Verificação",
+  "checkCompleted": "Verificação concluída: {vehicleName}",
+  "@checkCompleted": {
+    "placeholders": {
+      "vehicleName": {
+        "type": "String"
+      }
+    }
+  },
+  "takePhotosInOrder": "Por favor, tire fotos em ordem",
+  "selectTheme": "Selecionar Tema",
+  "lastCheck": "Última Verificação: Ainda não",
+  "photoOfTotal": "Foto {current} de {total}",
+  "@photoOfTotal": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "user": "Utilizador",
+  "accountSettingsHint": "Gerir a sua conta e preferencias",
+  "appSection": "Aplicacao",
+  "notifications": "Notificacoes",
+  "notificationsSubtitle": "Gerir alertas e lembretes",
+  "dataSection": "Dados",
+  "backup": "Copia de Seguranca",
+  "backupSubtitle": "Guardar os seus dados na nuvem",
+  "deleteData": "Eliminar Dados",
+  "deleteDataSubtitle": "Remover todos os seus dados permanentemente",
+  "aboutSection": "Sobre",
+  "aboutApp": "Sobre a Aplicacao",
+  "versionInfo": "Versão 1.0.0",
+  "privacyPolicy": "Politica de Privacidade",
+  "termsOfService": "Termos de Servico",
+  "helpSupport": "Ajuda e Suporte",
+  "logout": "Terminar Sessao",
+  "comingSoon": "Em Breve",
+  "deleteDataTitle": "Eliminar Dados",
+  "deleteDataConfirm": "Tem a certeza que deseja eliminar todos os seus dados? Esta acao nao pode ser desfeita.",
+  "dataDeleted": "Todos os dados foram eliminados",
+  "ok": "OK",
+  "appDescription": "Sistema de verificacao de veiculos com IA para analise de manutencao.",
+  "copyright": "Direitos de Autor 2025 Car Check AI",
+  "vehicle": "Veiculo",
+  "fuelBenzin": "Gasolina",
+  "fuelDizel": "Diesel",
+  "fuelLpg": "GPL",
+  "fuelHibrit": "Hibrido",
+  "fuelPluginHibrit": "Hibrido Plug-in",
+  "fuelElektrik": "Eletrico",
+  "transmissionManuel": "Manual",
+  "transmissionOtomatik": "Automatico",
+  "transmissionYariOtomatik": "Semi-Automatico",
+  "transmissionCvt": "CVT",
+  "modificationOrijinal": "Original",
+  "modificationHafif": "Leve",
+  "modificationOrta": "Medio",
+  "modificationAgir": "Pesado",
+  "photoTireFl": "Pneu Dianteiro Esquerdo",
+  "photoTireFr": "Pneu Dianteiro Direito",
+  "photoTireRl": "Pneu Traseiro Esquerdo",
+  "photoTireRr": "Pneu Traseiro Direito",
+  "photoEngine": "Motor",
+  "photoHeadlights": "Farois Dianteiros",
+  "photoTaillights": "Farois Traseiros",
+  "photoDashboard": "Painel",
+  "photoExhaust": "Escapamento",
+  "photoOilStick": "Vareta de Oleo",
+  "photoFrunk": "Porta-malas Dianteiro",
+  "photoChargePortClosed": "Porta de Carga Fechada",
+  "photoChargePortOpen": "Porta de Carga Aberta",
+  "photoHybridCooler": "Arrefecedor Hibrido"
+}

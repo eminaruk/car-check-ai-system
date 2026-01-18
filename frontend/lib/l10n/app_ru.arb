@@ -1,0 +1,147 @@
+{
+  "@@locale": "ru",
+  "appTitle": "Car Check AI",
+  "dashboardWelcome": "Добро пожаловать!",
+  "dashboardSubtitle": "Проверьте состояние вашего транспортного средства с помощью системы анализа технического обслуживания на базе ИИ.",
+  "quickStats": "Быстрая Статистика",
+  "vehicles": "Транспортные средства",
+  "checks": "Проверки",
+  "recentChecks": "Последние Проверки",
+  "noChecksYet": "Проверок пока нет",
+  "addVehicleFirst": "Сначала добавьте транспортное средство, чтобы начать первую проверку",
+  "myVehicles": "Мои Транспортные Средства",
+  "addVehicle": "Добавить Транспортное Средство",
+  "noVehiclesAdded": "Транспортных средств еще не добавлено",
+  "addFirstVehicle": "Добавьте первое транспортное средство для начала",
+  "addYourFirstVehicle": "Добавьте Ваше Первое Транспортное Средство",
+  "unknownVehicle": "Неизвестное Транспортное Средство",
+  "edit": "Редактировать",
+  "delete": "Удалить",
+  "settings": "Настройки",
+  "language": "Язык",
+  "theme": "Тема",
+  "light": "Светлая",
+  "dark": "Темная",
+  "system": "Система",
+  "home": "Главная",
+  "myVehiclesNav": "Мои Транспортные Средства",
+  "checksNav": "Проверки",
+  "notificationsComingSoon": "Уведомления скоро",
+  "cancel": "Отмена",
+  "deleteVehicle": "Удалить Транспортное Средство",
+  "deleteVehicleConfirm": "Вы уверены, что хотите удалить {vehicleName}?",
+  "@deleteVehicleConfirm": {
+    "placeholders": {
+      "vehicleName": {
+        "type": "String"
+      }
+    }
+  },
+  "close": "Закрыть",
+  "year": "Год",
+  "km": "Километраж",
+  "fuelType": "Тип Топлива",
+  "transmission": "Трансмиссия",
+  "modification": "Модификация",
+  "myChecks": "Мои Проверки",
+  "newCheck": "Новая Проверка",
+  "noCheckYet": "Проверок пока нет",
+  "startFirstCheck": "Начните свою первую проверку",
+  "doFirstCheck": "Выполните Вашу Первую Проверку",
+  "needVehicleFirst": "Сначала вам нужно добавить транспортное средство",
+  "status": "Статус",
+  "photoCount": "Количество Фотографий",
+  "completed": "Завершено",
+  "selectVehicleTitle": "Выбрать Транспортное Средство",
+  "getPhotos": "Получить Фото",
+  "uploadPhoto": "Загрузить Фото",
+  "takeOrUploadPhoto": "Сделать / Загрузить Фото",
+  "required": "Обязательно",
+  "optional": "Необязательно",
+  "skip": "Пропустить",
+  "allPhotosUploaded": "Все Фото Загружены!",
+  "photosUploadedSuccess": "{count} фотографий успешно загружено",
+  "@photosUploadedSuccess": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "completeCheck": "Завершить Проверку",
+  "checkCompleted": "Проверка завершена: {vehicleName}",
+  "@checkCompleted": {
+    "placeholders": {
+      "vehicleName": {
+        "type": "String"
+      }
+    }
+  },
+  "takePhotosInOrder": "Пожалуйста, делайте фотографии по порядку",
+  "selectTheme": "Выбрать Тему",
+  "lastCheck": "Последняя Проверка: Еще нет",
+  "photoOfTotal": "Фото {current} из {total}",
+  "@photoOfTotal": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "user": "Пользователь",
+  "accountSettingsHint": "Управление учетной записью и настройками",
+  "appSection": "Приложение",
+  "notifications": "Уведомления",
+  "notificationsSubtitle": "Управление оповещениями и напоминаниями",
+  "dataSection": "Данные",
+  "backup": "Резервное копирование",
+  "backupSubtitle": "Сохранить данные в облаке",
+  "deleteData": "Удалить Данные",
+  "deleteDataSubtitle": "Удалить все ваши данные навсегда",
+  "aboutSection": "О приложении",
+  "aboutApp": "О приложении",
+  "versionInfo": "Версия 1.0.0",
+  "privacyPolicy": "Политика конфиденциальности",
+  "termsOfService": "Условия использования",
+  "helpSupport": "Помощь и поддержка",
+  "logout": "Выйти",
+  "comingSoon": "Скоро",
+  "deleteDataTitle": "Удалить Данные",
+  "deleteDataConfirm": "Вы уверены, что хотите удалить все свои данные? Это действие нельзя отменить.",
+  "dataDeleted": "Все данные удалены",
+  "ok": "OK",
+  "appDescription": "Система проверки автомобилей на базе ИИ для анализа технического обслуживания.",
+  "copyright": "Авторское право 2025 Car Check AI",
+  "vehicle": "Транспортное средство",
+  "fuelBenzin": "Бензин",
+  "fuelDizel": "Дизель",
+  "fuelLpg": "Газ",
+  "fuelHibrit": "Гибрид",
+  "fuelPluginHibrit": "Плагин-гибрид",
+  "fuelElektrik": "Электрический",
+  "transmissionManuel": "Механическая",
+  "transmissionOtomatik": "Автоматическая",
+  "transmissionYariOtomatik": "Полуавтоматическая",
+  "transmissionCvt": "Вариатор",
+  "modificationOrijinal": "Оригинал",
+  "modificationHafif": "Легкая",
+  "modificationOrta": "Средняя",
+  "modificationAgir": "Тяжелая",
+  "photoTireFl": "Передняя левая шина",
+  "photoTireFr": "Передняя правая шина",
+  "photoTireRl": "Задняя левая шина",
+  "photoTireRr": "Задняя правая шина",
+  "photoEngine": "Двигатель",
+  "photoHeadlights": "Фары",
+  "photoTaillights": "Задние фонари",
+  "photoDashboard": "Приборная панель",
+  "photoExhaust": "Выхлоп",
+  "photoOilStick": "Масляный щуп",
+  "photoFrunk": "Передний багажник",
+  "photoChargePortClosed": "Порт зарядки закрыт",
+  "photoChargePortOpen": "Порт зарядки открыт",
+  "photoHybridCooler": "Гибридный охладитель"
+}

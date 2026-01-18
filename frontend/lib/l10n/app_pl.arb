@@ -1,0 +1,147 @@
+{
+  "@@locale": "pl",
+  "appTitle": "Car Check AI",
+  "dashboardWelcome": "Witamy!",
+  "dashboardSubtitle": "Sprawdź status swojego pojazdu za pomocą systemu analizy konserwacji napędzanego sztuczną inteligencją.",
+  "quickStats": "Szybkie Statystyki",
+  "vehicles": "Pojazdy",
+  "checks": "Kontrole",
+  "recentChecks": "Ostatnie Kontrole",
+  "noChecksYet": "Brak kontroli",
+  "addVehicleFirst": "Najpierw dodaj pojazd, aby rozpocząć pierwszą kontrolę",
+  "myVehicles": "Moje Pojazdy",
+  "addVehicle": "Dodaj Pojazd",
+  "noVehiclesAdded": "Nie dodano jeszcze żadnych pojazdów",
+  "addFirstVehicle": "Dodaj swój pierwszy pojazd, aby rozpocząć",
+  "addYourFirstVehicle": "Dodaj Swój Pierwszy Pojazd",
+  "unknownVehicle": "Nieznany Pojazd",
+  "edit": "Edytuj",
+  "delete": "Usuń",
+  "settings": "Ustawienia",
+  "language": "Język",
+  "theme": "Motyw",
+  "light": "Jasny",
+  "dark": "Ciemny",
+  "system": "System",
+  "home": "Strona Główna",
+  "myVehiclesNav": "Moje Pojazdy",
+  "checksNav": "Kontrole",
+  "notificationsComingSoon": "Powiadomienia wkrótce",
+  "cancel": "Anuluj",
+  "deleteVehicle": "Usuń Pojazd",
+  "deleteVehicleConfirm": "Czy na pewno chcesz usunąć {vehicleName}?",
+  "@deleteVehicleConfirm": {
+    "placeholders": {
+      "vehicleName": {
+        "type": "String"
+      }
+    }
+  },
+  "close": "Zamknij",
+  "year": "Rok",
+  "km": "Kilometraż",
+  "fuelType": "Typ Paliwa",
+  "transmission": "Skrzynia Biegów",
+  "modification": "Modyfikacja",
+  "myChecks": "Moje Kontrole",
+  "newCheck": "Nowa Kontrola",
+  "noCheckYet": "Brak kontroli",
+  "startFirstCheck": "Rozpocznij swoją pierwszą kontrolę",
+  "doFirstCheck": "Wykonaj Swoją Pierwszą Kontrolę",
+  "needVehicleFirst": "Najpierw musisz dodać pojazd",
+  "status": "Status",
+  "photoCount": "Liczba Zdjęć",
+  "completed": "Zakończone",
+  "selectVehicleTitle": "Wybierz Pojazd",
+  "getPhotos": "Pobierz Zdjęcia",
+  "uploadPhoto": "Prześlij Zdjęcie",
+  "takeOrUploadPhoto": "Zrób / Prześlij Zdjęcie",
+  "required": "Wymagane",
+  "optional": "Opcjonalne",
+  "skip": "Pomiń",
+  "allPhotosUploaded": "Wszystkie Zdjęcia Przesłane!",
+  "photosUploadedSuccess": "{count} zdjęć przesłanych pomyślnie",
+  "@photosUploadedSuccess": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "completeCheck": "Zakończ Kontrolę",
+  "checkCompleted": "Kontrola zakończona: {vehicleName}",
+  "@checkCompleted": {
+    "placeholders": {
+      "vehicleName": {
+        "type": "String"
+      }
+    }
+  },
+  "takePhotosInOrder": "Proszę robić zdjęcia po kolei",
+  "selectTheme": "Wybierz Motyw",
+  "lastCheck": "Ostatnia Kontrola: Jeszcze nie",
+  "photoOfTotal": "Zdjęcie {current} z {total}",
+  "@photoOfTotal": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "user": "Uzytkownik",
+  "accountSettingsHint": "Zarzadzaj kontem i preferencjami",
+  "appSection": "Aplikacja",
+  "notifications": "Powiadomienia",
+  "notificationsSubtitle": "Zarzadzaj alertami i przypomnieniami",
+  "dataSection": "Dane",
+  "backup": "Kopia zapasowa",
+  "backupSubtitle": "Zapisz dane w chmurze",
+  "deleteData": "Usun Dane",
+  "deleteDataSubtitle": "Usun wszystkie dane na stale",
+  "aboutSection": "O aplikacji",
+  "aboutApp": "O aplikacji",
+  "versionInfo": "Wersja 1.0.0",
+  "privacyPolicy": "Polityka prywatnosci",
+  "termsOfService": "Warunki uzytkowania",
+  "helpSupport": "Pomoc i wsparcie",
+  "logout": "Wyloguj sie",
+  "comingSoon": "Wkrotce",
+  "deleteDataTitle": "Usun Dane",
+  "deleteDataConfirm": "Czy na pewno chcesz usunac wszystkie swoje dane? Tej operacji nie mozna cofnac.",
+  "dataDeleted": "Wszystkie dane zostaly usuniete",
+  "ok": "OK",
+  "appDescription": "System kontroli pojazdow napedzany sztuczna inteligencja do analizy konserwacji.",
+  "copyright": "Prawa autorskie 2025 Car Check AI",
+  "vehicle": "Pojazd",
+  "fuelBenzin": "Benzyna",
+  "fuelDizel": "Diesel",
+  "fuelLpg": "LPG",
+  "fuelHibrit": "Hybryda",
+  "fuelPluginHibrit": "Hybryda Plug-in",
+  "fuelElektrik": "Elektryczny",
+  "transmissionManuel": "Manualna",
+  "transmissionOtomatik": "Automatyczna",
+  "transmissionYariOtomatik": "Polautomatyczna",
+  "transmissionCvt": "CVT",
+  "modificationOrijinal": "Oryginalny",
+  "modificationHafif": "Lekka",
+  "modificationOrta": "Srednia",
+  "modificationAgir": "Ciezka",
+  "photoTireFl": "Opona Przednia Lewa",
+  "photoTireFr": "Opona Przednia Prawa",
+  "photoTireRl": "Opona Tylna Lewa",
+  "photoTireRr": "Opona Tylna Prawa",
+  "photoEngine": "Silnik",
+  "photoHeadlights": "Reflektory",
+  "photoTaillights": "Tylne swiatla",
+  "photoDashboard": "Deska rozdzielcza",
+  "photoExhaust": "Uklad wydechowy",
+  "photoOilStick": "Bagnet oleju",
+  "photoFrunk": "Przedni bagaznik",
+  "photoChargePortClosed": "Port ladowania zamkniety",
+  "photoChargePortOpen": "Port ladowania otwarty",
+  "photoHybridCooler": "Chlodnica hybrydowa"
+}

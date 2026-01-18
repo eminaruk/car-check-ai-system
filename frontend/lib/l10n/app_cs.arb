@@ -1,0 +1,147 @@
+{
+  "@@locale": "cs",
+  "appTitle": "Car Check AI",
+  "dashboardWelcome": "Vítejte!",
+  "dashboardSubtitle": "Zkontrolujte stav vašeho vozidla pomocí systému analýzy údržby poháněného AI.",
+  "quickStats": "Rychlé Statistiky",
+  "vehicles": "Vozidla",
+  "checks": "Kontroly",
+  "recentChecks": "Nedávné Kontroly",
+  "noChecksYet": "Zatím žádné kontroly",
+  "addVehicleFirst": "Nejprve přidejte vozidlo, abyste mohli zahájit první kontrolu",
+  "myVehicles": "Moje Vozidla",
+  "addVehicle": "Přidat Vozidlo",
+  "noVehiclesAdded": "Zatím nebyla přidána žádná vozidla",
+  "addFirstVehicle": "Přidejte své první vozidlo pro začátek",
+  "addYourFirstVehicle": "Přidejte Svůj První Vozidlo",
+  "unknownVehicle": "Neznámé Vozidlo",
+  "edit": "Upravit",
+  "delete": "Smazat",
+  "settings": "Nastavení",
+  "language": "Jazyk",
+  "theme": "Téma",
+  "light": "Světlý",
+  "dark": "Tmavý",
+  "system": "Systém",
+  "home": "Domů",
+  "myVehiclesNav": "Moje Vozidla",
+  "checksNav": "Kontroly",
+  "notificationsComingSoon": "Oznámení brzy",
+  "cancel": "Zrušit",
+  "deleteVehicle": "Smazat Vozidlo",
+  "deleteVehicleConfirm": "Jste si jisti, že chcete smazat {vehicleName}?",
+  "@deleteVehicleConfirm": {
+    "placeholders": {
+      "vehicleName": {
+        "type": "String"
+      }
+    }
+  },
+  "close": "Zavřít",
+  "year": "Rok",
+  "km": "Kilometry",
+  "fuelType": "Typ Paliva",
+  "transmission": "Převodovka",
+  "modification": "Úprava",
+  "myChecks": "Moje Kontroly",
+  "newCheck": "Nová Kontrola",
+  "noCheckYet": "Zatím žádné kontroly",
+  "startFirstCheck": "Začněte svou první kontrolu",
+  "doFirstCheck": "Proveďte Svou První Kontrolu",
+  "needVehicleFirst": "Nejprve musíte přidat vozidlo",
+  "status": "Stav",
+  "photoCount": "Počet Fotografií",
+  "completed": "Dokončeno",
+  "selectVehicleTitle": "Vybrat Vozidlo",
+  "getPhotos": "Získat Fotografie",
+  "uploadPhoto": "Nahrát Fotografii",
+  "takeOrUploadPhoto": "Vyfotit / Nahrát Fotografii",
+  "required": "Povinné",
+  "optional": "Volitelné",
+  "skip": "Přeskočit",
+  "allPhotosUploaded": "Všechny Fotografie Nahrané!",
+  "photosUploadedSuccess": "{count} fotografií úspěšně nahráno",
+  "@photosUploadedSuccess": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "completeCheck": "Dokončit Kontrolu",
+  "checkCompleted": "Kontrola dokončena: {vehicleName}",
+  "@checkCompleted": {
+    "placeholders": {
+      "vehicleName": {
+        "type": "String"
+      }
+    }
+  },
+  "takePhotosInOrder": "Prosím pořizujte fotografie v pořadí",
+  "selectTheme": "Vybrat Téma",
+  "lastCheck": "Poslední Kontrola: Ještě ne",
+  "photoOfTotal": "Fotografie {current} z {total}",
+  "@photoOfTotal": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "user": "Uzivatel",
+  "accountSettingsHint": "Spravovat ucet a nastaveni",
+  "appSection": "Aplikace",
+  "notifications": "Oznameni",
+  "notificationsSubtitle": "Spravovat upozorneni a pripominky",
+  "dataSection": "Data",
+  "backup": "Zaloha",
+  "backupSubtitle": "Ulozit data do cloudu",
+  "deleteData": "Smazat Data",
+  "deleteDataSubtitle": "Trvale odstranit vsechna data",
+  "aboutSection": "O aplikaci",
+  "aboutApp": "O aplikaci",
+  "versionInfo": "Verze 1.0.0",
+  "privacyPolicy": "Zasady ochrany osobnich udaju",
+  "termsOfService": "Podminky sluzby",
+  "helpSupport": "Napoveda a podpora",
+  "logout": "Odhlasit se",
+  "comingSoon": "Jiz brzy",
+  "deleteDataTitle": "Smazat Data",
+  "deleteDataConfirm": "Opravdu chcete smazat vsechna svá data? Tuto akci nelze vratit.",
+  "dataDeleted": "Vsechna data byla smazana",
+  "ok": "OK",
+  "appDescription": "AI system kontroly vozidel pro analyzu udrzby.",
+  "copyright": "Autorska prava 2025 Car Check AI",
+  "vehicle": "Vozidlo",
+  "fuelBenzin": "Benzin",
+  "fuelDizel": "Nafta",
+  "fuelLpg": "LPG",
+  "fuelHibrit": "Hybrid",
+  "fuelPluginHibrit": "Plugin Hybrid",
+  "fuelElektrik": "Elektricky",
+  "transmissionManuel": "Manualni",
+  "transmissionOtomatik": "Automaticka",
+  "transmissionYariOtomatik": "Poloautomaticka",
+  "transmissionCvt": "CVT",
+  "modificationOrijinal": "Originalni",
+  "modificationHafif": "Lehka",
+  "modificationOrta": "Stredni",
+  "modificationAgir": "Tezka",
+  "photoTireFl": "Leva predni pneumatika",
+  "photoTireFr": "Prava predni pneumatika",
+  "photoTireRl": "Leva zadni pneumatika",
+  "photoTireRr": "Prava zadni pneumatika",
+  "photoEngine": "Motor",
+  "photoHeadlights": "Predni svetla",
+  "photoTaillights": "Zadni svetla",
+  "photoDashboard": "Palubni deska",
+  "photoExhaust": "Vyfuk",
+  "photoOilStick": "Olejova tyc",
+  "photoFrunk": "Predni kufr",
+  "photoChargePortClosed": "Nabijeci port zavreny",
+  "photoChargePortOpen": "Nabijeci port otevreny",
+  "photoHybridCooler": "Hybridni chladič"
+}

@@ -1,0 +1,147 @@
+{
+  "@@locale": "es",
+  "appTitle": "Car Check AI",
+  "dashboardWelcome": "¡Bienvenido!",
+  "dashboardSubtitle": "Verifica el estado de tu vehículo con el sistema de análisis de mantenimiento con IA.",
+  "quickStats": "Estadísticas Rápidas",
+  "vehicles": "Vehículos",
+  "checks": "Verificaciones",
+  "recentChecks": "Verificaciones Recientes",
+  "noChecksYet": "Aún no hay verificaciones",
+  "addVehicleFirst": "Agrega un vehículo primero para comenzar tu primera verificación",
+  "myVehicles": "Mis Vehículos",
+  "addVehicle": "Agregar Vehículo",
+  "noVehiclesAdded": "Aún no se han agregado vehículos",
+  "addFirstVehicle": "Agrega tu primer vehículo para comenzar",
+  "addYourFirstVehicle": "Agrega Tu Primer Vehículo",
+  "unknownVehicle": "Vehículo Desconocido",
+  "edit": "Editar",
+  "delete": "Eliminar",
+  "settings": "Configuración",
+  "language": "Idioma",
+  "theme": "Tema",
+  "light": "Claro",
+  "dark": "Oscuro",
+  "system": "Sistema",
+  "home": "Inicio",
+  "myVehiclesNav": "Mis Vehículos",
+  "checksNav": "Verificaciones",
+  "notificationsComingSoon": "Notificaciones próximamente",
+  "cancel": "Cancelar",
+  "deleteVehicle": "Eliminar Vehículo",
+  "deleteVehicleConfirm": "¿Está seguro de que desea eliminar {vehicleName}?",
+  "@deleteVehicleConfirm": {
+    "placeholders": {
+      "vehicleName": {
+        "type": "String"
+      }
+    }
+  },
+  "close": "Cerrar",
+  "year": "Año",
+  "km": "Kilometraje",
+  "fuelType": "Tipo de Combustible",
+  "transmission": "Transmisión",
+  "modification": "Modificación",
+  "myChecks": "Mis Verificaciones",
+  "newCheck": "Nueva Verificación",
+  "noCheckYet": "Aún no hay verificaciones",
+  "startFirstCheck": "Comienza tu primera verificación",
+  "doFirstCheck": "Haz Tu Primera Verificación",
+  "needVehicleFirst": "Primero necesitas agregar un vehículo",
+  "status": "Estado",
+  "photoCount": "Número de Fotos",
+  "completed": "Completado",
+  "selectVehicleTitle": "Seleccionar Vehículo",
+  "getPhotos": "Obtener Fotos",
+  "uploadPhoto": "Subir Foto",
+  "takeOrUploadPhoto": "Tomar / Subir Foto",
+  "required": "Requerido",
+  "optional": "Opcional",
+  "skip": "Omitir",
+  "allPhotosUploaded": "¡Todas las Fotos Subidas!",
+  "photosUploadedSuccess": "{count} fotos subidas exitosamente",
+  "@photosUploadedSuccess": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "completeCheck": "Completar Verificación",
+  "checkCompleted": "Verificación completada: {vehicleName}",
+  "@checkCompleted": {
+    "placeholders": {
+      "vehicleName": {
+        "type": "String"
+      }
+    }
+  },
+  "takePhotosInOrder": "Por favor toma fotos en orden",
+  "selectTheme": "Seleccionar Tema",
+  "lastCheck": "Última Verificación: Aún no realizada",
+  "photoOfTotal": "Foto {current} de {total}",
+  "@photoOfTotal": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "user": "Usuario",
+  "accountSettingsHint": "Haz clic para configuración de cuenta",
+  "appSection": "Aplicación",
+  "notifications": "Notificaciones",
+  "notificationsSubtitle": "Gestionar configuración de notificaciones",
+  "dataSection": "Datos",
+  "backup": "Copia de seguridad",
+  "backupSubtitle": "Respaldar tus datos",
+  "deleteData": "Eliminar datos",
+  "deleteDataSubtitle": "Borrar todos los datos",
+  "aboutSection": "Acerca de",
+  "aboutApp": "Acerca de la aplicación",
+  "versionInfo": "Versión 1.0.0",
+  "privacyPolicy": "Política de privacidad",
+  "termsOfService": "Términos de servicio",
+  "helpSupport": "Ayuda y soporte",
+  "logout": "Cerrar sesión",
+  "comingSoon": "Esta función llegará pronto",
+  "deleteDataTitle": "Eliminar datos",
+  "deleteDataConfirm": "Todos tus datos serán eliminados. Esta acción no se puede deshacer. ¿Estás seguro?",
+  "dataDeleted": "Datos eliminados",
+  "ok": "OK",
+  "appDescription": "Aplicación de análisis de mantenimiento de vehículos con IA. Analiza el estado de tu vehículo con fotos.",
+  "copyright": "© 2025 Car Check AI",
+  "vehicle": "Vehículo",
+  "fuelBenzin": "Gasolina",
+  "fuelDizel": "Diésel",
+  "fuelLpg": "GLP",
+  "fuelHibrit": "Híbrido",
+  "fuelPluginHibrit": "Híbrido enchufable",
+  "fuelElektrik": "Eléctrico",
+  "transmissionManuel": "Manual",
+  "transmissionOtomatik": "Automático",
+  "transmissionYariOtomatik": "Semi-automático",
+  "transmissionCvt": "CVT",
+  "modificationOrijinal": "Original",
+  "modificationHafif": "Ligeramente modificado",
+  "modificationOrta": "Moderadamente modificado",
+  "modificationAgir": "Altamente modificado",
+  "photoTireFl": "Neumático delantero izquierdo",
+  "photoTireFr": "Neumático delantero derecho",
+  "photoTireRl": "Neumático trasero izquierdo",
+  "photoTireRr": "Neumático trasero derecho",
+  "photoEngine": "Compartimento del motor",
+  "photoHeadlights": "Faros",
+  "photoTaillights": "Luces traseras",
+  "photoDashboard": "Tablero",
+  "photoExhaust": "Escape",
+  "photoOilStick": "Varilla de aceite",
+  "photoFrunk": "Frunk/Electrónica de potencia",
+  "photoChargePortClosed": "Puerto de carga (cerrado)",
+  "photoChargePortOpen": "Puerto de carga (abierto)",
+  "photoHybridCooler": "Enfriador de batería híbrida"
+}

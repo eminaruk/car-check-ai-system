@@ -1,0 +1,147 @@
+{
+  "@@locale": "hu",
+  "appTitle": "Car Check AI",
+  "dashboardWelcome": "Üdvözöljük!",
+  "dashboardSubtitle": "Ellenőrizze járművének állapotát az AI-alapú karbantartási elemző rendszerrel.",
+  "quickStats": "Gyors Statisztikák",
+  "vehicles": "Járművek",
+  "checks": "Ellenőrzések",
+  "recentChecks": "Legutóbbi Ellenőrzések",
+  "noChecksYet": "Még nincsenek ellenőrzések",
+  "addVehicleFirst": "Először adjon hozzá járművet, hogy megkezdhesse az első ellenőrzést",
+  "myVehicles": "Járműveim",
+  "addVehicle": "Jármű Hozzáadása",
+  "noVehiclesAdded": "Még nincs jármű hozzáadva",
+  "addFirstVehicle": "Adja hozzá az első járművét a kezdéshez",
+  "addYourFirstVehicle": "Adja Hozzá Az Első Járművét",
+  "unknownVehicle": "Ismeretlen Jármű",
+  "edit": "Szerkesztés",
+  "delete": "Törlés",
+  "settings": "Beállítások",
+  "language": "Nyelv",
+  "theme": "Téma",
+  "light": "Világos",
+  "dark": "Sötét",
+  "system": "Rendszer",
+  "home": "Kezdőlap",
+  "myVehiclesNav": "Járműveim",
+  "checksNav": "Ellenőrzések",
+  "notificationsComingSoon": "Értesítések hamarosan",
+  "cancel": "Mégse",
+  "deleteVehicle": "Jármű Törlése",
+  "deleteVehicleConfirm": "Biztosan törölni szeretné a {vehicleName} járművet?",
+  "@deleteVehicleConfirm": {
+    "placeholders": {
+      "vehicleName": {
+        "type": "String"
+      }
+    }
+  },
+  "close": "Bezárás",
+  "year": "Év",
+  "km": "Kilométer",
+  "fuelType": "Üzemanyag Típusa",
+  "transmission": "Sebességváltó",
+  "modification": "Módosítás",
+  "myChecks": "Ellenőrzéseim",
+  "newCheck": "Új Ellenőrzés",
+  "noCheckYet": "Még nincsenek ellenőrzések",
+  "startFirstCheck": "Kezdje el az első ellenőrzést",
+  "doFirstCheck": "Végezze El Az Első Ellenőrzést",
+  "needVehicleFirst": "Először járművet kell hozzáadnia",
+  "status": "Státusz",
+  "photoCount": "Fotók Száma",
+  "completed": "Befejezve",
+  "selectVehicleTitle": "Jármű Kiválasztása",
+  "getPhotos": "Fotók Lekérése",
+  "uploadPhoto": "Fotó Feltöltése",
+  "takeOrUploadPhoto": "Fotó Készítése / Feltöltése",
+  "required": "Kötelező",
+  "optional": "Opcionális",
+  "skip": "Kihagyás",
+  "allPhotosUploaded": "Összes Fotó Feltöltve!",
+  "photosUploadedSuccess": "{count} fotó sikeresen feltöltve",
+  "@photosUploadedSuccess": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "completeCheck": "Ellenőrzés Befejezése",
+  "checkCompleted": "Ellenőrzés befejezve: {vehicleName}",
+  "@checkCompleted": {
+    "placeholders": {
+      "vehicleName": {
+        "type": "String"
+      }
+    }
+  },
+  "takePhotosInOrder": "Kérjük, készítsen fényképeket sorrendben",
+  "selectTheme": "Téma Kiválasztása",
+  "lastCheck": "Utolsó Ellenőrzés: Még nem",
+  "photoOfTotal": "Fotó {current}/{total}",
+  "@photoOfTotal": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "user": "Felhasznalo",
+  "accountSettingsHint": "Fiok es beallitasok kezelese",
+  "appSection": "Alkalmazas",
+  "notifications": "Ertesitesek",
+  "notificationsSubtitle": "Figyelmeztetesek es emlekeztetek kezelese",
+  "dataSection": "Adatok",
+  "backup": "Biztonsagi mentes",
+  "backupSubtitle": "Adatok mentese a felhobe",
+  "deleteData": "Adatok Torlese",
+  "deleteDataSubtitle": "Osszes adat vegleges torlese",
+  "aboutSection": "Rolunk",
+  "aboutApp": "Az alkalmazasrol",
+  "versionInfo": "Verzió 1.0.0",
+  "privacyPolicy": "Adatvedelmi iranyelv",
+  "termsOfService": "Szolgaltatasi feltetelek",
+  "helpSupport": "Segitseg es tamogatas",
+  "logout": "Kijelentkezes",
+  "comingSoon": "Hamarosan",
+  "deleteDataTitle": "Adatok Torlese",
+  "deleteDataConfirm": "Biztosan torolni szeretne az osszes adatat? Ez a muvelet nem vonhato vissza.",
+  "dataDeleted": "Minden adat torolve",
+  "ok": "OK",
+  "appDescription": "AI-alapu jarmu-ellenorzo rendszer karbantartasi elemzeshez.",
+  "copyright": "Szerzoi jog 2025 Car Check AI",
+  "vehicle": "Jarmu",
+  "fuelBenzin": "Benzin",
+  "fuelDizel": "Dizel",
+  "fuelLpg": "LPG",
+  "fuelHibrit": "Hibrid",
+  "fuelPluginHibrit": "Plugin Hibrid",
+  "fuelElektrik": "Elektromos",
+  "transmissionManuel": "Manualis",
+  "transmissionOtomatik": "Automatikus",
+  "transmissionYariOtomatik": "Felautomata",
+  "transmissionCvt": "CVT",
+  "modificationOrijinal": "Eredeti",
+  "modificationHafif": "Konnyu",
+  "modificationOrta": "Kozepes",
+  "modificationAgir": "Nehez",
+  "photoTireFl": "Bal elso gumi",
+  "photoTireFr": "Jobb elso gumi",
+  "photoTireRl": "Bal hatso gumi",
+  "photoTireRr": "Jobb hatso gumi",
+  "photoEngine": "Motor",
+  "photoHeadlights": "Fenyszoro",
+  "photoTaillights": "Hatso lampa",
+  "photoDashboard": "Muszerfalx",
+  "photoExhaust": "Kipufogo",
+  "photoOilStick": "Olajszintjelzo",
+  "photoFrunk": "Elso csomagtarto",
+  "photoChargePortClosed": "Toltoport zarva",
+  "photoChargePortOpen": "Toltoport nyitva",
+  "photoHybridCooler": "Hibrid huto"
+}

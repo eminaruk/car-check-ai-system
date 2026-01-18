@@ -1,0 +1,147 @@
+{
+  "@@locale": "de",
+  "appTitle": "Car Check AI",
+  "dashboardWelcome": "Willkommen!",
+  "dashboardSubtitle": "Überprüfen Sie den Status Ihres Fahrzeugs mit dem KI-gestützten Wartungsanalyse-System.",
+  "quickStats": "Schnellstatistiken",
+  "vehicles": "Fahrzeuge",
+  "checks": "Prüfungen",
+  "recentChecks": "Letzte Prüfungen",
+  "noChecksYet": "Noch keine Prüfungen",
+  "addVehicleFirst": "Fügen Sie zuerst ein Fahrzeug hinzu, um Ihre erste Prüfung zu starten",
+  "myVehicles": "Meine Fahrzeuge",
+  "addVehicle": "Fahrzeug Hinzufügen",
+  "noVehiclesAdded": "Noch keine Fahrzeuge hinzugefügt",
+  "addFirstVehicle": "Fügen Sie Ihr erstes Fahrzeug hinzu, um zu beginnen",
+  "addYourFirstVehicle": "Fügen Sie Ihr Erstes Fahrzeug Hinzu",
+  "unknownVehicle": "Unbekanntes Fahrzeug",
+  "edit": "Bearbeiten",
+  "delete": "Löschen",
+  "settings": "Einstellungen",
+  "language": "Sprache",
+  "theme": "Design",
+  "light": "Hell",
+  "dark": "Dunkel",
+  "system": "System",
+  "home": "Startseite",
+  "myVehiclesNav": "Meine Fahrzeuge",
+  "checksNav": "Prüfungen",
+  "notificationsComingSoon": "Benachrichtigungen folgen",
+  "cancel": "Abbrechen",
+  "deleteVehicle": "Fahrzeug Löschen",
+  "deleteVehicleConfirm": "Sind Sie sicher, dass Sie {vehicleName} löschen möchten?",
+  "@deleteVehicleConfirm": {
+    "placeholders": {
+      "vehicleName": {
+        "type": "String"
+      }
+    }
+  },
+  "close": "Schließen",
+  "year": "Jahr",
+  "km": "Kilometer",
+  "fuelType": "Kraftstoffart",
+  "transmission": "Getriebe",
+  "modification": "Modifikation",
+  "myChecks": "Meine Prüfungen",
+  "newCheck": "Neue Prüfung",
+  "noCheckYet": "Noch keine Prüfungen",
+  "startFirstCheck": "Starten Sie Ihre erste Prüfung",
+  "doFirstCheck": "Führen Sie Ihre Erste Prüfung Durch",
+  "needVehicleFirst": "Sie müssen zuerst ein Fahrzeug hinzufügen",
+  "status": "Status",
+  "photoCount": "Anzahl der Fotos",
+  "completed": "Abgeschlossen",
+  "selectVehicleTitle": "Fahrzeug Auswählen",
+  "getPhotos": "Fotos Abrufen",
+  "uploadPhoto": "Foto Hochladen",
+  "takeOrUploadPhoto": "Foto Aufnehmen / Hochladen",
+  "required": "Erforderlich",
+  "optional": "Optional",
+  "skip": "Überspringen",
+  "allPhotosUploaded": "Alle Fotos Hochgeladen!",
+  "photosUploadedSuccess": "{count} Fotos erfolgreich hochgeladen",
+  "@photosUploadedSuccess": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "completeCheck": "Prüfung Abschließen",
+  "checkCompleted": "Prüfung abgeschlossen: {vehicleName}",
+  "@checkCompleted": {
+    "placeholders": {
+      "vehicleName": {
+        "type": "String"
+      }
+    }
+  },
+  "takePhotosInOrder": "Bitte machen Sie Fotos in Reihenfolge",
+  "selectTheme": "Design Auswählen",
+  "lastCheck": "Letzte Prüfung: Noch nicht",
+  "photoOfTotal": "Foto {current} von {total}",
+  "@photoOfTotal": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "user": "Benutzer",
+  "accountSettingsHint": "Klicken Sie für Kontoeinstellungen",
+  "appSection": "Anwendung",
+  "notifications": "Benachrichtigungen",
+  "notificationsSubtitle": "Benachrichtigungseinstellungen verwalten",
+  "dataSection": "Daten",
+  "backup": "Sicherung",
+  "backupSubtitle": "Sichern Sie Ihre Daten",
+  "deleteData": "Daten löschen",
+  "deleteDataSubtitle": "Alle Daten löschen",
+  "aboutSection": "Info",
+  "aboutApp": "Über die App",
+  "versionInfo": "Version 1.0.0",
+  "privacyPolicy": "Datenschutzrichtlinie",
+  "termsOfService": "Nutzungsbedingungen",
+  "helpSupport": "Hilfe & Support",
+  "logout": "Abmelden",
+  "comingSoon": "Diese Funktion kommt bald",
+  "deleteDataTitle": "Daten löschen",
+  "deleteDataConfirm": "Alle Ihre Daten werden gelöscht. Diese Aktion kann nicht rückgängig gemacht werden. Sind Sie sicher?",
+  "dataDeleted": "Daten gelöscht",
+  "ok": "OK",
+  "appDescription": "KI-gestützte Fahrzeugwartungsanalyse-Anwendung. Analysieren Sie den Zustand Ihres Fahrzeugs mit Fotos.",
+  "copyright": "© 2025 Car Check AI",
+  "vehicle": "Fahrzeug",
+  "fuelBenzin": "Benzin",
+  "fuelDizel": "Diesel",
+  "fuelLpg": "LPG",
+  "fuelHibrit": "Hybrid",
+  "fuelPluginHibrit": "Plugin-Hybrid",
+  "fuelElektrik": "Elektrisch",
+  "transmissionManuel": "Manuell",
+  "transmissionOtomatik": "Automatik",
+  "transmissionYariOtomatik": "Halbautomatik",
+  "transmissionCvt": "CVT",
+  "modificationOrijinal": "Original",
+  "modificationHafif": "Leicht modifiziert",
+  "modificationOrta": "Mittel modifiziert",
+  "modificationAgir": "Stark modifiziert",
+  "photoTireFl": "Vorderreifen links",
+  "photoTireFr": "Vorderreifen rechts",
+  "photoTireRl": "Hinterreifen links",
+  "photoTireRr": "Hinterreifen rechts",
+  "photoEngine": "Motorraum",
+  "photoHeadlights": "Scheinwerfer",
+  "photoTaillights": "Rücklichter",
+  "photoDashboard": "Armaturenbrett",
+  "photoExhaust": "Auspuff",
+  "photoOilStick": "Ölmessstab",
+  "photoFrunk": "Frunk/Leistungselektronik",
+  "photoChargePortClosed": "Ladeanschluss (geschlossen)",
+  "photoChargePortOpen": "Ladeanschluss (offen)",
+  "photoHybridCooler": "Hybrid-Batteriekühler"
+}

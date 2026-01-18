@@ -1,0 +1,319 @@
+{
+  "@@locale": "en",
+  "appTitle": "Car Check AI",
+  "@appTitle": {
+    "description": "Application title"
+  },
+  "dashboardWelcome": "Welcome!",
+  "@dashboardWelcome": {
+    "description": "Welcome message on dashboard"
+  },
+  "dashboardSubtitle": "Check your vehicle status with AI-powered maintenance analysis system.",
+  "@dashboardSubtitle": {
+    "description": "Dashboard subtitle text"
+  },
+  "quickStats": "Quick Statistics",
+  "@quickStats": {
+    "description": "Quick statistics section title"
+  },
+  "vehicles": "Vehicles",
+  "@vehicles": {
+    "description": "Vehicles label"
+  },
+  "checks": "Checks",
+  "@checks": {
+    "description": "Checks label"
+  },
+  "recentChecks": "Recent Checks",
+  "@recentChecks": {
+    "description": "Recent checks section title"
+  },
+  "noChecksYet": "No checks yet",
+  "@noChecksYet": {
+    "description": "Message when no checks exist"
+  },
+  "addVehicleFirst": "Add a vehicle first to start your first check",
+  "@addVehicleFirst": {
+    "description": "Hint to add vehicle before checking"
+  },
+  "myVehicles": "My Vehicles",
+  "@myVehicles": {
+    "description": "Vehicles screen title"
+  },
+  "addVehicle": "Add Vehicle",
+  "@addVehicle": {
+    "description": "Add vehicle button text"
+  },
+  "noVehiclesAdded": "No vehicles added yet",
+  "@noVehiclesAdded": {
+    "description": "Empty state when no vehicles"
+  },
+  "addFirstVehicle": "Add your first vehicle to get started",
+  "@addFirstVehicle": {
+    "description": "Hint to add first vehicle"
+  },
+  "addYourFirstVehicle": "Add Your First Vehicle",
+  "@addYourFirstVehicle": {
+    "description": "Button to add first vehicle"
+  },
+  "unknownVehicle": "Unknown Vehicle",
+  "@unknownVehicle": {
+    "description": "Fallback vehicle name"
+  },
+  "edit": "Edit",
+  "@edit": {
+    "description": "Edit action"
+  },
+  "delete": "Delete",
+  "@delete": {
+    "description": "Delete action"
+  },
+  "settings": "Settings",
+  "@settings": {
+    "description": "Settings screen title"
+  },
+  "language": "Language",
+  "@language": {
+    "description": "Language setting label"
+  },
+  "theme": "Theme",
+  "@theme": {
+    "description": "Theme setting label"
+  },
+  "light": "Light",
+  "@light": {
+    "description": "Light theme"
+  },
+  "dark": "Dark",
+  "@dark": {
+    "description": "Dark theme"
+  },
+  "system": "System",
+  "@system": {
+    "description": "System theme"
+  },
+  "home": "Home",
+  "@home": {
+    "description": "Home navigation label"
+  },
+  "myVehiclesNav": "My Vehicles",
+  "@myVehiclesNav": {
+    "description": "My Vehicles navigation label"
+  },
+  "checksNav": "Checks",
+  "@checksNav": {
+    "description": "Checks navigation label"
+  },
+  "notificationsComingSoon": "Notifications coming soon",
+  "@notificationsComingSoon": {
+    "description": "Notifications placeholder message"
+  },
+  "cancel": "Cancel",
+  "@cancel": {
+    "description": "Cancel button"
+  },
+  "deleteVehicle": "Delete Vehicle",
+  "@deleteVehicle": {
+    "description": "Delete vehicle dialog title"
+  },
+  "deleteVehicleConfirm": "Are you sure you want to delete {vehicleName}?",
+  "@deleteVehicleConfirm": {
+    "description": "Delete vehicle confirmation message",
+    "placeholders": {
+      "vehicleName": {
+        "type": "String"
+      }
+    }
+  },
+  "close": "Close",
+  "@close": {
+    "description": "Close button"
+  },
+  "year": "Year",
+  "@year": {
+    "description": "Year label"
+  },
+  "km": "KM",
+  "@km": {
+    "description": "Kilometer label"
+  },
+  "fuelType": "Fuel Type",
+  "@fuelType": {
+    "description": "Fuel type label"
+  },
+  "transmission": "Transmission",
+  "@transmission": {
+    "description": "Transmission label"
+  },
+  "modification": "Modification",
+  "@modification": {
+    "description": "Modification label"
+  },
+  "myChecks": "My Checks",
+  "@myChecks": {
+    "description": "Checks screen title"
+  },
+  "newCheck": "New Check",
+  "@newCheck": {
+    "description": "New check button"
+  },
+  "noCheckYet": "No check yet",
+  "@noCheckYet": {
+    "description": "No checks message"
+  },
+  "startFirstCheck": "Start your first check",
+  "@startFirstCheck": {
+    "description": "Start first check message"
+  },
+  "doFirstCheck": "Do Your First Check",
+  "@doFirstCheck": {
+    "description": "Do first check button"
+  },
+  "needVehicleFirst": "You need to add a vehicle first",
+  "@needVehicleFirst": {
+    "description": "Need vehicle first message"
+  },
+  "status": "Status",
+  "@status": {
+    "description": "Status label"
+  },
+  "photoCount": "Photo Count",
+  "@photoCount": {
+    "description": "Photo count label"
+  },
+  "completed": "Completed",
+  "@completed": {
+    "description": "Completed status"
+  },
+  "required": "Required",
+  "@required": {
+    "description": "Required label"
+  },
+  "optional": "Optional",
+  "@optional": {
+    "description": "Optional label"
+  },
+  "uploadPhoto": "Upload Photo",
+  "@uploadPhoto": {
+    "description": "Upload photo button"
+  },
+  "skip": "Skip",
+  "@skip": {
+    "description": "Skip button"
+  },
+  "allPhotosUploaded": "All Photos Uploaded!",
+  "@allPhotosUploaded": {
+    "description": "All photos uploaded message"
+  },
+  "photosUploadedSuccess": "{count} photos uploaded successfully",
+  "@photosUploadedSuccess": {
+    "description": "Photos uploaded success message",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "completeCheck": "Complete Check",
+  "@completeCheck": {
+    "description": "Complete check button"
+  },
+  "checkCompleted": "Check completed: {vehicleName}",
+  "@checkCompleted": {
+    "description": "Check completed message",
+    "placeholders": {
+      "vehicleName": {
+        "type": "String"
+      }
+    }
+  },
+  "takePhotosInOrder": "Please take photos in order",
+  "@takePhotosInOrder": {
+    "description": "Take photos in order message"
+  },
+  "selectTheme": "Select Theme",
+  "@selectTheme": {
+    "description": "Select theme dialog title"
+  },
+  "lastCheck": "Last Check: Not yet",
+  "@lastCheck": {
+    "description": "Last check label"
+  },
+  "selectVehicleTitle": "Select Vehicle",
+  "@selectVehicleTitle": {
+    "description": "Select vehicle title"
+  },
+  "getPhotos": "Get Photos",
+  "@getPhotos": {
+    "description": "Get photos button"
+  },
+  "takeOrUploadPhoto": "Take / Upload Photo",
+  "@takeOrUploadPhoto": {
+    "description": "Take or upload photo button"
+  },
+  "photoOfTotal": "Photo {current} of {total}",
+  "@photoOfTotal": {
+    "description": "Photo progress text",
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "user": "User",
+  "accountSettingsHint": "Click for account settings",
+  "appSection": "Application",
+  "notifications": "Notifications",
+  "notificationsSubtitle": "Manage notification settings",
+  "dataSection": "Data",
+  "backup": "Backup",
+  "backupSubtitle": "Backup your data",
+  "deleteData": "Delete Data",
+  "deleteDataSubtitle": "Clear all data",
+  "aboutSection": "About",
+  "aboutApp": "About App",
+  "versionInfo": "Version 1.0.0",
+  "privacyPolicy": "Privacy Policy",
+  "termsOfService": "Terms of Service",
+  "helpSupport": "Help & Support",
+  "logout": "Logout",
+  "comingSoon": "This feature is coming soon",
+  "deleteDataTitle": "Delete Data",
+  "deleteDataConfirm": "All your data will be deleted. This action cannot be undone. Are you sure?",
+  "dataDeleted": "Data deleted",
+  "ok": "OK",
+  "appDescription": "AI-powered vehicle maintenance analysis application. Analyze your vehicle's condition with photos.",
+  "copyright": "© 2025 Car Check AI",
+  "vehicle": "Vehicle",
+  "fuelBenzin": "Gasoline",
+  "fuelDizel": "Diesel",
+  "fuelLpg": "LPG",
+  "fuelHibrit": "Hybrid",
+  "fuelPluginHibrit": "Plugin Hybrid",
+  "fuelElektrik": "Electric",
+  "transmissionManuel": "Manual",
+  "transmissionOtomatik": "Automatic",
+  "transmissionYariOtomatik": "Semi-Automatic",
+  "transmissionCvt": "CVT",
+  "modificationOrijinal": "Original",
+  "modificationHafif": "Light Modified",
+  "modificationOrta": "Medium Modified",
+  "modificationAgir": "Heavy Modified",
+  "photoTireFl": "Front Left Tire",
+  "photoTireFr": "Front Right Tire",
+  "photoTireRl": "Rear Left Tire",
+  "photoTireRr": "Rear Right Tire",
+  "photoEngine": "Engine Bay",
+  "photoHeadlights": "Headlights",
+  "photoTaillights": "Taillights",
+  "photoDashboard": "Dashboard",
+  "photoExhaust": "Exhaust",
+  "photoOilStick": "Oil Dipstick",
+  "photoFrunk": "Frunk/Power Electronics",
+  "photoChargePortClosed": "Charge Port (Closed)",
+  "photoChargePortOpen": "Charge Port (Open)",
+  "photoHybridCooler": "Hybrid Battery Cooler"
+}

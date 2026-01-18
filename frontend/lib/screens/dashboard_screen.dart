@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../services/storage_service.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -48,13 +49,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
     }
   }
 
-  String _getVehicleName(String? vehicleId) {
-    if (vehicleId == null) return 'Bilinmeyen Araç';
+  String _getVehicleName(String? vehicleId, BuildContext context) {
+    if (vehicleId == null) return AppLocalizations.of(context)!.unknownVehicle;
     final vehicle = vehicles.firstWhere(
       (v) => v['id'] == vehicleId,
-      orElse: () => {'name': 'Bilinmeyen Araç'},
+      orElse: () => {'name': AppLocalizations.of(context)!.unknownVehicle},
     );
-    return vehicle['name'] ?? 'Bilinmeyen Araç';
+    return vehicle['name'] ?? AppLocalizations.of(context)!.unknownVehicle;
   }
 
   List<Map<String, dynamic>> get _recentChecks {
@@ -71,14 +72,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Car Check AI'),
+        title: Text(AppLocalizations.of(context)!.appTitle),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         actions: [
           IconButton(
             icon: const Icon(Icons.notifications_outlined),
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Bildirimler yakında eklenecek')),
+                SnackBar(content: Text(AppLocalizations.of(context)!.notificationsComingSoon)),
               );
             },
           ),
@@ -108,9 +109,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                   color: Theme.of(context).colorScheme.primary,
                                 ),
                                 const SizedBox(width: 8),
-                                const Text(
-                                  'Hoş Geldiniz!',
-                                  style: TextStyle(
+                                Text(
+                                  AppLocalizations.of(context)!.dashboardWelcome,
+                                  style: const TextStyle(
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -118,9 +119,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                               ],
                             ),
                             const SizedBox(height: 8),
-                            const Text(
-                              'AI destekli araç bakım analiz sistemi ile aracınızın durumunu kontrol edin.',
-                              style: TextStyle(color: Colors.grey),
+                            Text(
+                              AppLocalizations.of(context)!.dashboardSubtitle,
+                              style: const TextStyle(color: Colors.grey),
                             ),
                           ],
                         ),
@@ -129,9 +130,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     const SizedBox(height: 16),
 
                     // İstatistikler
-                    const Text(
-                      'Hızlı İstatistikler',
-                      style: TextStyle(
+                    Text(
+                      AppLocalizations.of(context)!.quickStats,
+                      style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
@@ -142,7 +143,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         Expanded(
                           child: _StatCard(
                             icon: Icons.directions_car,
-                            title: 'Araçlar',
+                            title: AppLocalizations.of(context)!.vehicles,
                             value: '${vehicles.length}',
                             color: Colors.blue,
                             onTap: () {
@@ -154,7 +155,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         Expanded(
                           child: _StatCard(
                             icon: Icons.camera_alt,
-                            title: 'Check',
+                            title: AppLocalizations.of(context)!.checks,
                             value: '${checks.length}',
                             color: Colors.green,
                             onTap: () {
@@ -167,9 +168,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     const SizedBox(height: 24),
 
                     // Son Check'ler
-                    const Text(
-                      'Son Check\'ler',
-                      style: TextStyle(
+                    Text(
+                      AppLocalizations.of(context)!.recentChecks,
+                      style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
@@ -189,15 +190,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                 ),
                                 const SizedBox(height: 8),
                                 Text(
-                                  'Henüz check yapılmadı',
+                                  AppLocalizations.of(context)!.noChecksYet,
                                   style: TextStyle(
                                     color: Colors.grey[600],
                                   ),
                                 ),
                                 const SizedBox(height: 8),
-                                const Text(
-                                  'İlk check\'inizi başlatmak için bir araç ekleyin',
-                                  style: TextStyle(
+                                Text(
+                                  AppLocalizations.of(context)!.addVehicleFirst,
+                                  style: const TextStyle(
                                     color: Colors.grey,
                                     fontSize: 12,
                                   ),
@@ -231,7 +232,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                 ),
                               ),
                               title: Text(
-                                _getVehicleName(check['vehicleId']),
+                                _getVehicleName(check['vehicleId'], context),
                                 style: const TextStyle(fontWeight: FontWeight.bold),
                               ),
                               subtitle: Text(_formatDate(check['createdAt'])),

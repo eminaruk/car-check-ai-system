@@ -1,0 +1,147 @@
+{
+  "@@locale": "ja",
+  "appTitle": "Car Check AI",
+  "dashboardWelcome": "いらっしゃいませ！",
+  "dashboardSubtitle": "AIを活用したメンテナンス分析システムで車両の状態を確認します。",
+  "quickStats": "クイック統計",
+  "vehicles": "車両",
+  "checks": "チェック",
+  "recentChecks": "最近のチェック",
+  "noChecksYet": "まだチェックがありません",
+  "addVehicleFirst": "最初に車両を追加して最初のチェックを開始します",
+  "myVehicles": "マイ車両",
+  "addVehicle": "車両を追加",
+  "noVehiclesAdded": "まだ車両が追加されていません",
+  "addFirstVehicle": "最初の車両を追加して始めましょう",
+  "addYourFirstVehicle": "最初の車両を追加",
+  "unknownVehicle": "不明な車両",
+  "edit": "編集",
+  "delete": "削除",
+  "settings": "設定",
+  "language": "言語",
+  "theme": "テーマ",
+  "light": "ライト",
+  "dark": "ダーク",
+  "system": "システム",
+  "home": "ホーム",
+  "myVehiclesNav": "マイ車両",
+  "checksNav": "チェック",
+  "notificationsComingSoon": "通知はまもなく",
+  "cancel": "キャンセル",
+  "deleteVehicle": "車両を削除",
+  "deleteVehicleConfirm": "{vehicleName}を削除してもよろしいですか？",
+  "@deleteVehicleConfirm": {
+    "placeholders": {
+      "vehicleName": {
+        "type": "String"
+      }
+    }
+  },
+  "close": "閉じる",
+  "year": "年",
+  "km": "キロメートル",
+  "fuelType": "燃料タイプ",
+  "transmission": "トランスミッション",
+  "modification": "改造",
+  "myChecks": "マイチェック",
+  "newCheck": "新しいチェック",
+  "noCheckYet": "まだチェックがありません",
+  "startFirstCheck": "最初のチェックを開始",
+  "doFirstCheck": "最初のチェックを行う",
+  "needVehicleFirst": "まず車両を追加する必要があります",
+  "status": "ステータス",
+  "photoCount": "写真数",
+  "completed": "完了",
+  "selectVehicleTitle": "車両を選択",
+  "getPhotos": "写真を取得",
+  "uploadPhoto": "写真をアップロード",
+  "takeOrUploadPhoto": "写真を撮る / アップロード",
+  "required": "必須",
+  "optional": "任意",
+  "skip": "スキップ",
+  "allPhotosUploaded": "すべての写真がアップロードされました！",
+  "photosUploadedSuccess": "{count}枚の写真が正常にアップロードされました",
+  "@photosUploadedSuccess": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "completeCheck": "チェックを完了",
+  "checkCompleted": "チェック完了：{vehicleName}",
+  "@checkCompleted": {
+    "placeholders": {
+      "vehicleName": {
+        "type": "String"
+      }
+    }
+  },
+  "takePhotosInOrder": "順番に写真を撮ってください",
+  "selectTheme": "テーマを選択",
+  "lastCheck": "最後のチェック：まだ",
+  "photoOfTotal": "写真 {current}/{total}",
+  "@photoOfTotal": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "user": "ユーザー",
+  "accountSettingsHint": "アカウントと設定を管理",
+  "appSection": "アプリ",
+  "notifications": "通知",
+  "notificationsSubtitle": "アラートとリマインダーを管理",
+  "dataSection": "データ",
+  "backup": "バックアップ",
+  "backupSubtitle": "クラウドにデータを保存",
+  "deleteData": "データを削除",
+  "deleteDataSubtitle": "すべてのデータを完全に削除",
+  "aboutSection": "情報",
+  "aboutApp": "アプリについて",
+  "versionInfo": "バージョン 1.0.0",
+  "privacyPolicy": "プライバシーポリシー",
+  "termsOfService": "利用規約",
+  "helpSupport": "ヘルプとサポート",
+  "logout": "ログアウト",
+  "comingSoon": "近日公開",
+  "deleteDataTitle": "データを削除",
+  "deleteDataConfirm": "すべてのデータを削除してもよろしいですか？この操作は元に戻せません。",
+  "dataDeleted": "すべてのデータが削除されました",
+  "ok": "OK",
+  "appDescription": "メンテナンス分析のためのAI搭載車両チェックシステム。",
+  "copyright": "著作権 2025 Car Check AI",
+  "vehicle": "車両",
+  "fuelBenzin": "ガソリン",
+  "fuelDizel": "ディーゼル",
+  "fuelLpg": "LPG",
+  "fuelHibrit": "ハイブリッド",
+  "fuelPluginHibrit": "プラグインハイブリッド",
+  "fuelElektrik": "電気",
+  "transmissionManuel": "マニュアル",
+  "transmissionOtomatik": "オートマチック",
+  "transmissionYariOtomatik": "セミオートマチック",
+  "transmissionCvt": "CVT",
+  "modificationOrijinal": "オリジナル",
+  "modificationHafif": "軽度",
+  "modificationOrta": "中度",
+  "modificationAgir": "重度",
+  "photoTireFl": "左前タイヤ",
+  "photoTireFr": "右前タイヤ",
+  "photoTireRl": "左後タイヤ",
+  "photoTireRr": "右後タイヤ",
+  "photoEngine": "エンジン",
+  "photoHeadlights": "ヘッドライト",
+  "photoTaillights": "テールライト",
+  "photoDashboard": "ダッシュボード",
+  "photoExhaust": "排気管",
+  "photoOilStick": "オイルレベルゲージ",
+  "photoFrunk": "フランク",
+  "photoChargePortClosed": "充電ポート閉",
+  "photoChargePortOpen": "充電ポート開",
+  "photoHybridCooler": "ハイブリッドクーラー"
+}

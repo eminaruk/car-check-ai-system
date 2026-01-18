@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../main.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -6,9 +7,11 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Ayarlar'),
+        title: Text(l10n.settings),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
       body: ListView(
@@ -28,25 +31,29 @@ class SettingsScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 16),
-                const Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Kullanıcı',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        l10n.user,
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        overflow: TextOverflow.ellipsis,
                       ),
-                    ),
-                    Text(
-                      'Hesap ayarları için tıklayın',
-                      style: TextStyle(
-                        color: Colors.grey,
+                      Text(
+                        l10n.accountSettingsHint,
+                        style: const TextStyle(
+                          color: Colors.grey,
+                        ),
+                        overflow: TextOverflow.ellipsis,
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-                const Spacer(),
+                const SizedBox(width: 8),
                 const Icon(Icons.chevron_right),
               ],
             ),
@@ -55,27 +62,27 @@ class SettingsScreen extends StatelessWidget {
 
           // Ayarlar Listesi
           _SettingsSection(
-            title: 'Uygulama',
+            title: l10n.appSection,
             children: [
               _SettingsTile(
                 icon: Icons.notifications_outlined,
-                title: 'Bildirimler',
-                subtitle: 'Bildirim ayarlarını yönetin',
+                title: l10n.notifications,
+                subtitle: l10n.notificationsSubtitle,
                 onTap: () {
                   _showComingSoon(context);
                 },
               ),
               _SettingsTile(
                 icon: Icons.language,
-                title: 'Dil',
-                subtitle: 'Türkçe',
+                title: l10n.language,
+                subtitle: _getLanguageName(context),
                 onTap: () {
-                  _showComingSoon(context);
+                  _showLanguageDialog(context);
                 },
               ),
               _SettingsTile(
                 icon: Icons.dark_mode_outlined,
-                title: 'Tema',
+                title: l10n.theme,
                 subtitle: _getThemeSubtitle(context),
                 onTap: () {
                   _showThemeDialog(context);
@@ -85,20 +92,20 @@ class SettingsScreen extends StatelessWidget {
           ),
 
           _SettingsSection(
-            title: 'Veri',
+            title: l10n.dataSection,
             children: [
               _SettingsTile(
                 icon: Icons.cloud_upload_outlined,
-                title: 'Yedekleme',
-                subtitle: 'Verilerinizi yedekleyin',
+                title: l10n.backup,
+                subtitle: l10n.backupSubtitle,
                 onTap: () {
                   _showComingSoon(context);
                 },
               ),
               _SettingsTile(
                 icon: Icons.delete_outline,
-                title: 'Verileri Sil',
-                subtitle: 'Tüm verileri temizle',
+                title: l10n.deleteData,
+                subtitle: l10n.deleteDataSubtitle,
                 isDestructive: true,
                 onTap: () {
                   _showDeleteConfirmation(context);
@@ -108,33 +115,33 @@ class SettingsScreen extends StatelessWidget {
           ),
 
           _SettingsSection(
-            title: 'Hakkında',
+            title: l10n.aboutSection,
             children: [
               _SettingsTile(
                 icon: Icons.info_outline,
-                title: 'Uygulama Hakkında',
-                subtitle: 'Versiyon 1.0.0',
+                title: l10n.aboutApp,
+                subtitle: l10n.versionInfo,
                 onTap: () {
                   _showAboutDialog(context);
                 },
               ),
               _SettingsTile(
                 icon: Icons.privacy_tip_outlined,
-                title: 'Gizlilik Politikası',
+                title: l10n.privacyPolicy,
                 onTap: () {
                   _showComingSoon(context);
                 },
               ),
               _SettingsTile(
                 icon: Icons.description_outlined,
-                title: 'Kullanım Koşulları',
+                title: l10n.termsOfService,
                 onTap: () {
                   _showComingSoon(context);
                 },
               ),
               _SettingsTile(
                 icon: Icons.help_outline,
-                title: 'Yardım & Destek',
+                title: l10n.helpSupport,
                 onTap: () {
                   _showComingSoon(context);
                 },
@@ -152,9 +159,9 @@ class SettingsScreen extends StatelessWidget {
                 _showComingSoon(context);
               },
               icon: const Icon(Icons.logout, color: Colors.red),
-              label: const Text(
-                'Çıkış Yap',
-                style: TextStyle(color: Colors.red),
+              label: Text(
+                l10n.logout,
+                style: const TextStyle(color: Colors.red),
               ),
               style: OutlinedButton.styleFrom(
                 side: const BorderSide(color: Colors.red),
@@ -169,17 +176,102 @@ class SettingsScreen extends StatelessWidget {
     );
   }
 
+  String _getLanguageName(BuildContext context) {
+    final notifier = ThemeNotifier.of(context);
+    if (notifier == null) return 'English';
+    final code = notifier.locale.languageCode;
+    final languages = {
+      'en': 'English',
+      'es': 'Español',
+      'it': 'Italiano',
+      'fr': 'Français',
+      'de': 'Deutsch',
+      'tr': 'Türkçe',
+      'pt': 'Português',
+      'nl': 'Nederlands',
+      'ru': 'Русский',
+      'pl': 'Polski',
+      'zh': '中文',
+      'ja': '日本語',
+      'ko': '한국어',
+      'sv': 'Svenska',
+      'no': 'Norsk',
+      'da': 'Dansk',
+      'cs': 'Čeština',
+      'hu': 'Magyar',
+    };
+    return languages[code] ?? 'English';
+  }
+
   String _getThemeSubtitle(BuildContext context) {
     final notifier = ThemeNotifier.of(context);
-    if (notifier == null) return 'Sistem';
+    final l10n = AppLocalizations.of(context)!;
+    if (notifier == null) return l10n.system;
     switch (notifier.themeMode) {
       case ThemeMode.dark:
-        return 'Karanlık';
+        return l10n.dark;
       case ThemeMode.light:
-        return 'Açık';
+        return l10n.light;
       case ThemeMode.system:
-        return 'Sistem';
+        return l10n.system;
     }
+  }
+
+  void _showLanguageDialog(BuildContext context) {
+    final notifier = ThemeNotifier.of(context);
+    if (notifier == null) {
+      _showComingSoon(context);
+      return;
+    }
+
+    final languages = [
+      {'code': 'en', 'name': 'English'},
+      {'code': 'es', 'name': 'Español'},
+      {'code': 'it', 'name': 'Italiano'},
+      {'code': 'fr', 'name': 'Français'},
+      {'code': 'de', 'name': 'Deutsch'},
+      {'code': 'tr', 'name': 'Türkçe'},
+      {'code': 'pt', 'name': 'Português'},
+      {'code': 'nl', 'name': 'Nederlands'},
+      {'code': 'ru', 'name': 'Русский'},
+      {'code': 'pl', 'name': 'Polski'},
+      {'code': 'zh', 'name': '中文'},
+      {'code': 'ja', 'name': '日本語'},
+      {'code': 'ko', 'name': '한국어'},
+      {'code': 'sv', 'name': 'Svenska'},
+      {'code': 'no', 'name': 'Norsk'},
+      {'code': 'da', 'name': 'Dansk'},
+      {'code': 'cs', 'name': 'Čeština'},
+      {'code': 'hu', 'name': 'Magyar'},
+    ];
+
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(AppLocalizations.of(context)!.language),
+        content: SizedBox(
+          width: double.maxFinite,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: languages.map((lang) {
+                return RadioListTile<String>(
+                  title: Text(lang['name']!),
+                  value: lang['code']!,
+                  groupValue: notifier.locale.languageCode,
+                  onChanged: (value) {
+                    if (value != null) {
+                      notifier.onLocaleChanged(Locale(value));
+                      Navigator.pop(context);
+                    }
+                  },
+                );
+              }).toList(),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 
   void _showThemeDialog(BuildContext context) {
@@ -189,15 +281,17 @@ class SettingsScreen extends StatelessWidget {
       return;
     }
 
+    final l10n = AppLocalizations.of(context)!;
+
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Tema Seçin'),
+        title: Text(l10n.selectTheme),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             RadioListTile<ThemeMode>(
-              title: const Text('Açık'),
+              title: Text(l10n.light),
               value: ThemeMode.light,
               groupValue: notifier.themeMode,
               onChanged: (value) {
@@ -208,7 +302,7 @@ class SettingsScreen extends StatelessWidget {
               },
             ),
             RadioListTile<ThemeMode>(
-              title: const Text('Karanlık'),
+              title: Text(l10n.dark),
               value: ThemeMode.dark,
               groupValue: notifier.themeMode,
               onChanged: (value) {
@@ -219,7 +313,7 @@ class SettingsScreen extends StatelessWidget {
               },
             ),
             RadioListTile<ThemeMode>(
-              title: const Text('Sistem'),
+              title: Text(l10n.system),
               value: ThemeMode.system,
               groupValue: notifier.themeMode,
               onChanged: (value) {
@@ -236,34 +330,34 @@ class SettingsScreen extends StatelessWidget {
   }
 
   void _showComingSoon(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Bu özellik yakında eklenecek')),
+      SnackBar(content: Text(l10n.comingSoon)),
     );
   }
 
   void _showDeleteConfirmation(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Verileri Sil'),
-        content: const Text(
-          'Tüm verileriniz silinecek. Bu işlem geri alınamaz. Emin misiniz?',
-        ),
+        title: Text(l10n.deleteDataTitle),
+        content: Text(l10n.deleteDataConfirm),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('İptal'),
+            child: Text(l10n.cancel),
           ),
           TextButton(
             onPressed: () {
               Navigator.pop(context);
               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Veriler silindi')),
+                SnackBar(content: Text(l10n.dataDeleted)),
               );
             },
-            child: const Text(
-              'Sil',
-              style: TextStyle(color: Colors.red),
+            child: Text(
+              l10n.delete,
+              style: const TextStyle(color: Colors.red),
             ),
           ),
         ],
@@ -272,37 +366,35 @@ class SettingsScreen extends StatelessWidget {
   }
 
   void _showAboutDialog(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Row(
+        title: Row(
           children: [
-            Icon(Icons.directions_car, color: Colors.blue),
-            SizedBox(width: 8),
-            Text('Car Check AI'),
+            const Icon(Icons.directions_car, color: Colors.blue),
+            const SizedBox(width: 8),
+            Text(l10n.appTitle),
           ],
         ),
-        content: const Column(
+        content: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Versiyon: 1.0.0'),
-            SizedBox(height: 8),
+            Text(l10n.versionInfo),
+            const SizedBox(height: 8),
+            Text(l10n.appDescription),
+            const SizedBox(height: 16),
             Text(
-              'AI destekli araç bakım analiz uygulaması. '
-              'Aracınızın durumunu fotoğraflarla analiz edin.',
-            ),
-            SizedBox(height: 16),
-            Text(
-              '© 2025 Car Check AI',
-              style: TextStyle(color: Colors.grey),
+              l10n.copyright,
+              style: const TextStyle(color: Colors.grey),
             ),
           ],
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Tamam'),
+            child: Text(l10n.ok),
           ),
         ],
       ),
@@ -372,4 +464,3 @@ class _SettingsTile extends StatelessWidget {
     );
   }
 }
-
