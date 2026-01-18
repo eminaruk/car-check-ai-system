@@ -8,10 +8,6 @@
   cd "C:\Users\Emre\Desktop\My programs\Unity\Work\car-check-ai-system\backend"
   uvicorn main:app --reload --host 0.0.0.0 --port 8000
 
-  Terminal 3 - Seed (ilk seferde):
-  cd "C:\Users\Emre\Desktop\My programs\Unity\Work\car-check-ai-system\firebase"
-  npm run seed
-
   Terminal 4 - Flutter:
   cd "C:\Users\Emre\Desktop\My programs\Unity\Work\car-check-ai-system\frontend"
   flutter run -d chrome --web-renderer html
@@ -36,13 +32,22 @@ claude --allow-dangerously-skip-permissions
 
 ----------------------------- Yapılacaklar ------------------------------------
 
+- frontend tasarımını iyileştir
+
+- Gerçek görsel analiz
+- Bildirimler (placeholder)
+- Dark mode (placeholder)
+- Dil değiştirme (placeholder)
+
+- bildirim özelliği ekle
 
 
 - Check sistemi - Araç fotoğrafı yükleme ve analiz API'si
 
 
-- Auth sistemi - Firebase Auth entegrasyonu
-
+  1. Frontend'de Firebase Auth ile login
+  2. Backend'de her istekte token doğrulama middleware'i
+  3. Firestore'da kullanıcı bazlı veri izolasyonu
 
 
 

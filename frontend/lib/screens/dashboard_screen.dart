@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import '../services/storage_service.dart';
 
 class DashboardScreen extends StatefulWidget {
-  const DashboardScreen({super.key});
+  final Function(int)? onNavigateToTab;
+  final Function(String)? onNavigateToCheck;
+
+  const DashboardScreen({super.key, this.onNavigateToTab, this.onNavigateToCheck});
 
   @override
   State<DashboardScreen> createState() => _DashboardScreenState();
@@ -142,6 +145,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             title: 'Araçlar',
                             value: '${vehicles.length}',
                             color: Colors.blue,
+                            onTap: () {
+                              widget.onNavigateToTab?.call(1);
+                            },
                           ),
                         ),
                         const SizedBox(width: 12),
@@ -151,6 +157,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             title: 'Check',
                             value: '${checks.length}',
                             color: Colors.green,
+                            onTap: () {
+                              widget.onNavigateToTab?.call(2);
+                            },
                           ),
                         ),
                       ],
@@ -203,6 +212,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       ..._recentChecks.map((check) => Card(
                             margin: const EdgeInsets.only(bottom: 8),
                             child: ListTile(
+                              onTap: () {
+                                final checkId = check['id'] as String?;
+                                if (checkId != null) {
+                                  widget.onNavigateToCheck?.call(checkId);
+                                }
+                              },
                               leading: Container(
                                 width: 48,
                                 height: 48,
@@ -236,39 +251,45 @@ class _StatCard extends StatelessWidget {
   final String title;
   final String value;
   final Color color;
+  final VoidCallback? onTap;
 
   const _StatCard({
     required this.icon,
     required this.title,
     required this.value,
     required this.color,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            Icon(icon, color: color, size: 28),
-            const SizedBox(height: 8),
-            Text(
-              value,
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: color,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(12),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              Icon(icon, color: color, size: 28),
+              const SizedBox(height: 8),
+              Text(
+                value,
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: color,
+                ),
               ),
-            ),
-            Text(
-              title,
-              style: const TextStyle(
-                fontSize: 12,
-                color: Colors.grey,
+              Text(
+                title,
+                style: const TextStyle(
+                  fontSize: 12,
+                  color: Colors.grey,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

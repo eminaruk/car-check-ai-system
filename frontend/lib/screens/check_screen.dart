@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import '../services/storage_service.dart';
 
 class CheckScreen extends StatefulWidget {
-  const CheckScreen({super.key});
+  final String? selectedCheckId;
+  final VoidCallback? onCheckClosed;
+
+  const CheckScreen({super.key, this.selectedCheckId, this.onCheckClosed});
 
   @override
   State<CheckScreen> createState() => _CheckScreenState();
@@ -19,6 +22,19 @@ class _CheckScreenState extends State<CheckScreen> {
     _loadData();
   }
 
+  @override
+  void didUpdateWidget(CheckScreen oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    // Eğer selectedCheckId değişti ve yeni bir ID geldiyse check detaylarını aç
+    if (widget.selectedCheckId != null &&
+        widget.selectedCheckId != oldWidget.selectedCheckId &&
+        !isLoading) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _openSelectedCheck();
+      });
+    }
+  }
+
   Future<void> _loadData() async {
     final loadedVehicles = await StorageService.getVehicles();
     final loadedChecks = await StorageService.getChecks();
@@ -27,6 +43,26 @@ class _CheckScreenState extends State<CheckScreen> {
       checks = loadedChecks;
       isLoading = false;
     });
+
+    // Eğer selectedCheckId varsa ve data yüklendiyse check detaylarını aç
+    if (widget.selectedCheckId != null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _openSelectedCheck();
+      });
+    }
+  }
+
+  void _openSelectedCheck() {
+    if (widget.selectedCheckId == null) return;
+
+    final check = checks.firstWhere(
+      (c) => c['id'] == widget.selectedCheckId,
+      orElse: () => {},
+    );
+
+    if (check.isNotEmpty) {
+      _showCheckDetails(check);
+    }
   }
 
   void _navigateToNewCheck() {
@@ -281,7 +317,10 @@ class _CheckScreenState extends State<CheckScreen> {
           ],
         ),
       ),
-    );
+    ).then((_) {
+      // Modal bottom sheet kapandığında callback'i çağır
+      widget.onCheckClosed?.call();
+    });
   }
 
   Widget _buildDetailRow(String label, String value) {

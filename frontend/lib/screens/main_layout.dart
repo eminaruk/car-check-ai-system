@@ -13,25 +13,44 @@ class MainLayout extends StatefulWidget {
 
 class _MainLayoutState extends State<MainLayout> {
   int _currentIndex = 0;
+  String? _selectedCheckId;
 
-  final List<Widget> _screens = [
-    const DashboardScreen(),
-    const VehiclesScreen(),
-    const CheckScreen(),
-    const SettingsScreen(),
-  ];
+  void _changeTab(int index, {String? checkId}) {
+    setState(() {
+      _currentIndex = index;
+      _selectedCheckId = checkId;
+    });
+  }
+
+  void _clearSelectedCheckId() {
+    setState(() {
+      _selectedCheckId = null;
+    });
+  }
+
+  List<Widget> get _screens => [
+        DashboardScreen(
+          onNavigateToTab: _changeTab,
+          onNavigateToCheck: (checkId) => _changeTab(2, checkId: checkId),
+        ),
+        const VehiclesScreen(),
+        CheckScreen(
+          selectedCheckId: _selectedCheckId,
+          onCheckClosed: _clearSelectedCheckId,
+        ),
+        const SettingsScreen(),
+      ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _screens[_currentIndex],
+      body: IndexedStack(
+        index: _currentIndex,
+        children: _screens,
+      ),
       bottomNavigationBar: NavigationBar(
         selectedIndex: _currentIndex,
-        onDestinationSelected: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
+        onDestinationSelected: _changeTab,
         destinations: const [
           NavigationDestination(
             icon: Icon(Icons.home_outlined),

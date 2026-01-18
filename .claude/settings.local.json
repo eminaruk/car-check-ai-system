@@ -6,7 +6,11 @@
       "Bash(uvicorn main:app:*)",
       "Bash(curl:*)",
       "Bash(python -m json.tool:*)",
-      "Bash(npm run emulator:*)"
+      "Bash(npm run emulator:*)",
+      "Bash(java -version:*)",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)",
+      "Bash(firebase emulators:start:*)"
     ]
   }
 }
