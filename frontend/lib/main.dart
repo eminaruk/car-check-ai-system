@@ -8,7 +8,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final prefs = await SharedPreferences.getInstance();
   final isDark = prefs.getBool('isDarkMode') ?? false;
-  final localeCode = prefs.getString('locale') ?? 'en';
+  final localeCode = prefs.getString('locale') ?? 'tr';
   final locale = Locale(localeCode);
   runApp(MyApp(initialThemeMode: isDark ? ThemeMode.dark : ThemeMode.light, initialLocale: locale));
 }
@@ -25,7 +25,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   ThemeMode _themeMode = ThemeMode.light;
-  Locale _locale = const Locale('en');
+  Locale _locale = const Locale('tr');
 
   @override
   void initState() {

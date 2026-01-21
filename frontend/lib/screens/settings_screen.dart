@@ -178,29 +178,13 @@ class SettingsScreen extends StatelessWidget {
 
   String _getLanguageName(BuildContext context) {
     final notifier = ThemeNotifier.of(context);
-    if (notifier == null) return 'English';
+    if (notifier == null) return 'Türkçe';
     final code = notifier.locale.languageCode;
     final languages = {
       'en': 'English',
-      'es': 'Español',
-      'it': 'Italiano',
-      'fr': 'Français',
-      'de': 'Deutsch',
       'tr': 'Türkçe',
-      'pt': 'Português',
-      'nl': 'Nederlands',
-      'ru': 'Русский',
-      'pl': 'Polski',
-      'zh': '中文',
-      'ja': '日本語',
-      'ko': '한국어',
-      'sv': 'Svenska',
-      'no': 'Norsk',
-      'da': 'Dansk',
-      'cs': 'Čeština',
-      'hu': 'Magyar',
     };
-    return languages[code] ?? 'English';
+    return languages[code] ?? 'Türkçe';
   }
 
   String _getThemeSubtitle(BuildContext context) {
@@ -225,24 +209,8 @@ class SettingsScreen extends StatelessWidget {
     }
 
     final languages = [
-      {'code': 'en', 'name': 'English'},
-      {'code': 'es', 'name': 'Español'},
-      {'code': 'it', 'name': 'Italiano'},
-      {'code': 'fr', 'name': 'Français'},
-      {'code': 'de', 'name': 'Deutsch'},
       {'code': 'tr', 'name': 'Türkçe'},
-      {'code': 'pt', 'name': 'Português'},
-      {'code': 'nl', 'name': 'Nederlands'},
-      {'code': 'ru', 'name': 'Русский'},
-      {'code': 'pl', 'name': 'Polski'},
-      {'code': 'zh', 'name': '中文'},
-      {'code': 'ja', 'name': '日本語'},
-      {'code': 'ko', 'name': '한국어'},
-      {'code': 'sv', 'name': 'Svenska'},
-      {'code': 'no', 'name': 'Norsk'},
-      {'code': 'da', 'name': 'Dansk'},
-      {'code': 'cs', 'name': 'Čeština'},
-      {'code': 'hu', 'name': 'Magyar'},
+      {'code': 'en', 'name': 'English'},
     ];
 
     showDialog(
