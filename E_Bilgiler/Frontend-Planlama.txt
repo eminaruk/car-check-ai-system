@@ -12,8 +12,9 @@
   cd "C:\Users\Emre\Desktop\My programs\Unity\Work\car-check-ai-system\frontend"
   flutter run -d chrome --web-renderer html
 
-claude --allow-dangerously-skip-permissions 
+claude --dangerously-skip-permissions 
 
+shift + tab
 
 
 ----------------------------- Bitenler ----------------------------------------
